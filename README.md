@@ -75,6 +75,9 @@ Running Linux TCPreplay command to send Quantum-accelerated AAT input from Broad
     sudo ./execFrom_sf1.sh tcpreplay --intf1=enp3s0f1 --pps=2 --stats=1 ../Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap
 
 ## 2-1 Currency Arbitrage QUBO Formulation
+Currency arbitrage in QUBO form.
+
+https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/qubo_formulation
 
 ## 2-2 SQA Design & Implementation
 SQA-accelerated trading strategy for the Xilinx AAT platform.
