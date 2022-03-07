@@ -79,6 +79,7 @@ Running Linux TCPreplay command to send Quantum-accelerated AAT input from Broad
 ## 2-2 SQA Design & Implementation
 
 ## 2-3 SBM Design & Implementation
+SBM-accelerated trading strategy for the Xilinx AAT platform.
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sbm
 
 ## 3 Features and Benefits
