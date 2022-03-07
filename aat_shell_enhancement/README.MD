@@ -1,7 +1,7 @@
 ## AAT Shell Compiling
 Replace origional AAT Q2 xlnx_cmd_manager.cpp with submitted xlnx_cmd_manager.cpp in below directory
 
-    /Accelerated_Algorithmic_Trading/sw/framework/shell
+    ../Accelerated_Algorithmic_Trading/sw/framework/shell
   
 Compile att_shell_exe with new timestamp and time control functions
 
