@@ -113,6 +113,6 @@ Xilinx AAT reference design can provide all the infrastructure required to creat
 AAT Shell Enhancement for HW Debugging:
 * Status/Debugging registers for SQA/SBM modules
 * Add timestamp and time pause functions in both shell mode and run script mode
-* 
+
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/aat_shell_enhancement
 
