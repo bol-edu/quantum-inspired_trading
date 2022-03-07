@@ -85,7 +85,7 @@ SQA-accelerated trading strategy for the Xilinx AAT platform.
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sqa
 
 ## 2-3 SBM Design & Implementation
-SBM-accelerated trading strategy for the Xilinx AAT platform.
+Simulated bifurcation is a quantum-inspired heuristic algorithm that approximates the solutions to Ising-model problem formulations.  The algorithm can yield high-quality solutions under fewer time steps than the traditional simulated annealing method. Furthermore, the matrix-vector multiplications in the equations can be simplified and parallelized easily, opening the possibility for high frequency trading.  In this project, SBM solves a currency arbitrage problem of 5 currencies and 9 exchange pairs in under 7 microseconds, demonstrating its speed and modularity.  SBM is integrated into the `pricingEngine` of the AAT framework, which processes the market data and decides the orders to place.
 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sbm
 
