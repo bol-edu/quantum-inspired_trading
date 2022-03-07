@@ -77,6 +77,9 @@ Running Linux TCPreplay command to send Quantum-accelerated AAT input from Broad
 ## 2-1 Currency Arbitrage QUBO Formulation
 
 ## 2-2 SQA Design & Implementation
+SQA-accelerated trading strategy for the Xilinx AAT platform.
+
+https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sqa
 
 ## 2-3 SBM Design & Implementation
 SBM-accelerated trading strategy for the Xilinx AAT platform.
