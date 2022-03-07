@@ -1,5 +1,5 @@
 ## AAT Shell Compiling
-Replace origional AAT Q2 xlnx_cmd_manager.cpp with modified xlnx_cmd_manager.cpp in below directory
+Replace origional AAT Q2 xlnx_cmd_manager.cpp with submitted xlnx_cmd_manager.cpp in below directory
 
     /Accelerated_Algorithmic_Trading/sw/framework/shell
   
