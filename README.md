@@ -7,7 +7,11 @@ We design and implement Quantum-accelerated Trading Strategies for currency arbi
 
 ## 1-2 Data Generation
 
-## 1-3 Synthesis & Compiling
+## 1-3 HW Synthesis & SW Compiling
+Build Flow:
+
+<img src="https://user-images.githubusercontent.com/11850122/156987376-8aaff58f-eb95-4290-93bf-43596cd38176.png" width=80%>
+
 Development Environment:
 * Operation System: Ubuntu 20.04.2 LTS
 * Xilinx Vitis Software Platform 2021.1
