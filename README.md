@@ -47,10 +47,10 @@ Preparation:
 * A QSFPx1-to-SFPx4 connection cable
 * An AAT demo_setup.cfg and SFP network setting files can be found in configuration directory
 
-Supplementary:
+Supplementary in following test instructions:
 * Our own SPF port names are "enp3s0f0" and "enp3s0f1". You should replace "enp3s0f0" and "enp3s0f1" with your own SPF port names in settingNetwork_sf0.sh and settingNetwork_sf1.sh.
 * The "enp3s0f1" parameter used in Linux TCPreplay command terminal#2 is also should be replaced your own SPF port name.
-* The ./sample/aat.u50_xdma.xclbin can be another path and naming, but it should be AAT+SBM/AAT+SQA output xcblin file  
+* The ./sample/aat.u50_xdma.xclbin can be another path and naming, but it should be the outputted xcblin file of building AAT & SBM or AAT & SQA designs   
 * The AAT Q2 default support/demo_setup.cfg should be replace with submitted configuration/demo_setup.cfg
 
 We refer the network configuration used by the Xilinx verification team.
