@@ -21,7 +21,7 @@ Build flow of AAT and SBM/SQA design sources
 * Replace the origional AAT Q2 files in `../Accelerated_Algorithmic_Trading/hw/pricingEngine` with the files in  
 `sbm/src/hw/pricingEngine` or `sqa/src/hw/pricingEngine`.
 
-<img src="https://user-images.githubusercontent.com/11850122/157410864-081a295e-f9a1-45fb-a2c7-c7d8faa9d1ca.png" width=65%>
+<img src="https://user-images.githubusercontent.com/11850122/157410864-081a295e-f9a1-45fb-a2c7-c7d8faa9d1ca.png" width=55%>
 
 Settings in `~/.bashrc`:
 
