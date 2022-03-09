@@ -48,7 +48,7 @@ Preparation:
 * A QSFPx1-to-SFPx4 connection cable
 * An AAT `demo_setup.cfg` and SFP network setting files in submitted configuration directory
 
-Supplementary in following test instructions:
+Supplementary of following test instructions:
 * Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names in `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
 * The used `enp3s0f1` parameter in Linux TCPreplay command terminal#2 is also should be replaced your own SPF port name, which is corresponded to the port of sending PCAP files.
 * The `./sample/aat.u50_xdma.xclbin` can be another path and naming, but it should be the outputted xcblin file of building AAT & SBM or AAT & SQA designs   
