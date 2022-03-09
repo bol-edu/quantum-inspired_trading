@@ -9,7 +9,7 @@ Quantum-Inspired Algorithm has been used to optimize combinatorial problems in p
 ## 1-3 HW Synthesis & SW Compiling
 
 Development Environment and Sources:
-* Operation System: Ubuntu 20.04.2 LTS
+* Operation System of Ubuntu 20.04.2 LTS
 * Xilinx Vitis Software Platform 2021.1
 * Xilinx Accelerated Algorithmic Trading reference design package Q2 (UG1067 v1.1, July 2 2021)
 * SBM/SQA design sources in sbm/sqa directory
