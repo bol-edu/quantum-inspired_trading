@@ -46,7 +46,7 @@ We refer the network configuration used by the Xilinx verification team.
 
 <img src="https://user-images.githubusercontent.com/11850122/157402051-63b60368-00ba-4987-aada-0ed15f9da004.png" width=50%>
 
-Running Quantum-accelerated AAT shell on U50 host terminal.
+Run Quantum-Inspired AAT shell terminal#0 on U50 local host.
 
     sudo reboot (if needed to clean U50 setting)
     cd ../Accelerated_Algorithmic_Trading/build
@@ -57,23 +57,23 @@ Running Quantum-accelerated AAT shell on U50 host terminal.
     datamover threadstart
     udpip0 getstatus
     
-Running Linux Netcat command to get Quantum-accelerated AAT output on Broadcom host terminal#1.
+Run Linux Netcat command terminal#1 on remote host and get Quantum-Inspired AAT output from local host.
 
     cd ../Network_setting/
     sudo ./settingNetwork_sf0.sh
     sudo ./execFrom_sf0.sh ping -w 5 192.168.20.200 (optional test)
     sudo ./execFrom_sf0.sh nc -n -l 192.168.20.100 12345 -v
     
-If Linux Netcat has not shown Quantum-accelerated AAT connection IP & Port message, run reconnection on U50 host terminal.
+If Linux Netcat command terminal#1 has not shown connected IP & Port message from local host, run reconnection on U50 local host terminal#0.
 
     orderentry reconnect
     orderentry getstatus
 
-From U50 host terminal, connection established should be shown "true" and connection status should be shown "SUCCESS”.
+From U50 local host terminal#0, connection established should be shown "true" and connection status should be shown "SUCCESS”.
 
 <img src="https://user-images.githubusercontent.com/11850122/155680914-ad137fe7-37af-4048-a270-ee72ed263c0e.png" width=45%>
 
-Running Linux TCPreplay command to send Quantum-accelerated AAT input from Broadcom host terminal#2.
+Running Linux TCPreplay command terminal#2 to send Quantum-Inspired AAT input from reomte host.
 
     cd ../Network_setting/
     sudo ./settingNetwork_sf1.sh
@@ -86,7 +86,7 @@ Before we can apply SBM/SQA to find optimal arbitrage opportunities, we need to 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/qubo_formulation
 
 ## 2-2 SBM Design & Implementation
-Simulated bifurcation is a quantum-inspired heuristic algorithm that approximates the solutions to Ising-model problem formulations.  The algorithm can yield high-quality solutions under fewer time steps than the traditional simulated annealing method. Furthermore, the matrix-vector multiplications in the equations can be simplified and parallelized easily, opening the possibility for high frequency trading.  In this project, SBM solves a currency arbitrage problem of 5 currencies and 9 exchange pairs in under 7 microseconds, demonstrating its speed and modularity.  SBM is integrated into the `pricingEngine` of the AAT framework, which processes the market data and decides the orders to place.
+Simulated bifurcation is a Quantum-Inspired heuristic algorithm that approximates the solutions to Ising-model problem formulations.  The algorithm can yield high-quality solutions under fewer time steps than the traditional simulated annealing method. Furthermore, the matrix-vector multiplications in the equations can be simplified and parallelized easily, opening the possibility for high frequency trading.  In this project, SBM solves a currency arbitrage problem of 5 currencies and 9 exchange pairs in under 7 microseconds, demonstrating its speed and modularity.  SBM is integrated into the `pricingEngine` of the AAT framework, which processes the market data and decides the orders to place.
 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sbm
 
@@ -96,9 +96,9 @@ The complexity of the original SQA algorithm is O(M*N*N) in time and O(N*N) in s
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sqa
 
 ## 3 Features and Benefits
-Quantum-accelerated Trading Strategies:
+Quantum-Inspired Trading Strategies:
 * Leverage HLS to develop trading strategies with readability and maintainability
-* Customizable Quantum-accelerated trading strategies
+* Customizable Quantum-Inspired trading strategies
 * Parallel computing on FPGA hardware
 * Built on trading industry-standard of CME and FIX
 
@@ -111,8 +111,8 @@ Accelerated Algorithmic Trading (AAT) Framework:
 * Supported on Alveo™ U250, U50
 * Supports XDMA and host memory bridge-based
 
-Quantum-accelerated trading strategies can be executed on CPUs/GPUs but incur additional latency particularly from traversing the PCIe bus. FPGA based trading strategies can significantly lower latency, but typically need large teams of hardware experts and long design cycles.
-Xilinx AAT reference design can provide all the infrastructure required to create a Quantum-accelerated trading application on the FPGA using Xilinx Vitis™ unified platform, and standard Xilinx shells. The design is written in HLS, and all the source code is provided. The design is modular, allowing easily replacing trading strategy IP blocks in the reference design with needed strategy.
+Quantum-Inspired trading strategies can be executed on CPUs/GPUs but incur additional latency particularly from traversing the PCIe bus. FPGA based trading strategies can significantly lower latency, but typically need large teams of hardware experts and long design cycles.
+Xilinx AAT reference design can provide all the infrastructure required to create a Quantum-Inspired trading application on the FPGA using Xilinx Vitis™ unified platform, and standard Xilinx shells. The design is written in HLS, and all the source code is provided. The design is modular, allowing easily replacing trading strategy IP blocks in the reference design with needed strategy.
 
 <img src="https://user-images.githubusercontent.com/11850122/156995074-9c4ba66d-568a-41d6-979d-5c7943572f82.png" width=120%>
 
