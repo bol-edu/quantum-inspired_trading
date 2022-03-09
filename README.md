@@ -12,7 +12,7 @@ Development Environment and build flow:
 * Operation System: Ubuntu 20.04.2 LTS
 * Xilinx Vitis Software Platform 2021.1
 * Xilinx Accelerated Algorithmic Trading reference design package Q2 (UG1067 v1.1, July 2 2021)
-* SBM/SQA design sources are in submitted sbm/sqa directory
+* SBM/SQA design sources are submitted in sbm/sqa directory
 
 Build AAT project with SBM/SQA design sources
 * Replace the files in ../Accelerated_Algorithmic_Trading/hw/pricingEngine with the files in src/hw/pricingEngine.
