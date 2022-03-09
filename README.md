@@ -137,7 +137,7 @@ AAT Shell Enhancement for Hardware Debugging:
 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/aat_shell_enhancement
 
-## 3-2 Project Contribution
+## 3-2 Project Contributions
 We will need a section to brief on the test data and results. Please describe
 * Test data configuration, # of currency, and # of exchange pairs
 * execution result, do we get the optimal result?
