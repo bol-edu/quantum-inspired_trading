@@ -15,7 +15,7 @@ Development Environment and build flow:
 * SBM/SQA design sources are submitted in sbm/sqa directory
 
 Build AAT project with SBM/SQA design sources
-* Replace the files in ../Accelerated_Algorithmic_Trading/hw/pricingEngine with the files in src/hw/pricingEngine.
+* Replace the files in ../Accelerated_Algorithmic_Trading/hw/pricingEngine with the files in [sbm|sqa]/src/hw/pricingEngine.
 
 <img src="https://user-images.githubusercontent.com/11850122/156987376-8aaff58f-eb95-4290-93bf-43596cd38176.png" width=65%>
 
@@ -40,13 +40,13 @@ Preparation:
 * A local host installed with a Xilinx Avelon U50 accelrator
 * A remote host installed with a Broadcom BCM957711A 10Gb x 2 SFP port card and PCAP test files
 * A QSFPx1-to-SFPx4 cable
-* AAT demo_setup.cfg and Network_setting can be found in configuration directory
+* AAT demo_setup.cfg and SFP network setting files can be found in configuration directory
 
 We refer the network configuration used by the Xilinx verification team.
 
 <img src="https://user-images.githubusercontent.com/11850122/157402051-63b60368-00ba-4987-aada-0ed15f9da004.png" width=50%>
 
-Run Quantum-Inspired AAT shell terminal#0 on U50 local host.
+Run AAT shell terminal#0 on U50 local host.
 
     sudo reboot (if needed to clean U50 setting)
     cd ../Accelerated_Algorithmic_Trading/build
@@ -57,7 +57,7 @@ Run Quantum-Inspired AAT shell terminal#0 on U50 local host.
     datamover threadstart
     udpip0 getstatus
     
-Run Linux Netcat command terminal#1 on remote host and get Quantum-Inspired AAT output from local host.
+Run Linux Netcat command terminal#1 on remote host and get AAT output from local host.
 
     cd ../Network_setting/
     sudo ./settingNetwork_sf0.sh
@@ -69,11 +69,11 @@ If Linux Netcat command terminal#1 has not shown connected IP & Port message fro
     orderentry reconnect
     orderentry getstatus
 
-From U50 local host terminal#0, connection established should be shown "true" and connection status should be shown "SUCCESS”.
+On U50 local host terminal#0, connection established should be shown "true" and connection status should be shown "SUCCESS”.
 
 <img src="https://user-images.githubusercontent.com/11850122/155680914-ad137fe7-37af-4048-a270-ee72ed263c0e.png" width=45%>
 
-Running Linux TCPreplay command terminal#2 to send Quantum-Inspired AAT input from reomte host.
+Running Linux TCPreplay command terminal#2 to send AAT input PCAP files from reomte host.
 
     cd ../Network_setting/
     sudo ./settingNetwork_sf1.sh
@@ -86,7 +86,7 @@ Before we can apply SBM/SQA to find optimal arbitrage opportunities, we need to 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/qubo_formulation
 
 ## 2-2 SBM Design & Implementation
-Simulated bifurcation is a Quantum-Inspired heuristic algorithm that approximates the solutions to Ising-model problem formulations.  The algorithm can yield high-quality solutions under fewer time steps than the traditional simulated annealing method. Furthermore, the matrix-vector multiplications in the equations can be simplified and parallelized easily, opening the possibility for high frequency trading.  In this project, SBM solves a currency arbitrage problem of 5 currencies and 9 exchange pairs in under 7 microseconds, demonstrating its speed and modularity.  SBM is integrated into the `pricingEngine` of the AAT framework, which processes the market data and decides the orders to place.
+Simulated bifurcation is a Quantum-Inspired heuristic algorithm that approximates the solutions to Ising-model problem formulations. The algorithm can yield high-quality solutions under fewer time steps than the traditional simulated annealing method. Furthermore, the matrix-vector multiplications in the equations can be simplified and parallelized easily, opening the possibility for high frequency trading. In this project, SBM solves a currency arbitrage problem of 5 currencies and 9 exchange pairs in under 7 microseconds, demonstrating its speed and modularity. SBM is integrated into the `pricingEngine` of the AAT framework, which processes the market data and decides the orders to place.
 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sbm
 
