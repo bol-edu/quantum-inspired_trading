@@ -44,7 +44,7 @@ Preparation:
 
 A reference configuration used by the Xilinx verification team.
 
-<img src="https://user-images.githubusercontent.com/11850122/155674938-61f34770-496f-43bc-8310-6f91ae20ce40.png" width=50%>
+<img src="https://user-images.githubusercontent.com/11850122/157402051-63b60368-00ba-4987-aada-0ed15f9da004.png" width=50%>
 
 Running Quantum-accelerated AAT shell on U50 host terminal.
 
@@ -85,15 +85,15 @@ Before we can apply SBM/SQA to find optimal arbitrage opportunities, we need to 
 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/qubo_formulation
 
-## 2-2 SQA Design & Implementation
-The complexity of the original SQA algorithm is O(M*N*N) in time and O(N*N) in space, where N and M are the numbers of spins and trotters. This work applies some optimization techniques to boost the FPGA performance. For detail, please refer to 
-
-https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sqa
-
-## 2-3 SBM Design & Implementation
+## 2-2 SBM Design & Implementation
 Simulated bifurcation is a quantum-inspired heuristic algorithm that approximates the solutions to Ising-model problem formulations.  The algorithm can yield high-quality solutions under fewer time steps than the traditional simulated annealing method. Furthermore, the matrix-vector multiplications in the equations can be simplified and parallelized easily, opening the possibility for high frequency trading.  In this project, SBM solves a currency arbitrage problem of 5 currencies and 9 exchange pairs in under 7 microseconds, demonstrating its speed and modularity.  SBM is integrated into the `pricingEngine` of the AAT framework, which processes the market data and decides the orders to place.
 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sbm
+
+## 2-3 SQA Design & Implementation
+The complexity of the original SQA algorithm is O(M*N*N) in time and O(N*N) in space, where N and M are the numbers of spins and trotters. This work applies some optimization techniques to boost the FPGA performance. For detail, please refer to 
+
+https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sqa
 
 ## 3 Features and Benefits
 Quantum-accelerated Trading Strategies:
