@@ -103,7 +103,7 @@ Simulated bifurcation is a Quantum-Inspired heuristic algorithm that approximate
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sbm
 
 ## 2-3 SQA Design & Implementation
-The complexity of the original SQA algorithm is O(M*N*N) in time and O(N*N) in space, where N and M are the numbers of spins and trotters. This work applies some optimization techniques to boost the FPGA performance. For detail, please refer to 
+The complexity of the original SQA algorithm is O(M＊N＊N) in time and O(N＊N) in space, where N and M are the numbers of spins and trotters. This work applies some optimization techniques to boost the FPGA performance. For detail, please refer to 
 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sqa
 
