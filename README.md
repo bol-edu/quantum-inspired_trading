@@ -4,7 +4,7 @@ EXTREME TRADING SOLUTION: Accelerated Quantum-Inspired Algorithm on Accelerated 
 ## 1-1 Project Abstraction
 Quantum-Inspired Algorithm has been used to optimize combinatorial problems in place of Universal Quantum Computation. We design and implemented two Quantum-Inspired  Trading Strategies for currency arbitrage, Simulated Bifurcation Machine (SBM), and Simulated Quantum Annealing SQA. Both are implemented and validated on Xilinx Algorithmic Trading (AAT) framework. This is a fully-featured open-source reference design for trading applications.
 
-## 1-2 Data Generation
+## 1-2 Data Generation and Decoding
 
 ## 1-3 Build Hardware & Software
 
