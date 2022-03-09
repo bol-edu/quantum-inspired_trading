@@ -1,11 +1,14 @@
-# Currency Arbitrage in QUBO Form
+# QUBO Formulation and Parameter Optimization
 
-The problem of finding the optimal arbitrage opportunity is to find the most profitable cycle in a digraph in which the nodes are the assets and the edges are the conversion rates. This problem can be cast into a quadratic unconstrained binary optimization (QUBO) form, of which the lowest cost solution is the optimal solution that we seek. In the original white paper by 1QBit [1], a QUBO solver of quantum annealing type is considered. We solve the QUBO problems with simulated quantum annealing (SQA) and simulated bifurcation (SB) algorithms implemented on FPGA instead.
+## Document
 
-Specifically, the cost function is of the following form:
+The document `DOC.ipynb` describes:
 
-$$ C = -\sum_{(i, j) \in E} x_{ij} \log c_{ij} + M_1 \sum_{i \in V} \left(\sum_{j, (i, j) \in E} x_{ij} - \sum_{j, (j, i) \in E} x_{ij} \right)^2 \\+ M_2 \sum_{i \in V} \left(\sum_{j, (i, j) \in E} x_{ij} \right) \left(\sum_{j, (i, j) \in E} x_{ij} - 1 \right) $$
+- How to formulate a QUBO problem to find the optimal arbitrage opportunity, and
+- How to optimize the parameters, both in QUBO formulation and in the SB/SQA algorithms.
 
+The file is in `.ipynb` format because GitHub supports LaTeX rendering for markdown in `.ipynb` files but not `.md` files.
+=======
 in which the weighted digraph $G = (V, E)$ represents the foreign exchange market, the edge weights $c_{ij}$ corresponds to the exchange rates and the variables $x_{ij} \in \{0, 1\}$ are indicators whether we should take the transaction or not. The parameters $M_1$ and $M_2$ are penalty strengths that should be large enough to prevent illegal solutions (e.g., solutions that do not form a cycle). In this way, the lowest cost solution to this problem will be the most profitable simple cycle arbitrage route (or none if no profitable routes exist).
 
 ## Python Implementation
@@ -62,4 +65,4 @@ Additionally, the function can also output the cost function in Ising form if `m
 
 ## Implementation
 
-To be provided
+The python implementation of QUBO formulation can be found at `src/python/qubo_gen.py`. The implementation of parameter optimization flow will be provided in the future.
