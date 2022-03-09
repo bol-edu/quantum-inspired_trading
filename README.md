@@ -46,7 +46,7 @@ Preparation:
 * A local host installed with a Xilinx Avelon U50 accelrator
 * A remote host installed with a Broadcom BCM957711A 10Gb x 2 SFP port card and PCAP test files
 * A QSFPx1-to-SFPx4 connection cable
-* An AAT demo_setup.cfg and SFP network setting files can be found in configuration directory
+* An AAT demo_setup.cfg and SFP network setting files in submitted configuration directory
 
 Supplementary in following test instructions:
 * Our own SPF port names are "enp3s0f0" and "enp3s0f1". You should replace "enp3s0f0" and "enp3s0f1" with your own SPF port names in settingNetwork_sf0.sh and settingNetwork_sf1.sh.
