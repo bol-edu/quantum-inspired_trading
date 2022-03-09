@@ -81,7 +81,7 @@ If Linux Netcat command terminal#1 has not shown connected IP & Port message fro
     orderentry reconnect
     orderentry getstatus
 
-On U50 local host terminal#0, connection established should be shown "true" and connection status should be shown "SUCCESS”.
+On U50 local host terminal#0, connection established should be shown "true" and connection status should be shown "SUCCESS” from OrderEntry status table.
 
 <img src="https://user-images.githubusercontent.com/11850122/155680914-ad137fe7-37af-4048-a270-ee72ed263c0e.png" width=45%>
 
@@ -107,7 +107,7 @@ The complexity of the original SQA algorithm is O(M*N*N) in time and O(N*N) in s
 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sqa
 
-## 3 Features and Benefits
+## 3-1 Features and Benefits
 Quantum-Inspired Trading Strategies:
 * Leverage HLS to develop trading strategies with readability and maintainability
 * Customizable Quantum-Inspired trading strategies
@@ -133,4 +133,10 @@ AAT Shell Enhancement for HW Debugging:
 * Add timestamp and time pause functions in both shell mode and run script mode
 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/aat_shell_enhancement
+
+## 3-2 Project Contribution
+We will need a section to brief on the test data and results. Please describe
+* Test data configuration, # of currency, and # of exchange pairs
+* execution result, do we get the optimal result?
+* What is the run time?
 
