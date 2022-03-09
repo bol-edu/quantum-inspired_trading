@@ -15,8 +15,8 @@ Development Environment and Sources:
 * SBM/SQA design sources in sbm/sqa directory
 
 Build flow of AAT and SBM/SQA design sources
-* Overwrite the origional AAT Q2 files in ../Accelerated_Algorithmic_Trading/hw/pricingEngine with the files in  
-sbm/src/hw/pricingEngine or sqa/src/hw/pricingEngine.
+* Overwrite the origional AAT Q2 files in `../Accelerated_Algorithmic_Trading/hw/pricingEngine` with the files in  
+`sbm/src/hw/pricingEngine` or `sqa/src/hw/pricingEngine`.
 
 <img src="https://user-images.githubusercontent.com/11850122/157410864-081a295e-f9a1-45fb-a2c7-c7d8faa9d1ca.png" width=65%>
 
@@ -46,13 +46,13 @@ Preparation:
 * A local host installed with a Xilinx Avelon U50 accelrator
 * A remote host installed with a Broadcom BCM957711A 10Gb x 2 SFP port card and PCAP test files
 * A QSFPx1-to-SFPx4 connection cable
-* An AAT demo_setup.cfg and SFP network setting files in submitted configuration directory
+* An AAT `demo_setup.cfg` and SFP network setting files in submitted configuration directory
 
 Supplementary in following test instructions:
-* Our own SPF port names are "enp3s0f0" and "enp3s0f1". You should replace "enp3s0f0" and "enp3s0f1" with your own SPF port names in settingNetwork_sf0.sh and settingNetwork_sf1.sh.
-* The "enp3s0f1" parameter used in Linux TCPreplay command terminal#2 is also should be replaced your own SPF port name.
-* The ./sample/aat.u50_xdma.xclbin can be another path and naming, but it should be the outputted xcblin file of building AAT & SBM or AAT & SQA designs   
-* The AAT Q2 default support/demo_setup.cfg should be replace with submitted configuration/demo_setup.cfg
+* Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names in `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
+* The `enp3s0f1` parameter used in Linux TCPreplay command terminal#2 is also should be replaced your own SPF port name.
+* The `./sample/aat.u50_xdma.xclbin` can be another path and naming, but it should be the outputted xcblin file of building AAT & SBM or AAT & SQA designs   
+* The AAT Q2 default `support/demo_setup.cfg` should be replace with submitted `configuration/demo_setup.cfg`
 
 We refer the network configuration used by the Xilinx verification team.
 
