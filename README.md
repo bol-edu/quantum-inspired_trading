@@ -17,7 +17,7 @@ Development Environment and build flow:
 Build AAT project with SBM/SQA design sources
 * Replace the files in ../Accelerated_Algorithmic_Trading/hw/pricingEngine with the files in [sbm|sqa]/src/hw/pricingEngine.
 
-<img src="https://user-images.githubusercontent.com/11850122/156987376-8aaff58f-eb95-4290-93bf-43596cd38176.png" width=65%>
+<img src="https://user-images.githubusercontent.com/11850122/157410864-081a295e-f9a1-45fb-a2c7-c7d8faa9d1ca.png" width=65%>
 
 Settings in ~/.bashrc:
 
