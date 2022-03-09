@@ -29,11 +29,15 @@ Settings in ~/.bashrc:
     export DEVICE=${PLATFORM_REPO_PATHS}/${XILINX_PLATFORM}/${XILINX_PLATFORM}.xpfm
     export DM_MODE=DMA
     
- Synthesis & Compiling instructions:
+ Build Hardware & Software:
 
     $ cd ../Accelerated_Algorithmic_Trading/build
     $ make clean
     $ ./buildall.sh
+
+Build Software:
+    $ cd ../Accelerated_Algorithmic_Trading/sw/applications/aat/aat_shell_exe
+    $ make all
     
 ## 1-4 Test Flow
 Preparation:
