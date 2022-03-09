@@ -50,7 +50,7 @@ Preparation:
 
 Supplementary in following test instructions:
 * Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names in `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
-* The `enp3s0f1` parameter used in Linux TCPreplay command terminal#2 is also should be replaced your own SPF port name.
+* The used `enp3s0f1` parameter in Linux TCPreplay command terminal#2 is also should be replaced your own SPF port name, which is corresponded to the port of sending PCAP files.
 * The `./sample/aat.u50_xdma.xclbin` can be another path and naming, but it should be the outputted xcblin file of building AAT & SBM or AAT & SQA designs   
 * The AAT Q2 default `support/demo_setup.cfg` should be replace with submitted `configuration/demo_setup.cfg`
 
@@ -62,7 +62,7 @@ Run AAT shell terminal#0 on U50 local host.
 
     sudo reboot (if needed to clean U50 setting)
     cd ../Accelerated_Algorithmic_Trading/build
-    vim support/demo_setup.cfg (if needed to change provided demo_setup.cfg of this submission)
+    vim support/demo_setup.cfg (if needed to change demo_setup.cfg setting)
     ./aat_shell_exe
     download ./sample/aat.u50_xdma.xclbin
     run support/demo_setup.cfg
