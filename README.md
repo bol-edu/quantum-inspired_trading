@@ -14,7 +14,7 @@ Development Environment and build flow:
 * Xilinx Accelerated Algorithmic Trading reference design package Q2 (UG1067 v1.1, July 2 2021)
 * SBM/SQA design sources are submitted in sbm/sqa directory
 
-Build AAT project with SBM/SQA design sources
+Build flow of AAT and SBM/SQA design sources
 * Replace the files in ../Accelerated_Algorithmic_Trading/hw/pricingEngine with the files in [sbm|sqa]/src/hw/pricingEngine.
 
 <img src="https://user-images.githubusercontent.com/11850122/157410864-081a295e-f9a1-45fb-a2c7-c7d8faa9d1ca.png" width=65%>
@@ -41,6 +41,10 @@ Preparation:
 * A remote host installed with a Broadcom BCM957711A 10Gb x 2 SFP port card and PCAP test files
 * A QSFPx1-to-SFPx4 cable
 * AAT demo_setup.cfg and SFP network setting files can be found in configuration directory
+
+Supplementary:
+* We use our own SPF eth port names of enp3s0f0 and enp3s0f1 separated in settingNetwork_sf0.sh and settingNetwork_sf1.sh. You should replace enp3s0f0 and enp3s0f1 with your own SPF eth port names.
+* The "enp3s0f1" parameter used in Linux TCPreplay command terminal#2 is also should be replaced your SPF eth port name.
 
 We refer the network configuration used by the Xilinx verification team.
 
