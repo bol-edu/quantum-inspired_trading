@@ -71,7 +71,7 @@ Run AAT shell terminal#0 on U50 local host.
     
 Run Linux Netcat command terminal#1 on remote host and get AAT output from local host.
 
-    cd ../Network_setting/
+    cd ../network_setting/
     sudo ./settingNetwork_sf0.sh
     sudo ./execFrom_sf0.sh ping -w 5 192.168.20.200 (optional test)
     sudo ./execFrom_sf0.sh nc -n -l 192.168.20.100 12345 -v
@@ -87,7 +87,7 @@ On U50 local host terminal#0, connection established should be shown "true" and 
 
 Run Linux TCPreplay command terminal#2 to send AAT input PCAP files from reomte host.
 
-    cd ../Network_setting/
+    cd ../network_setting/
     sudo ./settingNetwork_sf1.sh
     sudo ./execFrom_sf1.sh ping -w 5 192.168.50.101 (optional test)
     sudo ./execFrom_sf1.sh tcpreplay --intf1=enp3s0f1 --pps=2 --stats=1 ../Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap
