@@ -1,0 +1,698 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2021.1 (64-bit)
+  **** SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+  **** IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+    ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+source /opt/Xilinx/Vitis_HLS/2021.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: Applying HLS Y2K22 patch v1.2 for IP revision
+INFO: [HLS 200-10] Running '/opt/Xilinx/Vitis_HLS/2021.1/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'hls02' on host 'HLS02' (Linux_x86_64 version 5.8.0-41-generic) on Wed Feb 23 14:27:40 CST 2022
+INFO: [HLS 200-10] On os Ubuntu 20.04.2 LTS
+INFO: [HLS 200-10] In directory '/home/hls02/AAT-SQA/hw/pricingEngine/test'
+Sourcing Tcl script 'run_hls.tcl'
+INFO: [HLS 200-1510] Running: open_project -reset prj 
+INFO: [HLS 200-10] Opening and resetting project '/home/hls02/AAT-SQA/hw/pricingEngine/test/prj'.
+WARNING: [HLS 200-40] No /home/hls02/AAT-SQA/hw/pricingEngine/test/prj/sol/sol.aps file found.
+INFO: [HLS 200-1510] Running: add_files /home/hls02/AAT-SQA/hw/pricingEngine/test/../../common/include/aat_interfaces.cpp -cflags -I/home/hls02/AAT-SQA/hw/pricingEngine/test/../../common/include -std=c++14 
+INFO: [HLS 200-10] Adding design file '/home/hls02/AAT-SQA/hw/pricingEngine/test/../../common/include/aat_interfaces.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files /home/hls02/AAT-SQA/hw/pricingEngine/test/..//pricingengine.cpp -cflags -I/home/hls02/AAT-SQA/hw/pricingEngine/test/../../common/include -std=c++14 
+INFO: [HLS 200-10] Adding design file '/home/hls02/AAT-SQA/hw/pricingEngine/test/..//pricingengine.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files /home/hls02/AAT-SQA/hw/pricingEngine/test/..//pricingengine_top.cpp -cflags -I/home/hls02/AAT-SQA/hw/pricingEngine/test/../../common/include -std=c++14 
+INFO: [HLS 200-10] Adding design file '/home/hls02/AAT-SQA/hw/pricingEngine/test/..//pricingengine_top.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb tb_pricingengine.cpp -cflags -I/home/hls02/AAT-SQA/hw/pricingEngine/test/../ -I/home/hls02/AAT-SQA/hw/pricingEngine/test/../../common/include -std=c++14 
+INFO: [HLS 200-10] Adding test bench file 'tb_pricingengine.cpp' to the project
+INFO: [HLS 200-1510] Running: set_top pricingEngineTop 
+INFO: [HLS 200-1510] Running: open_solution -reset sol -flow_target vitis 
+INFO: [HLS 200-10] Creating and opening solution '/home/hls02/AAT-SQA/hw/pricingEngine/test/prj/sol'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+WARNING: [HLS 200-40] No /home/hls02/AAT-SQA/hw/pricingEngine/test/prj/sol/sol.aps file found.
+INFO: [HLS 200-1505] Using flow_target 'vitis'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2021.1;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-435] Setting 'open_solution -flow_target vitis' configuration: config_interface -m_axi_latency=64
+INFO: [HLS 200-435] Setting 'open_solution -flow_target vitis' configuration: config_interface -m_axi_alignment_byte_size=64
+INFO: [HLS 200-435] Setting 'open_solution -flow_target vitis' configuration: config_interface -m_axi_max_widen_bitwidth=512
+INFO: [HLS 200-435] Setting 'open_solution -flow_target vitis' configuration: config_rtl -register_reset_num=3
+INFO: [HLS 200-1510] Running: set_part xcu50-fsvh2104-2L-e 
+INFO: [HLS 200-1611] Setting target device to 'xcu50-fsvh2104-2L-e'
+INFO: [HLS 200-1510] Running: create_clock -period 300MHz -name default 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 3.333ns.
+INFO: [HLS 200-1510] Running: csim_design 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+make[1]: Entering directory '/home/hls02/AAT-SQA/hw/pricingEngine/test/prj/sol/csim/build'
+   Compiling ../../../../tb_pricingengine.cpp in debug mode
+   Compiling ../../../../../pricingengine_top.cpp in debug mode
+   Compiling ../../../../../pricingengine.cpp in debug mode
+   Compiling ../../../../../../common/include/aat_interfaces.cpp in debug mode
+   Generating csim.exe
+make[1]: Leaving directory '/home/hls02/AAT-SQA/hw/pricingEngine/test/prj/sol/csim/build'
+PricingEngine Test
+------------------
+gamma_start   = 5
+T             = 0.5
+beta          = 2
+Iter0: 
+T0: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter1: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter2: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter3: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter4: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter5: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter6: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter7: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter8: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter9: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+gamma_start   = 5
+T             = 0.5
+beta          = 2
+Iter0: 
+T0: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter1: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter2: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter3: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter4: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter5: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter6: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter7: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter8: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter9: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+gamma_start   = 5
+T             = 0.5
+beta          = 2
+Iter0: 
+T0: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter1: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter2: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter3: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter4: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter5: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter6: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter7: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter8: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter9: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+gamma_start   = 5
+T             = 0.5
+beta          = 2
+Iter0: 
+T0: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter1: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter2: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter3: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter4: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter5: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter6: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter7: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter8: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter9: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+gamma_start   = 5
+T             = 0.5
+beta          = 2
+Iter0: 
+T0: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter1: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter2: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter3: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter4: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter5: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter6: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter7: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter8: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter9: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+gamma_start   = 5
+T             = 0.5
+beta          = 2
+Iter0: 
+T0: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter1: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter2: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter3: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter4: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter5: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter6: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter7: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter8: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter9: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+gamma_start   = 5
+T             = 0.5
+beta          = 2
+Iter0: 
+T0: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter1: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter2: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter3: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter4: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter5: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter6: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter7: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter8: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter9: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+gamma_start   = 5
+T             = 0.5
+beta          = 2
+Iter0: 
+T0: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter1: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter2: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter3: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter4: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter5: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter6: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter7: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter8: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+Iter9: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 0 0 
+gamma_start   = 5
+T             = 0.5
+beta          = 2
+Iter0: 
+T0: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 1 
+T1: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 1 
+T2: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 1 
+T3: 0 0 0 0 1 0 0 0 0 0 0 0 1 1 1 1 0 1 
+Iter1: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+Iter2: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+Iter3: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+Iter4: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+Iter5: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+Iter6: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+Iter7: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+Iter8: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+Iter9: 
+T0: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T1: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T2: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+T3: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 
+ORDER_ENTRY_OPERATION: {0,0,1,0,1.1755,0}
+ORDER_ENTRY_OPERATION: {0,0,2,0,0.85063,1}
+ORDER_ENTRY_OPERATION: {0,1,3,0,1.1755,0}
+ORDER_ENTRY_OPERATION: {0,1,4,0,0.85063,1}
+ORDER_ENTRY_OPERATION: {0,2,5,0,1.1755,0}
+ORDER_ENTRY_OPERATION: {0,2,6,0,0.85063,1}
+ORDER_ENTRY_OPERATION: {0,3,7,0,1.1755,0}
+ORDER_ENTRY_OPERATION: {0,3,8,0,0.85063,1}
+ORDER_ENTRY_OPERATION: {0,4,9,0,1.1755,0}
+ORDER_ENTRY_OPERATION: {0,4,10,0,0.85063,1}
+ORDER_ENTRY_OPERATION: {0,5,11,0,1.1755,0}
+ORDER_ENTRY_OPERATION: {0,5,12,0,0.85063,1}
+ORDER_ENTRY_OPERATION: {0,6,13,1,1.1755,0}
+ORDER_ENTRY_OPERATION: {0,6,14,1,0.85063,1}
+ORDER_ENTRY_OPERATION: {0,7,15,1,1.1755,0}
+ORDER_ENTRY_OPERATION: {0,7,16,1,0.85063,1}
+ORDER_ENTRY_OPERATION: {0,8,17,0,1.1755,0}
+ORDER_ENTRY_OPERATION: {0,8,18,0,0.85063,1}
+ORDER_ENTRY_OPERATION: {0,0,19,0,1.05932,0}
+ORDER_ENTRY_OPERATION: {0,0,20,0,0.94385,1}
+ORDER_ENTRY_OPERATION: {0,1,21,0,1.05932,0}
+ORDER_ENTRY_OPERATION: {0,1,22,0,0.94385,1}
+ORDER_ENTRY_OPERATION: {0,2,23,0,1.05932,0}
+ORDER_ENTRY_OPERATION: {0,2,24,0,0.94385,1}
+ORDER_ENTRY_OPERATION: {0,3,25,0,1.05932,0}
+ORDER_ENTRY_OPERATION: {0,3,26,0,0.94385,1}
+ORDER_ENTRY_OPERATION: {0,4,27,0,1.05932,0}
+ORDER_ENTRY_OPERATION: {0,4,28,0,0.94385,1}
+ORDER_ENTRY_OPERATION: {0,5,29,0,1.05932,0}
+ORDER_ENTRY_OPERATION: {0,5,30,0,0.94385,1}
+ORDER_ENTRY_OPERATION: {0,6,31,1,1.05932,0}
+ORDER_ENTRY_OPERATION: {0,6,32,1,0.94385,1}
+ORDER_ENTRY_OPERATION: {0,7,33,1,1.05932,0}
+ORDER_ENTRY_OPERATION: {0,7,34,1,0.94385,1}
+ORDER_ENTRY_OPERATION: {0,8,35,0,1.05932,0}
+ORDER_ENTRY_OPERATION: {0,8,36,0,0.94385,1}
+ORDER_ENTRY_OPERATION: {0,0,37,0,0.006549,0}
+ORDER_ENTRY_OPERATION: {0,0,38,0,152.682,1}
+ORDER_ENTRY_OPERATION: {0,1,39,0,0.006549,0}
+ORDER_ENTRY_OPERATION: {0,1,40,0,152.682,1}
+ORDER_ENTRY_OPERATION: {0,2,41,0,0.006549,0}
+ORDER_ENTRY_OPERATION: {0,2,42,0,152.682,1}
+ORDER_ENTRY_OPERATION: {0,3,43,0,0.006549,0}
+ORDER_ENTRY_OPERATION: {0,3,44,0,152.682,1}
+ORDER_ENTRY_OPERATION: {0,4,45,0,0.006549,0}
+ORDER_ENTRY_OPERATION: {0,4,46,0,152.682,1}
+ORDER_ENTRY_OPERATION: {0,5,47,0,0.006549,0}
+ORDER_ENTRY_OPERATION: {0,5,48,0,152.682,1}
+ORDER_ENTRY_OPERATION: {0,6,49,1,0.006549,0}
+ORDER_ENTRY_OPERATION: {0,6,50,1,152.682,1}
+ORDER_ENTRY_OPERATION: {0,7,51,1,0.006549,0}
+ORDER_ENTRY_OPERATION: {0,7,52,1,152.682,1}
+ORDER_ENTRY_OPERATION: {0,8,53,0,0.006549,0}
+ORDER_ENTRY_OPERATION: {0,8,54,0,152.682,1}
+ORDER_ENTRY_OPERATION: {0,0,55,0,0.00769894,0}
+ORDER_ENTRY_OPERATION: {0,0,56,0,129.883,1}
+ORDER_ENTRY_OPERATION: {0,1,57,0,0.00769894,0}
+ORDER_ENTRY_OPERATION: {0,1,58,0,129.883,1}
+ORDER_ENTRY_OPERATION: {0,2,59,0,0.00769894,0}
+ORDER_ENTRY_OPERATION: {0,2,60,0,129.883,1}
+ORDER_ENTRY_OPERATION: {0,3,61,0,0.00769894,0}
+ORDER_ENTRY_OPERATION: {0,3,62,0,129.883,1}
+ORDER_ENTRY_OPERATION: {0,4,63,0,0.00769894,0}
+ORDER_ENTRY_OPERATION: {0,4,64,0,129.883,1}
+ORDER_ENTRY_OPERATION: {0,5,65,0,0.00769894,0}
+ORDER_ENTRY_OPERATION: {0,5,66,0,129.883,1}
+ORDER_ENTRY_OPERATION: {0,6,67,1,0.00769894,0}
+ORDER_ENTRY_OPERATION: {0,6,68,1,129.883,1}
+ORDER_ENTRY_OPERATION: {0,7,69,1,0.00769894,0}
+ORDER_ENTRY_OPERATION: {0,7,70,1,129.883,1}
+ORDER_ENTRY_OPERATION: {0,8,71,0,0.00769894,0}
+ORDER_ENTRY_OPERATION: {0,8,72,0,129.883,1}
+ORDER_ENTRY_OPERATION: {0,0,73,0,0.00902837,0}
+ORDER_ENTRY_OPERATION: {0,0,74,0,110.756,1}
+ORDER_ENTRY_OPERATION: {0,1,75,0,0.00902837,0}
+ORDER_ENTRY_OPERATION: {0,1,76,0,110.756,1}
+ORDER_ENTRY_OPERATION: {0,2,77,0,0.00902837,0}
+ORDER_ENTRY_OPERATION: {0,2,78,0,110.756,1}
+ORDER_ENTRY_OPERATION: {0,3,79,0,0.00902837,0}
+ORDER_ENTRY_OPERATION: {0,3,80,0,110.756,1}
+ORDER_ENTRY_OPERATION: {0,4,81,0,0.00902837,0}
+ORDER_ENTRY_OPERATION: {0,4,82,0,110.756,1}
+ORDER_ENTRY_OPERATION: {0,5,83,0,0.00902837,0}
+ORDER_ENTRY_OPERATION: {0,5,84,0,110.756,1}
+ORDER_ENTRY_OPERATION: {0,6,85,1,0.00902837,0}
+ORDER_ENTRY_OPERATION: {0,6,86,1,110.756,1}
+ORDER_ENTRY_OPERATION: {0,7,87,1,0.00902837,0}
+ORDER_ENTRY_OPERATION: {0,7,88,1,110.756,1}
+ORDER_ENTRY_OPERATION: {0,8,89,0,0.00902837,0}
+ORDER_ENTRY_OPERATION: {0,8,90,0,110.756,1}
+ORDER_ENTRY_OPERATION: {0,0,91,0,0.725353,0}
+ORDER_ENTRY_OPERATION: {0,0,92,0,1.37852,1}
+ORDER_ENTRY_OPERATION: {0,1,93,0,0.725353,0}
+ORDER_ENTRY_OPERATION: {0,1,94,0,1.37852,1}
+ORDER_ENTRY_OPERATION: {0,2,95,0,0.725353,0}
+ORDER_ENTRY_OPERATION: {0,2,96,0,1.37852,1}
+ORDER_ENTRY_OPERATION: {0,3,97,0,0.725353,0}
+ORDER_ENTRY_OPERATION: {0,3,98,0,1.37852,1}
+ORDER_ENTRY_OPERATION: {0,4,99,0,0.725353,0}
+ORDER_ENTRY_OPERATION: {0,4,100,0,1.37852,1}
+ORDER_ENTRY_OPERATION: {0,5,101,0,0.725353,0}
+ORDER_ENTRY_OPERATION: {0,5,102,0,1.37852,1}
+ORDER_ENTRY_OPERATION: {0,6,103,1,0.725353,0}
+ORDER_ENTRY_OPERATION: {0,6,104,1,1.37852,1}
+ORDER_ENTRY_OPERATION: {0,7,105,1,0.725353,0}
+ORDER_ENTRY_OPERATION: {0,7,106,1,1.37852,1}
+ORDER_ENTRY_OPERATION: {0,8,107,0,0.725353,0}
+ORDER_ENTRY_OPERATION: {0,8,108,0,1.37852,1}
+ORDER_ENTRY_OPERATION: {0,0,109,0,0.852711,0}
+ORDER_ENTRY_OPERATION: {0,0,110,0,1.17269,1}
+ORDER_ENTRY_OPERATION: {0,1,111,0,0.852711,0}
+ORDER_ENTRY_OPERATION: {0,1,112,0,1.17269,1}
+ORDER_ENTRY_OPERATION: {0,2,113,0,0.852711,0}
+ORDER_ENTRY_OPERATION: {0,2,114,0,1.17269,1}
+ORDER_ENTRY_OPERATION: {0,3,115,0,0.852711,0}
+ORDER_ENTRY_OPERATION: {0,3,116,0,1.17269,1}
+ORDER_ENTRY_OPERATION: {0,4,117,0,0.852711,0}
+ORDER_ENTRY_OPERATION: {0,4,118,0,1.17269,1}
+ORDER_ENTRY_OPERATION: {0,5,119,0,0.852711,0}
+ORDER_ENTRY_OPERATION: {0,5,120,0,1.17269,1}
+ORDER_ENTRY_OPERATION: {0,6,121,1,0.852711,0}
+ORDER_ENTRY_OPERATION: {0,6,122,1,1.17269,1}
+ORDER_ENTRY_OPERATION: {0,7,123,1,0.852711,0}
+ORDER_ENTRY_OPERATION: {0,7,124,1,1.17269,1}
+ORDER_ENTRY_OPERATION: {0,8,125,0,0.852711,0}
+ORDER_ENTRY_OPERATION: {0,8,126,0,1.17269,1}
+ORDER_ENTRY_OPERATION: {0,0,127,0,0.903342,0}
+ORDER_ENTRY_OPERATION: {0,0,128,0,1.10691,1}
+ORDER_ENTRY_OPERATION: {0,1,129,0,0.903342,0}
+ORDER_ENTRY_OPERATION: {0,1,130,0,1.10691,1}
+ORDER_ENTRY_OPERATION: {0,2,131,0,0.903342,0}
+ORDER_ENTRY_OPERATION: {0,2,132,0,1.10691,1}
+ORDER_ENTRY_OPERATION: {0,3,133,0,0.903342,0}
+ORDER_ENTRY_OPERATION: {0,3,134,0,1.10691,1}
+ORDER_ENTRY_OPERATION: {0,4,135,0,0.903342,0}
+ORDER_ENTRY_OPERATION: {0,4,136,0,1.10691,1}
+ORDER_ENTRY_OPERATION: {0,5,137,0,0.903342,0}
+ORDER_ENTRY_OPERATION: {0,5,138,0,1.10691,1}
+ORDER_ENTRY_OPERATION: {0,6,139,1,0.903342,0}
+ORDER_ENTRY_OPERATION: {0,6,140,1,1.10691,1}
+ORDER_ENTRY_OPERATION: {0,7,141,1,0.903342,0}
+ORDER_ENTRY_OPERATION: {0,7,142,1,1.10691,1}
+ORDER_ENTRY_OPERATION: {0,8,143,0,0.903342,0}
+ORDER_ENTRY_OPERATION: {0,8,144,0,1.10691,1}
+ORDER_ENTRY_OPERATION: {0,0,145,0,0.00852232,0}
+ORDER_ENTRY_OPERATION: {0,0,146,0,117.331,1}
+ORDER_ENTRY_OPERATION: {0,1,147,0,0.00852232,0}
+ORDER_ENTRY_OPERATION: {0,1,148,0,117.331,1}
+ORDER_ENTRY_OPERATION: {0,2,149,0,0.00852232,0}
+ORDER_ENTRY_OPERATION: {0,2,150,0,117.331,1}
+ORDER_ENTRY_OPERATION: {0,3,151,0,0.00852232,0}
+ORDER_ENTRY_OPERATION: {0,3,152,0,117.331,1}
+ORDER_ENTRY_OPERATION: {0,4,153,0,0.00852232,0}
+ORDER_ENTRY_OPERATION: {0,4,154,0,117.331,1}
+ORDER_ENTRY_OPERATION: {0,5,155,0,0.00852232,0}
+ORDER_ENTRY_OPERATION: {0,5,156,0,117.331,1}
+ORDER_ENTRY_OPERATION: {0,6,157,1,0.00852232,0}
+ORDER_ENTRY_OPERATION: {0,6,158,1,117.331,1}
+ORDER_ENTRY_OPERATION: {0,7,159,0,0.00852232,0}
+ORDER_ENTRY_OPERATION: {0,7,160,0,117.331,1}
+ORDER_ENTRY_OPERATION: {0,8,161,1,0.00852232,0}
+ORDER_ENTRY_OPERATION: {0,8,162,1,117.331,1}
+--
+STATUS: PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x0a2 PE_STRATEGY_NONE=0x0 PE_STRATEGY_PEG=0x0 PE_STRATEGY_LIMIT=0x0 PE_STRATEGY_NA=0x0 PE_RX_EVENT=0x0 PE_DEBUG=0x0 PE_RESV0=0x3dbb3000 PE_RESV1=0x33000 PE_RESV2=0x36df3000 PE_RESV3=0x33000 PE_RESV4=0x09 PE_RESV5=0xdeadbeef 
+
+Done!
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 5.61 seconds. CPU system time: 0.44 seconds. Elapsed time: 5.4 seconds; current allocated memory: 250.440 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Wed Feb 23 14:27:46 2022...
