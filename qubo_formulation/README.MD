@@ -54,7 +54,7 @@ Additionally, the function can also output the cost function in Ising form if `m
       2. $-4 < b < 0$ {0.001}
    
 3. Use Nelder-Mead or Powell method to conduct bounded optimization on the objective function
-   1. Nelder-Mead: https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method
+   1. Nelder-Mead: https://en.wikipedia.org/wiki/Nelder–Mead_method
    2. Powell: https://en.wikipedia.org/wiki/Powell%27s_method
    3. An implementation is available in scipy: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html
    
