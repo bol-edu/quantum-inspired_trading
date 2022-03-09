@@ -7,7 +7,7 @@ Quantum-Inspired Algorithm has been used to optimize combinatorial problems in p
 ## 1-2 Data Generation and Decoding
 The test toolkit provides SBM/SQA data generation and decoding, which can be used to generate PCAP files and decode OrderEntry results.
 
-https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/testset
+https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/test_toolkit
 
 ## 1-3 Build Hardware & Software
 
