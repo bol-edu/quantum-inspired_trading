@@ -50,8 +50,8 @@ Preparation:
 
 Supplementary of following test instructions:
 * Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names in `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
-* The used `enp3s0f1` parameter in Linux TCPreplay command terminal#2 is also should be replaced your own SPF port name, which is corresponded to the port of sending PCAP files.
-* The `./sample/aat.u50_xdma.xclbin` can be another path and naming, but it should be the outputted xcblin file of building AAT & SBM or AAT & SQA designs   
+* The used `enp3s0f1` parameter in Linux TCPreplay command terminal#2 is also should be replaced with your own SPF port name, which is corresponded to the port to send PCAP files.
+* The `./sample/aat.u50_xdma.xclbin` can be another path and xclbin naming, but it should be the built xcblin file from AAT & SBM or AAT & SQA designs    
 * The AAT Q2 default `support/demo_setup.cfg` should be replace with submitted `configuration/demo_setup.cfg`
 
 We refer the network configuration used by the Xilinx verification team.
@@ -85,7 +85,7 @@ On U50 local host terminal#0, connection established should be shown "true" and 
 
 <img src="https://user-images.githubusercontent.com/11850122/155680914-ad137fe7-37af-4048-a270-ee72ed263c0e.png" width=45%>
 
-Running Linux TCPreplay command terminal#2 to send AAT input PCAP files from reomte host.
+Run Linux TCPreplay command terminal#2 to send AAT input PCAP files from reomte host.
 
     cd ../Network_setting/
     sudo ./settingNetwork_sf1.sh
