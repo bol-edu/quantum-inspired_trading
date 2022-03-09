@@ -123,7 +123,7 @@ Accelerated Algorithmic Trading (AAT) Framework:
 * Supported on Alveo™ U250, U50
 * Supports XDMA and host memory bridge-based
 
-Quantum-Inspired trading strategies can be executed on CPUs/GPUs but incur additional latency particularly from traversing the PCIe bus. FPGA based trading strategies can significantly lower latency, but typically need large teams of hardware experts and long design cycles.
+Quantum-Inspired trading strategies can be executed on CPUs/GPUs but incur additional latency particularly from the PCIe bus. FPGA based trading strategies can significantly lower latency, but typically need expertised hardware design team and long system integration cycles.
 Xilinx AAT reference design can provide all the infrastructure required to create a Quantum-Inspired trading application on the FPGA using Xilinx Vitis™ unified platform, and standard Xilinx shells. The design is written in HLS, and all the source code is provided. The design is modular, allowing easily replacing trading strategy IP blocks in the reference design with needed strategy.
 
 <img src="https://user-images.githubusercontent.com/11850122/157441826-13f9301e-03a6-41d2-bd9f-16760afaa2cc.png" width=120%>
