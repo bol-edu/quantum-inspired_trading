@@ -107,7 +107,7 @@ The complexity of the original SQA algorithm is O(M*N*N) in time and O(N*N) in s
 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sqa
 
-## 3-1 Features and Benefits
+## 3-1 Project Features and Benefits
 Quantum-Inspired Trading Strategies:
 * Leverage HLS to develop trading strategies with readability and maintainability
 * Customizable Quantum-Inspired trading strategies
