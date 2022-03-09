@@ -6,7 +6,7 @@ Quantum-Inspired Algorithm has been used to optimize combinatorial problems in p
 
 ## 1-2 Data Generation
 
-## 1-3 HW Synthesis & SW Compiling
+## 1-3 Build Hardware & Software
 
 Development Environment and Sources:
 * Operation System of Ubuntu 20.04.2 LTS
