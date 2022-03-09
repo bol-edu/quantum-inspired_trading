@@ -36,6 +36,7 @@ Settings in ~/.bashrc:
     $ ./buildall.sh
 
 Build Software:
+
     $ cd ../Accelerated_Algorithmic_Trading/sw/applications/aat/aat_shell_exe
     $ make all
     
