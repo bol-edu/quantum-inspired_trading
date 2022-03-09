@@ -10,7 +10,7 @@ The document `DOC.ipynb` describes:
 - How to optimize the parameters, both in QUBO formulation and in the SB/SQA algorithms.
 
 The file is in `.ipynb` format because GitHub supports LaTeX rendering for markdown in `.ipynb` files but not `.md` files.
-
+=======
 in which the weighted digraph $G = (V, E)$ represents the foreign exchange market, the edge weights $c_{ij}$ corresponds to the exchange rates and the variables $x_{ij} \in \{0, 1\}$ are indicators whether we should take the transaction or not. The parameters $M_1$ and $M_2$ are penalty strengths that should be large enough to prevent illegal solutions (e.g., solutions that do not form a cycle). In this way, the lowest cost solution to this problem will be the most profitable simple cycle arbitrage route (or none if no profitable routes exist).
 
 ## Python Implementation
