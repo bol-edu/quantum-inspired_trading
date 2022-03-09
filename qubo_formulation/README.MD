@@ -1,4 +1,4 @@
-[The README.pdf provides easy-to-read mathematical notation.](https://github.com/bol-edu/xilinx-acc-2021_submission/blob/main/qubo_formulation/README.pdf)
+[README.pdf](https://github.com/bol-edu/xilinx-acc-2021_submission/blob/main/qubo_formulation/README.pdf) provides easy-to-read mathematical notation.
 
 # Currency Arbitrage in QUBO Form
 
