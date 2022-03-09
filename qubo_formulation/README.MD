@@ -1,3 +1,5 @@
+The [README.pdf] provides easy-to-read mathematical notation. (https://github.com/bol-edu/xilinx-acc-2021_submission/blob/main/qubo_formulation/README.pdf)
+
 # Currency Arbitrage in QUBO Form
 
 The problem of finding the optimal arbitrage opportunity is to find the most profitable cycle in a digraph in which the nodes are the assets and the edges are the conversion rates. This problem can be cast into a quadratic unconstrained binary optimization (QUBO) form, of which the lowest cost solution is the optimal solution that we seek. In the original white paper by 1QBit [1], a QUBO solver of quantum annealing type is considered. We solve the QUBO problems with simulated quantum annealing (SQA) and simulated bifurcation (SB) algorithms implemented on FPGA instead.
