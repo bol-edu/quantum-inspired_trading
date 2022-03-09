@@ -20,7 +20,7 @@ Build flow of AAT and SBM/SQA design sources
 
 <img src="https://user-images.githubusercontent.com/11850122/157410864-081a295e-f9a1-45fb-a2c7-c7d8faa9d1ca.png" width=65%>
 
-Settings in ~/.bashrc:
+Settings in `~/.bashrc`:
 
     source /opt/Xilinx/Vitis/2021.1/settings64.sh
     source /opt/xilinx/xrt/setup.sh
