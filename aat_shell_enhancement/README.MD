@@ -1,4 +1,4 @@
-## AAT Shell Compiling
+## Build AAT Shell Software with Enhancement
 Replace origional AAT Q2 xlnx_cmd_manager.cpp with submitted xlnx_cmd_manager.cpp in below directory
 
     ../Accelerated_Algorithmic_Trading/sw/framework/shell
