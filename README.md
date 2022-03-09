@@ -42,7 +42,7 @@ Preparation:
 * A QSFPx1-to-SFPx4 cable
 * AAT demo_setup.cfg and Network_setting can be found in configuration directory
 
-A reference configuration used by the Xilinx verification team.
+We refer the network configuration used by the Xilinx verification team.
 
 <img src="https://user-images.githubusercontent.com/11850122/157402051-63b60368-00ba-4987-aada-0ed15f9da004.png" width=50%>
 
