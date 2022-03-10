@@ -63,10 +63,11 @@ Preparation:
 * An AAT `demo_setup.cfg` and SFP network setting files in submitted configuration directory
 
 Supplementary of following test instructions:
+* The AAT Q2 has prebuilt xclbin files in `../Accelerated_Algorithmic_Trading/build/sample/`. The new built xcblin file from AAT & SBM or AAT & SQA design sources is mapped to `../Accelerated_Algorithmic_Trading/build/aat.xclbin`.
+* The AAT Q2 default configuration `../Accelerated_Algorithmic_Trading/build/support/demo_setup.cfg` should be replaced with submitted `configuration/demo_setup.cfg`.
 * Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names within `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
-* The used `enp3s0f1` parameter in Linux TCPreplay command terminal#2 is also should be replaced with your own SPF port name, which is corresponded to the port to send PCAP test files.
-* The new built xcblin file from AAT & SBM or AAT & SQA design sources is mapped to `../Accelerated_Algorithmic_Trading/build/aat.xclbin`.
-* The AAT Q2 default `../Accelerated_Algorithmic_Trading/build/support/demo_setup.cfg` should be replaced with submitted `configuration/demo_setup.cfg`.
+* The port name `enp3s0f1` used in Linux TCPreplay command terminal#2 should be replaced with your own SPF port name, which is corresponded to the port to send PCAP test files.
+* The AAT O2 PCAP file `../Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap` used in Linux TCPreplay command terminal#2 should be changed to SBM/SQA PCAP test files generated from submitted test toolkit.
 
 We refer the network configuration used by the Xilinx verification team.
 
