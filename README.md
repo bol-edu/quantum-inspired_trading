@@ -18,8 +18,17 @@ Development Environment and Sources:
 * SBM/SQA design sources in submitted sbm/sqa directory
 
 Build flow of AAT and SBM/SQA design sources
-* Replace the origional AAT Q2 files in `../Accelerated_Algorithmic_Trading/hw/pricingEngine` with the files in  
-`sbm/src/hw/pricingEngine` or `sqa/src/hw/pricingEngine`.
+* Replace the origional AAT Q2 files in `../Accelerated_Algorithmic_Trading/hw/pricingEngine` with the files submitted sbm/sqa directory 
+
+AAT & SBM:
+    $ cd ../Accelerated_Algorithmic_Trading/hw/
+    $ mv ./pricingEngine ./pricingEngine.bak
+    $ cp -rf ../xilinx-acc-2021_submission/sbm/src/hw/pricingEngine ./
+    
+AAT & SQA:
+    $ cd ../Accelerated_Algorithmic_Trading/hw/
+    $ mv ./pricingEngine ./pricingEngine.bak
+    $ cp -rf ../xilinx-acc-2021_submission/sqa/src/hw/pricingEngine ./
 
 <img src="https://user-images.githubusercontent.com/11850122/157410864-081a295e-f9a1-45fb-a2c7-c7d8faa9d1ca.png" width=60%>
 
@@ -54,8 +63,8 @@ Preparation:
 Supplementary of following test instructions:
 * Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names within `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
 * The used `enp3s0f1` parameter in Linux TCPreplay command terminal#2 is also should be replaced with your own SPF port name, which is corresponded to the port to send PCAP test files.
-* The `./sample/aat.u50_xdma.xclbin` is a default prebuilt xclbin for AAT. You should change it to another path and xclbin name which is mapped to the built xcblin file from AAT & SBM or AAT & SQA design sources.
-* The AAT Q2 default `support/demo_setup.cfg` should be replaced with submitted `configuration/demo_setup.cfg`
+* The `../Accelerated_Algorithmic_Trading/build/sample/aat.u50_xdma.xclbin` is a default prebuilt xclbin for AAT. The new built xcblin file from AAT & SBM or AAT & SQA design sources is mapped to `../Accelerated_Algorithmic_Trading/build/aat.xclbin`.
+* The AAT Q2 default `../Accelerated_Algorithmic_Trading/build/support/demo_setup.cfg` should be replaced with submitted `configuration/demo_setup.cfg`
 
 We refer the network configuration used by the Xilinx verification team.
 
@@ -63,21 +72,21 @@ We refer the network configuration used by the Xilinx verification team.
 
 Run AAT shell terminal#0 on U50 local host.
 
-    sudo reboot (if needed to clean U50 setting)
-    cd ../Accelerated_Algorithmic_Trading/build
-    vim support/demo_setup.cfg (if needed to change demo_setup.cfg setting)
+    $ sudo reboot (if needed to clean U50 setting)
+    $ cd ../Accelerated_Algorithmic_Trading/build
+    $ vim support/demo_setup.cfg (if needed to change demo_setup.cfg setting)
     ./aat_shell_exe
-    download ./sample/aat.u50_xdma.xclbin
+    download ./sample/aat.u50_xdma.xclbin (default prebuilt xclbin)
     run support/demo_setup.cfg
     datamover threadstart
     udpip0 getstatus
     
 Run Linux Netcat command terminal#1 on remote host and get AAT output from local host.
 
-    cd ../network_setting/
-    sudo ./settingNetwork_sf0.sh
-    sudo ./execFrom_sf0.sh ping -w 5 192.168.20.200 (optional test)
-    sudo ./execFrom_sf0.sh nc -n -l 192.168.20.100 12345 -v
+    $ cd ../network_setting/
+    $ sudo ./settingNetwork_sf0.sh
+    $ sudo ./execFrom_sf0.sh ping -w 5 192.168.20.200 (optional test)
+    $ sudo ./execFrom_sf0.sh nc -n -l 192.168.20.100 12345 -v
     
 If Linux Netcat command terminal#1 has not shown connected IP & Port message from local host, run OrderEntry reconnection and get its status on U50 local host terminal#0.
 
@@ -90,10 +99,10 @@ On U50 local host terminal#0, connection established should be shown "true" and 
 
 Run Linux TCPreplay command terminal#2 to send AAT input PCAP test files from reomte host.
 
-    cd ../network_setting/
-    sudo ./settingNetwork_sf1.sh
-    sudo ./execFrom_sf1.sh ping -w 5 192.168.50.101 (optional test)
-    sudo ./execFrom_sf1.sh tcpreplay --intf1=enp3s0f1 --pps=2 --stats=1 ../Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap
+    $ cd ../network_setting/
+    $ sudo ./settingNetwork_sf1.sh
+    $ sudo ./execFrom_sf1.sh ping -w 5 192.168.50.101 (optional test)
+    $ sudo ./execFrom_sf1.sh tcpreplay --intf1=enp3s0f1 --pps=2 --stats=1 ../Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap
 
 ## 2-1 Currency Arbitrage QUBO Formulation
 Before we can apply SBM/SQA to find optimal arbitrage opportunities, we need to transform the problem into a quadratic unconstrained binary optimization (QUBO) form. The methodology is introduced in
