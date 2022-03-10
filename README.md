@@ -66,7 +66,7 @@ Supplementary of following test instructions:
 * Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names within `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
 * The used `enp3s0f1` parameter in Linux TCPreplay command terminal#2 is also should be replaced with your own SPF port name, which is corresponded to the port to send PCAP test files.
 * The new built xcblin file from AAT & SBM or AAT & SQA design sources is mapped to `../Accelerated_Algorithmic_Trading/build/aat.xclbin`.
-* The AAT Q2 default `../Accelerated_Algorithmic_Trading/build/support/demo_setup.cfg` should be replaced with submitted `configuration/demo_setup.cfg`
+* The AAT Q2 default `../Accelerated_Algorithmic_Trading/build/support/demo_setup.cfg` should be replaced with submitted `configuration/demo_setup.cfg`.
 
 We refer the network configuration used by the Xilinx verification team.
 
