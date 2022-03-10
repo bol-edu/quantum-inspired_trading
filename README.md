@@ -88,7 +88,7 @@ On U50 local host terminal#0, connection established should be shown "true" and 
 
 <img src="https://user-images.githubusercontent.com/11850122/155680914-ad137fe7-37af-4048-a270-ee72ed263c0e.png" width=45%>
 
-Run Linux TCPreplay command terminal#2 to send AAT input PCAP files from reomte host.
+Run Linux TCPreplay command terminal#2 to send AAT input PCAP test files from reomte host.
 
     cd ../network_setting/
     sudo ./settingNetwork_sf1.sh
