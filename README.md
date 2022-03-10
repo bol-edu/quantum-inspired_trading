@@ -63,7 +63,7 @@ Preparation:
 * An AAT `demo_setup.cfg` and SFP network setting files in submitted configuration directory
 
 Supplementary of following test instructions:
-* The AAT Q2 has prebuilt xclbin files in `../Accelerated_Algorithmic_Trading/build/sample/`. The new built xcblin file from AAT & SBM or AAT & SQA design sources is mapped to `../Accelerated_Algorithmic_Trading/build/aat.xclbin`.
+* The AAT Q2 has prebuilt xclbin files in `../Accelerated_Algorithmic_Trading/build/sample/`. The new built xcblin file from AAT & SBM or AAT & SQA is mapped to `../Accelerated_Algorithmic_Trading/build/aat.xclbin`.
 * The AAT Q2 default configuration `../Accelerated_Algorithmic_Trading/build/support/demo_setup.cfg` should be replaced with submitted `configuration/demo_setup.cfg`.
 * Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names within `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
 * The port name `enp3s0f1` used in Linux TCPreplay command terminal#2 should be replaced with your own SPF port name, which is corresponded to the port to send PCAP test files.
@@ -79,7 +79,7 @@ Run AAT shell terminal#0 on U50 local host.
     $ cd ../Accelerated_Algorithmic_Trading/build
     $ vim support/demo_setup.cfg (if needed to change demo_setup.cfg setting)
     ./aat_shell_exe
-    download ./aat.xclbin
+    download ./sample/aat.u50_xdma.xclbin
     run support/demo_setup.cfg
     datamover threadstart
     udpip0 getstatus
