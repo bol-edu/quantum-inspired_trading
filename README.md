@@ -21,11 +21,13 @@ Build flow of AAT and SBM/SQA design sources
 * Replace the origional AAT Q2 files in `../Accelerated_Algorithmic_Trading/hw/pricingEngine` with the files submitted sbm/sqa directory 
 
 AAT & SBM:
+
     $ cd ../Accelerated_Algorithmic_Trading/hw/
     $ mv ./pricingEngine ./pricingEngine.bak
     $ cp -rf ../xilinx-acc-2021_submission/sbm/src/hw/pricingEngine ./
     
 AAT & SQA:
+
     $ cd ../Accelerated_Algorithmic_Trading/hw/
     $ mv ./pricingEngine ./pricingEngine.bak
     $ cp -rf ../xilinx-acc-2021_submission/sqa/src/hw/pricingEngine ./
