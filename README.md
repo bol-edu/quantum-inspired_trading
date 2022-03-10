@@ -18,7 +18,7 @@ Development Environment and Sources:
 * SBM/SQA design sources in submitted sbm/sqa directory
 
 Build flow of AAT and SBM/SQA design sources
-* Replace the origional AAT Q2 files in `../Accelerated_Algorithmic_Trading/hw/pricingEngine` with the files submitted sbm/sqa directory 
+* Replace the origional AAT Q2 files in `../Accelerated_Algorithmic_Trading/hw/pricingEngine` with the files from submitted sbm/sqa directory 
 
 AAT & SBM:
 
