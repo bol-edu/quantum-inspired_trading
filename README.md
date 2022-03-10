@@ -17,7 +17,7 @@ Development Environment and Sources:
 * Xilinx Accelerated Algorithmic Trading reference design package Q2 (UG1067 v1.1, July 2 2021)
 * SBM/SQA design sources in submitted sbm/sqa directory
 
-Build flow of AAT and SBM/SQA design sources
+Build flow of AAT and SBM/SQA design sources:
 * Replace the origional AAT Q2 files in `../Accelerated_Algorithmic_Trading/hw/pricingEngine` with the files from submitted sbm/sqa directory 
 
 AAT & SBM:
@@ -65,7 +65,7 @@ Preparation:
 Supplementary of following test instructions:
 * Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names within `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
 * The used `enp3s0f1` parameter in Linux TCPreplay command terminal#2 is also should be replaced with your own SPF port name, which is corresponded to the port to send PCAP test files.
-* The `../Accelerated_Algorithmic_Trading/build/sample/aat.u50_xdma.xclbin` is a default prebuilt xclbin for AAT. The new built xcblin file from AAT & SBM or AAT & SQA design sources is mapped to `../Accelerated_Algorithmic_Trading/build/aat.xclbin`.
+* The new built xcblin file from AAT & SBM or AAT & SQA design sources is mapped to `../Accelerated_Algorithmic_Trading/build/aat.xclbin`.
 * The AAT Q2 default `../Accelerated_Algorithmic_Trading/build/support/demo_setup.cfg` should be replaced with submitted `configuration/demo_setup.cfg`
 
 We refer the network configuration used by the Xilinx verification team.
@@ -78,7 +78,7 @@ Run AAT shell terminal#0 on U50 local host.
     $ cd ../Accelerated_Algorithmic_Trading/build
     $ vim support/demo_setup.cfg (if needed to change demo_setup.cfg setting)
     ./aat_shell_exe
-    download ./sample/aat.u50_xdma.xclbin (default prebuilt xclbin)
+    download ./aat.xclbin
     run support/demo_setup.cfg
     datamover threadstart
     udpip0 getstatus
