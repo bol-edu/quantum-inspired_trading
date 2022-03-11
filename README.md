@@ -71,7 +71,7 @@ We refer the network configuration used by the Xilinx verification team.
 
 Interactions between local host and remote host:
 
-<img src="https://user-images.githubusercontent.com/11850122/157830368-14c8be39-cf28-4bff-a954-f935e3eaa0d2.png" width=50%>
+<img src="https://user-images.githubusercontent.com/11850122/157841387-d26834cc-a8bc-4cdf-a6bf-2f4ece0a202f.png" width=50%>
 
 The AAT Q2 provides prebuilt xclbin (/sample/aat.u50_xdma.xclbin) and PCAP test file sxample (/sample/cme_input_arb.pcap) for AAT development environment validation. Test the build of AAT & SBM or AAT & SQA should refer the following supplementary.
 
