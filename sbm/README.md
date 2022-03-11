@@ -56,14 +56,3 @@ Vitis HLS usually infers the `fadd` operation instead of `facc` or `fmacc` in ou
 ### Testbench for pricingEngine
 
 An example testbench file `src/hw/pricingEngine/test/ordBookResp.txt` prepares `orderBookResponse` data for test.  The comments in the file describes the file format.
-
-## Support
-
-
-## Roadmap
-
-
-## Contributing
-
-
-## License
