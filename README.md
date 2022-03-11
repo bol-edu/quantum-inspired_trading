@@ -63,12 +63,13 @@ Preparation:
 * A QSFPx1-to-SFPx4 connection cable.
 * An AAT `demo_setup.cfg` and SFP network setting files in submitted configuration directory.
 * The SBM/SQA test toolkit in submitted test_tookit directory.
-  1. Generate dedicated SBM/SQA PCAP test files by `pcap_gen.py`.
+  1. Generate SBM/SQA PCAP test files by `pcap_gen.py`.
   2. Decode OrderEntry results by `decode_order.py`. All found currency arbitrage are printed.
 
 We refer the network configuration used by the Xilinx verification team.
 
 <img src="https://user-images.githubusercontent.com/11850122/157402051-63b60368-00ba-4987-aada-0ed15f9da004.png" width=50%>
+
 
 Interactions between local host and remote host:
 
