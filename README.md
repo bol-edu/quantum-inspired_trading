@@ -57,11 +57,11 @@ Build Software:
     
 ## 1-4 Test Flow
 Preparation:
-* A local host installed with a Xilinx Avelon U50 accelrator
-* A remote host installed with a Broadcom BCM957711A 10Gb x 2 SFP port card and PCAP test files
-* A QSFPx1-to-SFPx4 connection cable
-* An AAT `demo_setup.cfg` and SFP network setting files in submitted configuration directory
-* The SBM/SQA test toolkit in submitted test_tookit directory
+* A local host installed with a Xilinx Avelon U50 accelrator.
+* A remote host installed with a Broadcom BCM957711A 10Gb x 2 SFP port card and PCAP test files.
+* A QSFPx1-to-SFPx4 connection cable.
+* An AAT `demo_setup.cfg` and SFP network setting files in submitted configuration directory.
+* The SBM/SQA test toolkit in submitted test_tookit directory.
   1. Generate dedicated SBM/SQA PCAP test files by `pcap_gen.py` in test toolkit.
   2. Decode OrderEntry results by `decode_order.py` in test toolkit. The `decode_order.py` also prints found currency arbitrage.
 
@@ -73,14 +73,14 @@ Interactions between local host and remote host:
 
 <img src="https://user-images.githubusercontent.com/11850122/157841387-d26834cc-a8bc-4cdf-a6bf-2f4ece0a202f.png" width=50%>
 
-The AAT Q2 provides prebuilt xclbin (/sample/aat.u50_xdma.xclbin) and PCAP test file sxample (/sample/cme_input_arb.pcap) for AAT development environment validation. Test the build of AAT & SBM or AAT & SQA should refer the following supplementary.
+The AAT Q2 provides prebuilt xclbin (/sample/aat.u50_xdma.xclbin) and PCAP test sample (/sample/cme_input_arb.pcap) for AAT development environment validation. Test the build of AAT & SBM or AAT & SQA should refer the following supplementary.
 
-Supplementary of following test instructions:
+Supplementary of test instructions:
 * The AAT Q2 used prebuilt xcblin `../Accelerated_Algorithmic_Trading/build/sample/aat.u50_xdma.xclbin` should be replaced to the new built xcblin from AAT & SBM or AAT & SQA mapped to `../Accelerated_Algorithmic_Trading/build/aat.xclbin`.
 * The AAT Q2 default configuration `../Accelerated_Algorithmic_Trading/build/support/demo_setup.cfg` should be replaced with submitted `configuration/demo_setup.cfg`.
 * Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names within `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
 * The port name `enp3s0f1` used in Linux TCPreplay command terminal#2 should be replaced with your own SPF port name, which is corresponded to the port to send PCAP test files.
-* The AAT Q2 PCAP file `../Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap` used in Linux TCPreplay command terminal#2 should be replaced to SBM/SQA PCAP test files.
+* The AAT Q2 PCAP test sample `../Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap` used in Linux TCPreplay command terminal#2 should be replaced to SBM/SQA PCAP test files.
 
 Run AAT shell terminal#0 on U50 local host.
 
