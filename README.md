@@ -65,15 +65,6 @@ Preparation:
   1. Generate dedicated SBM/SQA PCAP test files by `pcap_gen.py` in test toolkit.
   2. Decode OrderEntry results by `decode_order.py` in test toolkit. The `decode_order.py` also prints found currency arbitrage.
 
-The AAT Q2 provides prebuilt xclbin (/sample/aat.u50_xdma.xclbin) and PCAP test file example (/sample/cme_input_arb.pcap) for AAT development environment validation. Test the build of AAT & SBM or AAT & SQA should refer the following supplementary.
-
-Supplementary of following test instructions:
-* The AAT Q2 uses prebuilt xcblin `../Accelerated_Algorithmic_Trading/build/sample/aat.u50_xdma.xclbin` should be replaced to the new built xcblin from AAT & SBM or AAT & SQA mapped to `../Accelerated_Algorithmic_Trading/build/aat.xclbin`.
-* The AAT Q2 default configuration `../Accelerated_Algorithmic_Trading/build/support/demo_setup.cfg` should be replaced with submitted `configuration/demo_setup.cfg`.
-* Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names within `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
-* The port name `enp3s0f1` used in Linux TCPreplay command terminal#2 should be replaced with your own SPF port name, which is corresponded to the port to send PCAP test files.
-* The AAT Q2 PCAP file `../Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap` used in Linux TCPreplay command terminal#2 should be replaced to SBM/SQA PCAP test files.
-
 We refer the network configuration used by the Xilinx verification team.
 
 <img src="https://user-images.githubusercontent.com/11850122/157402051-63b60368-00ba-4987-aada-0ed15f9da004.png" width=50%>
@@ -81,6 +72,15 @@ We refer the network configuration used by the Xilinx verification team.
 Interactions between local host and remote host:
 
 <img src="https://user-images.githubusercontent.com/11850122/157830368-14c8be39-cf28-4bff-a954-f935e3eaa0d2.png" width=50%>
+
+The AAT Q2 provides prebuilt xclbin (/sample/aat.u50_xdma.xclbin) and PCAP test file sxample (/sample/cme_input_arb.pcap) for AAT development environment validation. Test the build of AAT & SBM or AAT & SQA should refer the following supplementary.
+
+Supplementary of following test instructions:
+* The AAT Q2 used prebuilt xcblin `../Accelerated_Algorithmic_Trading/build/sample/aat.u50_xdma.xclbin` should be replaced to the new built xcblin from AAT & SBM or AAT & SQA mapped to `../Accelerated_Algorithmic_Trading/build/aat.xclbin`.
+* The AAT Q2 default configuration `../Accelerated_Algorithmic_Trading/build/support/demo_setup.cfg` should be replaced with submitted `configuration/demo_setup.cfg`.
+* Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names within `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
+* The port name `enp3s0f1` used in Linux TCPreplay command terminal#2 should be replaced with your own SPF port name, which is corresponded to the port to send PCAP test files.
+* The AAT Q2 PCAP file `../Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap` used in Linux TCPreplay command terminal#2 should be replaced to SBM/SQA PCAP test files.
 
 Run AAT shell terminal#0 on U50 local host.
 
