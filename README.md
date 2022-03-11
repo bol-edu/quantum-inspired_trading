@@ -128,7 +128,9 @@ Simulated bifurcation is a Quantum-Inspired heuristic algorithm that approximate
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sbm
 
 ## 2-3 SQA Design & Implementation
-The complexity of the original SQA algorithm is O(M＊N＊N) in time and O(N＊N) in space, where N and M are the numbers of spins and trotters. This work applies some optimization techniques to boost the FPGA performance. For detail, please refer to 
+Simulated Quantum Annealing is a Quantum-Inspired heuristic algorithm that approximates the solutions to Ising-model problem formulations. The algorithm can yield high-quality solutions under fewer time steps than the traditional simulated annealing method. We optimize the algorithm for FPGA implementation, which exploits more parallelism. In this project, SQA solves a currency arbitrage problem of 5 currencies and 9 exchange pairs to demonstrate its speed and modularity. SQA is integrated into the `pricingEngine` of the AAT framework, which processes the market data and decides the orders to place.
+
+This work applies some optimization techniques to boost the FPGA performance. For detail, please refer to 
 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sqa
 
