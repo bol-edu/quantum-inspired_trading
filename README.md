@@ -168,10 +168,10 @@ We will need a section to brief on the test data and results. Please describe
 * What is the run time?
 
 Contributors:
-* [Justin Chen] (https://github.com/jchen8tw)
-* [Haoyu] (https://github.com/haoyudoingthings)
+* [Justin Chen](https://github.com/jchen8tw)
+* [Haoyu](https://github.com/haoyudoingthings)
 * Chien-Kai Ma
-* [Xiang-Ren Wang] (https://github.com/allen880117)
+* [Xiang-Ren Wang](https://github.com/allen880117)
 
 
 
