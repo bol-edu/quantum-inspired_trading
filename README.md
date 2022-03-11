@@ -35,7 +35,7 @@ Merge AAT & SQA sources:
     $ mv ./pricingEngine ./pricingEngine.bak
     $ cp -rf ../xilinx-acc-2021_submission/sqa/src/hw/pricingEngine ./
 
-Settings in `~/.bashrc`:
+Build settings in `~/.bashrc`:
 
     source /opt/Xilinx/Vitis/2021.1/settings64.sh
     source /opt/xilinx/xrt/setup.sh
