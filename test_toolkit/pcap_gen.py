@@ -35,6 +35,22 @@ def random_data_gen(require_arb, no_arb):
         "MDEntryPx": (rates*10000000).astype(int),
     }
     df = pd.DataFrame(d)
+
+    # Print rates for pricingEngine module test
+    print("""# OrderBookResponse
+# The only differences between responses
+# are `bidPrice` and `askPrice`.
+# `symbolIndex` should be different, but
+# in our testbench they are set to dummy numbers.
+# Make sure '#' at the beginning of each line
+# of the comment is followed by at least one space.
+# Remember to add new line at the end of the file
+# and make sure no empty lines in the middle of the file.
+# `responseCount` is the integer in first line.""")
+    print(9)
+    for i in range(9):
+        print(rates[i], rates[i+1])
+
     return df, rates
 
 
@@ -79,10 +95,11 @@ if __name__ == '__main__':
         data = pd.read_csv(args.csv)
     elif(args.selected_sub == 'g'):
         data, rates = random_data_gen(args.req_arb, args.no_arb)
+        import sys
         if(check_cycle(rates)):
-            print("The generated Data has a cycle.")
+            print("The generated Data has a cycle.", file=sys.stderr)
         else:
-            print("The generated Data don't have a cycle.")
+            print("The generated Data don't have a cycle.", file=sys.stderr)
     else:
         exit()
     pcap_gen = PcapGen(pcap_path=args.output)
