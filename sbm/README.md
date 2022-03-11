@@ -45,7 +45,7 @@ Vitis HLS usually infers the `fadd` operation instead of `facc` or `fmacc` in ou
 ## Installation
 ### Build full project
 1. Replace the files in Accelerated_Algorithmic_Trading/hw/pricingEngine with the files in src/hw/pricingEngine.
-2. Follow the AAT original build flow and test flow (mentioned in https://github.com/kevinjantw/Xilinx_ACC_2021_Submission)
+2. Follow the AAT original build flow and test flow (mentioned in https://github.com/bol-edu/xilinx-acc-2021_submission)
 
 ### Build pricingEngine only
 1. Execute `make` command in the `src/hw/pricingEngine/test` folder.
