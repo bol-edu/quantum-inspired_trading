@@ -75,7 +75,7 @@ We refer the network configuration used by the Xilinx verification team.
 
 Interactions between local host and remote host:
 
-<img src="https://user-images.githubusercontent.com/11850122/157830176-ed4cf2fb-5331-4fa5-8c62-2a810822f952.png" width=50%>
+<img src="https://user-images.githubusercontent.com/11850122/157830368-14c8be39-cf28-4bff-a954-f935e3eaa0d2.png" width=50%>
 
 Run AAT shell terminal#0 on U50 local host.
 
