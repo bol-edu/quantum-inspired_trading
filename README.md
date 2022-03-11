@@ -22,17 +22,18 @@ Build flow of AAT and SBM/SQA design sources:
 <img src="https://user-images.githubusercontent.com/11850122/157410864-081a295e-f9a1-45fb-a2c7-c7d8faa9d1ca.png" width=60%>
 
 Replace the origional AAT Q2 files in `/Accelerated_Algorithmic_Trading/hw/pricingEngine` with the files in submitted sbm/sqa directory 
-* AAT & SBM:
 
-     $ cd ../Accelerated_Algorithmic_Trading/hw/
-     $ mv ./pricingEngine ./pricingEngine.bak
-     $ cp -rf ../xilinx-acc-2021_submission/sbm/src/hw/pricingEngine ./
+AAT & SBM:
+
+    $ cd ../Accelerated_Algorithmic_Trading/hw/
+    $ mv ./pricingEngine ./pricingEngine.bak
+    $ cp -rf ../xilinx-acc-2021_submission/sbm/src/hw/pricingEngine ./
     
-* AAT & SQA:
+AAT & SQA:
 
-     $ cd ../Accelerated_Algorithmic_Trading/hw/
-     $ mv ./pricingEngine ./pricingEngine.bak
-     $ cp -rf ../xilinx-acc-2021_submission/sqa/src/hw/pricingEngine ./
+    $ cd ../Accelerated_Algorithmic_Trading/hw/
+    $ mv ./pricingEngine ./pricingEngine.bak
+    $ cp -rf ../xilinx-acc-2021_submission/sqa/src/hw/pricingEngine ./
 
 Settings in `~/.bashrc`:
 
