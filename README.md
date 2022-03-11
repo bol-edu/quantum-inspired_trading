@@ -89,7 +89,7 @@ Run Linux Netcat command terminal#1 on remote host and get AAT output from local
     $ cd ../network_setting/
     $ sudo ./settingNetwork_sf0.sh
     $ sudo ./execFrom_sf0.sh ping -w 5 192.168.20.200 (optional test)
-    $ sudo ./execFrom_sf0.sh nc -n -l 192.168.20.100 12345 -v
+    $ sudo ./execFrom_sf0.sh nc -n -l 192.168.20.100 12345 -v > orderentries.bin
     
 If Linux Netcat command terminal#1 has not shown connected IP & Port message from local host, run OrderEntry reconnection and get its status on U50 local host terminal#0.
 
