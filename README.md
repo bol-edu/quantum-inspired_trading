@@ -61,10 +61,9 @@ Preparation:
 * A remote host installed with a Broadcom BCM957711A 10Gb x 2 SFP port card and PCAP test files
 * A QSFPx1-to-SFPx4 connection cable
 * An AAT `demo_setup.cfg` and SFP network setting files in submitted configuration directory
-
-SBM/SQA test toolkit:
-* Generate dedicated SBM/SQA PCAP test files by `pcap_gen.py` in test toolkit.
-* Decode OrderEntry results by `decode_order.py` in test toolkit. The `decode_order.py` also prints found currency arbitrage.
+* The SBM/SQA test toolkit in submitted 
+** Generate dedicated SBM/SQA PCAP test files by `pcap_gen.py` in test toolkit.
+** Decode OrderEntry results by `decode_order.py` in test toolkit. The `decode_order.py` also prints found currency arbitrage.
 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/test_toolkit
 
