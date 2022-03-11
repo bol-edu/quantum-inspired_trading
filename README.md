@@ -94,7 +94,7 @@ Run AAT shell terminal#0 on U50 local host.
     datamover threadstart
     udpip0 getstatus
     
-Run Linux Netcat command terminal#1 on remote host and get AAT output from local host.
+Run Linux Netcat command terminal#1 on remote host and get OrderEntry results (write to orderentries.bin) from local host.
 
     $ cd ../network_setting/
     $ sudo ./settingNetwork_sf0.sh
@@ -110,7 +110,7 @@ On U50 local host terminal#0, connection established should be shown "true" and 
 
 <img src="https://user-images.githubusercontent.com/11850122/155680914-ad137fe7-37af-4048-a270-ee72ed263c0e.png" width=45%>
 
-Run Linux TCPreplay command terminal#2 to send AAT input PCAP test files from reomte host.
+Run Linux TCPreplay command terminal#2 to send PCAP test files from reomte host.
 
     $ cd ../network_setting/
     $ sudo ./settingNetwork_sf1.sh
