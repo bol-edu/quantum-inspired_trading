@@ -1,5 +1,3 @@
-[DOC.ipynb](https://github.com/bol-edu/xilinx-acc-2021_submission/blob/main/qubo_formulation/DOC.ipynb) document.
-
 # QUBO Formulation and Parameter Optimization
 
 ## Document
