@@ -62,12 +62,20 @@ Preparation:
 * A QSFPx1-to-SFPx4 connection cable
 * An AAT `demo_setup.cfg` and SFP network setting files in submitted configuration directory
 
+SBM/SQA test toolkit:
+* Generate dedicated SBM/SQA PCAP test files by `pcap_gen.py` in test toolkit.
+* Decode OrderEntry results by `decode_order.py` in test toolkit. The `decode_order.py` also prints found currency arbitrage.
+
+https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/test_toolkit
+
+The AAT Q2 provides prebuilt xclbin image (/sample/aat.u50_xdma.xclbin) and PCAP test file example (/sample/cme_input_arb.pcap) for AAT development environment validation. Test the build of AAT & SBM or AAT & SQA should refer the following supplementary.
+
 Supplementary of following test instructions:
-* The AAT Q2 has prebuilt xclbin files in `../Accelerated_Algorithmic_Trading/build/sample/`. The new built xcblin file from AAT & SBM or AAT & SQA is mapped to `../Accelerated_Algorithmic_Trading/build/aat.xclbin`.
+* The new built xcblin file from AAT & SBM or AAT & SQA is mapped to `../Accelerated_Algorithmic_Trading/build/aat.xclbin`.
 * The AAT Q2 default configuration `../Accelerated_Algorithmic_Trading/build/support/demo_setup.cfg` should be replaced with submitted `configuration/demo_setup.cfg`.
 * Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names within `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
 * The port name `enp3s0f1` used in Linux TCPreplay command terminal#2 should be replaced with your own SPF port name, which is corresponded to the port to send PCAP test files.
-* The AAT Q2 PCAP file `../Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap` used in Linux TCPreplay command terminal#2 should be changed to SBM/SQA PCAP test files generated from submitted test toolkit.
+* The AAT Q2 PCAP file `../Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap` used in Linux TCPreplay command terminal#2 should be changed to SBM/SQA PCAP test files generated from submitted `pcap_gen.py` in test toolkit.
 
 We refer the network configuration used by the Xilinx verification team.
 
@@ -104,20 +112,12 @@ On U50 local host terminal#0, connection established should be shown "true" and 
 
 <img src="https://user-images.githubusercontent.com/11850122/155680914-ad137fe7-37af-4048-a270-ee72ed263c0e.png" width=45%>
 
-Generate dedicated SBM/SQA PCAP test files by `pcap_gen.py` in test toolkit.
-
-https://github.com/bol-edu/xilinx-acc-2021_submission/blob/main/test_toolkit/doc/README_generator.md
-
 Run Linux TCPreplay command terminal#2 to send AAT input PCAP test files from reomte host.
 
     $ cd ../network_setting/
     $ sudo ./settingNetwork_sf1.sh
     $ sudo ./execFrom_sf1.sh ping -w 5 192.168.50.101 (optional test)
     $ sudo ./execFrom_sf1.sh tcpreplay --intf1=enp3s0f1 --pps=2 --stats=1 ../Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap
-
-Decode OrderEntry results by `decode_order.py` in test toolkit.
-
-https://github.com/bol-edu/xilinx-acc-2021_submission/blob/main/test_toolkit/doc/README_decoder.md
 
 ## 2-1 Currency Arbitrage QUBO Formulation
 Before we can apply SBM/SQA to find optimal arbitrage opportunities, we need to transform the problem into a quadratic unconstrained binary optimization (QUBO) form. The methodology is introduced in
