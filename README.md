@@ -70,7 +70,6 @@ We refer the network configuration used by the Xilinx verification team.
 
 <img src="https://user-images.githubusercontent.com/11850122/157402051-63b60368-00ba-4987-aada-0ed15f9da004.png" width=50%>
 
-
 Interactions between local host and remote host:
 
 <img src="https://user-images.githubusercontent.com/11850122/157841387-d26834cc-a8bc-4cdf-a6bf-2f4ece0a202f.png" width=50%>
