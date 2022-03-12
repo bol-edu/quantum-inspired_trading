@@ -80,6 +80,7 @@ Supplementary of test instructions:
 * The AAT Q2 used prebuilt xcblin `/Accelerated_Algorithmic_Trading/build/sample/aat.u50_xdma.xclbin` should be replaced to the new built xcblin from AAT & SBM or AAT & SQA mapped to `/Accelerated_Algorithmic_Trading/build/aat.xclbin`.
 * The AAT Q2 default configuration `/Accelerated_Algorithmic_Trading/build/support/demo_setup.cfg` should be replaced with submitted `configuration/demo_setup.cfg`.
 * Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names within `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
+* The `> orderentries.bin` (written orderentries.bin) added to Linux Netcat command terminal#1 is used to decode OrderEntry results of SBM/SQA.
 * The port name `enp3s0f1` used in Linux TCPreplay command terminal#2 should be replaced with your own SPF port name, which is corresponded to the port to send PCAP test files.
 * The AAT Q2 PCAP test sample `/Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap` used in Linux TCPreplay command terminal#2 should be replaced to SBM/SQA PCAP test files.
 
@@ -94,7 +95,7 @@ Run AAT shell terminal#0 on U50 local host.
     datamover threadstart
     udpip0 getstatus
     
-Run Linux Netcat command terminal#1 on remote host and get OrderEntry results (write to orderentries.bin) from local host.
+Run Linux Netcat command terminal#1 on remote host and get OrderEntry results from local host.
 
     $ cd ../network_setting/
     $ sudo ./settingNetwork_sf0.sh
