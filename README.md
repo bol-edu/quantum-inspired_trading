@@ -171,7 +171,7 @@ We will need a section to brief on the test data and results. Please describe
 Contributors:
 * [Justin Chen](https://github.com/jchen8tw)
 * [Hao-Yu Chung](https://github.com/haoyudoingthings)
-* Chien-Kai Ma
+* [Chien-Kai Ma](https://github.com/ChienKaiMa)
 * [Xiang-Ren Wang](https://github.com/allen880117)
 
 
