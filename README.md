@@ -17,13 +17,13 @@ Development Environment and Sources:
 * Xilinx Accelerated Algorithmic Trading (AAT) reference design Q2 (UG1067 v1.1, July 2 2021)
 * SBM/SQA design sources in submitted sbm/sqa directory
 
-Build flow of AAT and SBM/SQA design sources:
+Build flow of AAT Q2 and SBM/SQA design sources:
 
 <img src="https://user-images.githubusercontent.com/11850122/157410864-081a295e-f9a1-45fb-a2c7-c7d8faa9d1ca.png" width=60%>
 
 Replace the origional AAT Q2 files in `/Accelerated_Algorithmic_Trading/hw/pricingEngine` with the files in submitted sbm/sqa directory 
 
-Merge AAT Q2 & SBM sources:
+Merge AAT & SBM sources:
 
     $ cd ../Accelerated_Algorithmic_Trading/hw/
     $ mv ./pricingEngine ./pricingEngine.bak
