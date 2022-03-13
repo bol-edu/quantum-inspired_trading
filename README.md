@@ -64,7 +64,7 @@ Preparation:
 * An AAT `demo_setup.cfg` and SFP network setting files in submitted configuration directory.
 * The SBM/SQA test toolkit in submitted test_tookit directory.
   1. Generate SBM/SQA PCAP test files by `pcap_gen.py`.
-  2. Decode OrderEntry results by `decode_order.py`. All found currency arbitrage are printed.
+  2. Decode OrderEntry results by `decode_order.py` which prints all found currency arbitrage.
 
 We refer the network configuration used by the Xilinx verification team.
 
