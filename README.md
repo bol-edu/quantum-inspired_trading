@@ -61,7 +61,7 @@ Preparation:
 * A local host installed with a Xilinx Avelon U50 accelrator.
 * A remote host installed with a Broadcom BCM957711A 10Gb x 2 SFP port card and PCAP test files.
 * A QSFPx1-to-SFPx4 connection cable.
-* An AAT `demo_setup.cfg` and SFP network setting files in submitted configuration directory.
+* An AAT Q2 `demo_setup.cfg` and SFP network setting files in submitted configuration directory.
 * The SBM/SQA test toolkit in submitted test_tookit directory.
   1. Generate SBM/SQA PCAP test files by `pcap_gen.py`.
   2. Decode OrderEntry results by `decode_order.py` which prints all found currency arbitrage.
