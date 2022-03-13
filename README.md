@@ -14,7 +14,7 @@ https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/test_toolkit
 Development Environment and Sources:
 * Operation System of Ubuntu 20.04.2 LTS
 * Xilinx Vitis Software Platform 2021.1
-* Xilinx Accelerated Algorithmic Trading reference design package Q2 (UG1067 v1.1, July 2 2021)
+* Xilinx Accelerated Algorithmic Trading (AAT) reference design Q2 (UG1067 v1.1, July 2 2021)
 * SBM/SQA design sources in submitted sbm/sqa directory
 
 Build flow of AAT and SBM/SQA design sources:
@@ -23,7 +23,7 @@ Build flow of AAT and SBM/SQA design sources:
 
 Replace the origional AAT Q2 files in `/Accelerated_Algorithmic_Trading/hw/pricingEngine` with the files in submitted sbm/sqa directory 
 
-Merge AAT & SBM sources:
+Merge AAT Q2 & SBM sources:
 
     $ cd ../Accelerated_Algorithmic_Trading/hw/
     $ mv ./pricingEngine ./pricingEngine.bak
