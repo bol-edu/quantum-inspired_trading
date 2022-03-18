@@ -34,8 +34,9 @@ float Uint2Float(ap_uint<32> n)
     return (float)(*(float *)&n);
 }
 
-int main()
+int main(int argc, char *argv[])
 {
+    
     pricingEngineRegControl_t regControl = {0};
     pricingEngineRegStatus_t regStatus = {0};
     ap_uint<1024> regCapture = 0x0;
@@ -59,8 +60,11 @@ int main()
 
     memset(&regStrategies, 0, sizeof(regStrategies));
 
-    // Read exchange rates
+    /*
+    ** Read exchange rates
+    */
     std::string priceFilePath = "ordBookResp.txt";
+    if (argc == 2) priceFilePath = argv[1];
     std::ifstream ifs(priceFilePath.c_str());
     if (!ifs)
     {

@@ -210,71 +210,72 @@ void PricingEngine::pricingProcess(
         // NOTE: input data originally is uint and we static_cast it to float
         unsigned int bidprice = response.bidPrice.range(31, 0);
         unsigned int askprice = response.askPrice.range(31, 0);
+        dcal_t best_energy = MAXFLOAT;
+        int best_step = 0;
+        bool best_spin[physical_bits] = {0};
 
         ERM(exch_id, log(reinterpret_cast<float &>(bidprice)), M1, M2, J, exch_logged_rates, regERMInitConstr);
         ERM(exch_id + 1, log(reinterpret_cast<float &>(askprice)), M1, M2, J, exch_logged_rates, regERMInitConstr);
 
-#ifndef __SYNTHESIS__
-        // Coefficient check
-        checkSBMCoeff<float>(J, c0);
+        if (exch_logged_rates[physical_bits - 2]) {
+#ifdef __SYNTHESIS__
+            // Coefficient check
+            checkSBMCoeff<float>(J, c0);
 
-        // Brute-force the best solution
-        std::cout << "Brute-force calculation\n";
-        bool best_spin_bf[physical_bits] = {0};
-        bool spin_bf[physical_bits] = {0};
-        float best_energy_bf = MAXFLOAT;
-        float energy_bf = MAXFLOAT;
-        long long bf_iteration = pow(2, physical_bits);
-        if (bf_iteration == 0) {
-            std::cerr << "Too many spins (" << physical_bits << ")" << ";\n"
-                      << "Skip brute-force solution calculation\n";
-        } else {
-            long long iteration = 1;
-            while (iteration < bf_iteration) {
-                ++iteration;
-                full_adder_plus_1(physical_bits, spin_bf);
-                if (spin_bf[physical_bits - 1] == 0) { continue; }
-                calc_energy(spin_bf, J, energy_bf);
-                if (energy_bf < best_energy_bf) {
-                    best_energy_bf = energy_bf;
-                    for (int i = 0; i < physical_bits; i++) {
-                        best_spin_bf[i] = spin_bf[i];
-                    }
-                } else if (energy_bf == best_energy_bf) {
-                    if (checkSBMSolution(spin_bf, exch_logged_rates)) {
+            // Brute-force the best solution
+            std::cout << "Brute-force calculation\n";
+            bool best_spin_bf[physical_bits] = {0};
+            bool spin_bf[physical_bits] = {0};
+            float best_energy_bf = MAXFLOAT;
+            float energy_bf = MAXFLOAT;
+            long long bf_iteration = pow(2, physical_bits);
+            if (bf_iteration == 0) {
+                std::cerr << "Too many spins (" << physical_bits << ")" << ";\n"
+                        << "Skip brute-force solution calculation\n";
+            } else {
+                long long iteration = 1;
+                while (iteration < bf_iteration) {
+                    ++iteration;
+                    full_adder_plus_1(physical_bits, spin_bf);
+                    if (spin_bf[physical_bits - 1] == 0) { continue; }
+                    calc_energy(spin_bf, J, energy_bf);
+                    if (energy_bf < best_energy_bf) {
+                        best_energy_bf = energy_bf;
                         for (int i = 0; i < physical_bits; i++) {
                             best_spin_bf[i] = spin_bf[i];
                         }
+                    } else if (energy_bf == best_energy_bf) {
+                        if (checkSBMSolution(spin_bf, exch_logged_rates)) {
+                            for (int i = 0; i < physical_bits; i++) {
+                                best_spin_bf[i] = spin_bf[i];
+                            }
+                        }
                     }
                 }
-            }
-            if (best_spin_bf[physical_bits - 1] == 0) {
-                for (unsigned int i = 0; i < physical_bits - 1; i++) {
-                    best_spin_bf[i] = 1 - best_spin_bf[i];
+                if (best_spin_bf[physical_bits - 1] == 0) {
+                    for (unsigned int i = 0; i < physical_bits - 1; i++) {
+                        best_spin_bf[i] = 1 - best_spin_bf[i];
+                    }
                 }
-            }
-            std::cout << "Best energy: " << best_energy_bf << "\n";
-            std::cout << "Best spin  : ";
-            print_vec<bool, physical_bits>(best_spin_bf, physical_bits - 1, std::cout);
-            checkSBMSolution(best_spin_bf, exch_logged_rates);
+                std::cout << "Best energy: " << best_energy_bf << "\n";
+                std::cout << "Best spin  : ";
+                print_vec<bool, physical_bits>(best_spin_bf, physical_bits - 1, std::cout);
+                checkSBMSolution(best_spin_bf, exch_logged_rates);
 
-            // A solution we found for the testbench
-            bool spin_theo[physical_bits] = {0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1};
-            calc_energy(spin_theo, J, energy_bf);
-            std::cout << "Theo energy: " << energy_bf << "\n";
-            std::cout << "Theo spin  : ";
-            print_vec<bool, physical_bits>(spin_theo, physical_bits - 1, std::cout);
-            checkSBMSolution(spin_theo, exch_logged_rates);
-        }
-        std::cout << "End of brute-force calculation\n\n";
+                // A solution we found for the testbench
+                // bool spin_theo[physical_bits] = {0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1};
+                // calc_energy(spin_theo, J, energy_bf);
+                // std::cout << "Theo energy: " << energy_bf << "\n";
+                // std::cout << "Theo spin  : ";
+                // print_vec<bool, physical_bits>(spin_theo, physical_bits - 1, std::cout);
+                // checkSBMSolution(spin_theo, exch_logged_rates);
+            }
+            std::cout << "End of brute-force calculation\n\n";
 #endif
         // RUN SBM
 #ifndef __SYNTHESIS__
         std::cout << "Start SBM execution\n";
 #endif
-        dcal_t best_energy = MAXFLOAT;
-        int best_step = 0;
-        bool best_spin[physical_bits] = {0};
         SBM(J, spin_y, spin_x, steps, dt, c0, best_energy, best_step, best_spin, regSBMExecStatus);
 
 #ifndef __SYNTHESIS__
@@ -307,6 +308,7 @@ void PricingEngine::pricingProcess(
         checkSBMSolution(best_spin, exch_logged_rates);
         std::cout << "End of SBM execution\n\n";
 #endif
+        }
 
         // Write orderResponse if there are no empty price fields
         if (exch_logged_rates[physical_bits - 2]) {
@@ -546,9 +548,9 @@ void PricingEngine::ERM(int index, float logged_price, float M1, float M2,
         init_constraint = true;
         regInitConstr = true;
 #ifndef __SYNTHESIS__
-        for (int i = 0; i < physical_bits; i++) {
-            print_whole_vec<float, physical_bits>(J[i], std::cout);
-        }
+        // for (int i = 0; i < physical_bits; i++) {
+        //     print_whole_vec<float, physical_bits>(J[i], std::cout);
+        // }
         print_whole_vec<float, physical_bits - 1>(exch_logged_rates, std::cout);
 #endif
     }
@@ -964,33 +966,11 @@ void SBM_update(dcal_t Q_matrix_cache[physical_bits][physical_bits],
                 bool x_out_bool[physical_bits], float c1,
                 float c2, float dt) {
 #pragma HLS DATAFLOW
-    // c1 = c0 * dt
-    // c2 = (1-a) * dt = (steps - i) * (1.0 / steps) * dt
     update_x(x_in, x_out, y_in, dt);
     set_spin(x_out, x_out_bool);
-//#define __CALC_ENERGY__
-#ifdef __CALC_ENERGY__
-    update_y_and_E(x, y, Q_Matrix, c0, a, dt, energy);
-    if (energy < best_energy) {
-#ifndef __SYNTHESIS__
-        print_update_msg(best_energy, energy, best_step, i, best_spin,
-                         std::cout);
-#endif
-        best_energy = energy;
-        best_step = i;
-        set_spin(x, best_spin);
-#ifndef __SYNTHESIS__
-        print_whole_vec<bool, physical_bits>(best_spin, std::cout);
-#endif
-    }
-#else
-    // update_y(x, y, Q_Matrix, c0, a, dt);
     update_y(x_out, x_out_bool, y_in, y_out,
                     Q_matrix_cache, c1, c2);
-#endif
     reset_x_y(x_out, y_out);
-    // Put the updated data back to x_stream1 and y_stream1
-    //reset_x_y_stream(x_stream3, x_stream_out, y_stream3, y_stream_out);
 }
 
 void PricingEngine::SBM(float Q_Matrix[physical_bits][physical_bits], dcal_t y[physical_bits],
@@ -1013,22 +993,10 @@ void PricingEngine::SBM(float Q_Matrix[physical_bits][physical_bits], dcal_t y[p
     float x_updated[physical_bits] = {0};
     float y_updated[physical_bits] = {0};
     bool x_updated_bool[physical_bits] = {0};
-    //load_x_y_stream(x_cache_in, y_cache_in, x_stream_in, y_stream_in);
 SBM_MAIN:
     for (int i = 0; i < steps; i++) {
 #pragma HLS LOOP_TRIPCOUNT min = 100 max = 2000
-#ifndef __SYNTHESIS__
-        calc_energy<dcal_t, physical_bits>(x, Q_Matrix, energy);
-#ifndef __DEBUG__
-        f << "step: " << i << std::endl;
-        f << "x:" << std::endl;
-        //print_whole_vec<dcal_t, physical_bits>(x, std::cout);
-        print_whole_vec<dcal_t, physical_bits>(x, f);
-        f << "y:" << std::endl;
-        print_whole_vec<dcal_t, physical_bits>(y, f);
-        f << "energy: " << energy << "\n";
-#endif
-#endif
+        // c2 = (1-a) * dt = (steps - i) * (1.0 / steps) * dt
         float c2 = (steps - i) * dat;
         SBM_update(Q_Matrix, x, y, x_updated, y_updated, x_updated_bool, c1, c2, dt);
     RETURN_X_Y:
@@ -1038,17 +1006,10 @@ SBM_MAIN:
             y[i] = y_updated[i];
         }
     }
-    regSBMExecStatus = 1; // SBM done
-#ifndef __CALC_ENERGY__
-    // set_spin(x_cache_in, best_spin);
-    // set_spin_stream(x_stream1, best_spin);
     // TODO: Dataflow for best_spin
     // TODO: Pack spins to integers to burst write
-    //spin_to_bool(x_stream_in, x_bstream);
-    //output_bits(x_bstream, best_spin);
     for (int i = 0; i < physical_bits; ++i) {
         best_spin[i] = x_updated_bool[i];
     }
-    regSBMExecStatus = 2; // SBM idle
-#endif
+    regSBMExecStatus = 2; // SBM done and idle
 }
