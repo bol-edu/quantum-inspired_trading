@@ -1,0 +1,459 @@
+2022-03-14T11:09:01+08:00
+Experiment starts
+
+../tb_pricingEngine gen/data0.txt &>> test_pricingEngine_cur_arb_5_9_Log.txt
+PricingEngine Test
+------------------
+94.2918 0.000718865
+0.000718865 0.000226579
+0.000226579 0.0209392
+0.0209392 0.0589348
+0.0589348 0.00272927
+0.00272927 234.695
+234.695 0.0103866
+0.0103866 5267.83
+5267.83 0.000340832
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Coefficient check
+c0_theoretical: 0.0329412
+c0_in_use     : 0.033613
+End of coefficient check
+
+Brute-force calculation
+Best energy: -240.764
+Best spin  : 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 0 0 
+Cycle check passed!
+The solution is profitable!
+End of brute-force calculation
+
+Start SBM execution
+Final energy: -232.079
+Final spin  : 0 0 0 0 0 0 1 0 0 0 1 1 0 0 0 1 0 1 
+Cycle check passed!
+The solution is profitable!
+End of SBM execution
+
+ORDER_ENTRY_OPERATION: {0,3,1,1,0.000189831,0}
+ORDER_ENTRY_OPERATION: {0,5,2,1,0.000189831,0}
+ORDER_ENTRY_OPERATION: {0,5,3,1,0.000340832,1}
+ORDER_ENTRY_OPERATION: {0,7,4,1,0.000340832,1}
+ORDER_ENTRY_OPERATION: {0,8,5,1,0.000340832,1}
+--
+STATUS: PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x5 regERMInitConstr=0x1 regSBMExecStatus=0x2 countAncillaFlip=0x1 PE_STRATEGY_NA=0x28c40 PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+
+Done!
+
+../tb_pricingEngine gen/data1.txt &>> test_pricingEngine_cur_arb_5_9_Log.txt
+PricingEngine Test
+------------------
+0.000634268 0.00251968
+0.00251968 403.89
+403.89 0.0230376
+0.0230376 0.00177692
+0.00177692 0.117479
+0.117479 1054.53
+1054.53 1578.22
+1578.22 340.431
+340.431 1292.73
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Coefficient check
+c0_theoretical: 0.0337849
+c0_in_use     : 0.033613
+End of coefficient check
+
+Brute-force calculation
+Best energy: -231.568
+Best spin  : 1 0 0 0 0 0 0 0 1 0 1 0 0 0 0 1 0 1 
+Cycle check passed!
+The solution is profitable!
+End of brute-force calculation
+
+Start SBM execution
+Final energy: -224.055
+Final spin  : 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 
+Cycle check passed!
+The solution is profitable!
+End of SBM execution
+
+ORDER_ENTRY_OPERATION: {0,0,1,1,0.00293745,0}
+ORDER_ENTRY_OPERATION: {0,1,2,1,0.00293745,0}
+ORDER_ENTRY_OPERATION: {0,5,3,1,0.00293745,0}
+ORDER_ENTRY_OPERATION: {0,7,4,1,1292.73,1}
+--
+STATUS: PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x4 regERMInitConstr=0x1 regSBMExecStatus=0x2 countAncillaFlip=0x1 PE_STRATEGY_NA=0x08405 PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+
+Done!
+
+../tb_pricingEngine gen/data10.txt &>> test_pricingEngine_cur_arb_5_9_Log.txt
+PricingEngine Test
+------------------
+0.0138775 0.0991394
+0.0991394 0.0028697
+0.0028697 0.167792
+0.167792 0.00681515
+0.00681515 4.5195
+4.5195 9.59028
+9.59028 2106.38
+2106.38 3279.78
+3279.78 0.0477178
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Coefficient check
+c0_theoretical: 0.0334927
+c0_in_use     : 0.033613
+End of coefficient check
+
+Brute-force calculation
+Best energy: -231.429
+Best spin  : 1 0 1 0 1 0 0 0 0 1 0 0 0 0 0 1 0 0 
+Cycle check passed!
+The solution is profitable!
+End of brute-force calculation
+
+Start SBM execution
+Final energy: -224.567
+Final spin  : 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 1 
+Cycle check passed!
+The solution is profitable!
+End of SBM execution
+
+ORDER_ENTRY_OPERATION: {0,0,1,1,0.000304899,0}
+ORDER_ENTRY_OPERATION: {0,2,2,1,0.000304899,0}
+ORDER_ENTRY_OPERATION: {0,7,3,1,0.0477178,1}
+ORDER_ENTRY_OPERATION: {0,8,4,1,0.0477178,1}
+--
+STATUS: PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x4 regERMInitConstr=0x1 regSBMExecStatus=0x2 countAncillaFlip=0x1 PE_STRATEGY_NA=0x28011 PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+
+Done!
+
+../tb_pricingEngine gen/data2.txt &>> test_pricingEngine_cur_arb_5_9_Log.txt
+PricingEngine Test
+------------------
+110.253 304.671
+304.671 0.0144517
+0.0144517 135.915
+135.915 64.052
+64.052 4929.04
+4929.04 2.2786
+2.2786 1733.29
+1733.29 9.21083
+9.21083 14.4907
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Coefficient check
+c0_theoretical: 0.0333594
+c0_in_use     : 0.033613
+End of coefficient check
+
+Brute-force calculation
+Best energy: -226.798
+Best spin  : 0 0 0 0 1 1 0 0 0 0 0 0 1 1 0 0 0 0 
+Cycle check passed!
+The solution is profitable!
+End of brute-force calculation
+
+Start SBM execution
+Final energy: -202.077
+Final spin  : 1 0 0 0 1 0 0 0 0 0 0 0 1 1 0 1 0 1 
+Cycle check passed!
+The solution is profitable!
+End of SBM execution
+
+ORDER_ENTRY_OPERATION: {0,0,1,1,0.108568,0}
+ORDER_ENTRY_OPERATION: {0,2,2,1,0.108568,0}
+ORDER_ENTRY_OPERATION: {0,6,3,1,0.108568,0}
+ORDER_ENTRY_OPERATION: {0,6,4,1,14.4907,1}
+ORDER_ENTRY_OPERATION: {0,7,5,1,14.4907,1}
+ORDER_ENTRY_OPERATION: {0,8,6,1,14.4907,1}
+--
+STATUS: PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x6 regERMInitConstr=0x1 regSBMExecStatus=0x2 countAncillaFlip=0x1 PE_STRATEGY_NA=0x2b011 PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+
+Done!
+
+../tb_pricingEngine gen/data3.txt &>> test_pricingEngine_cur_arb_5_9_Log.txt
+PricingEngine Test
+------------------
+3.16879 16.8404
+16.8404 0.000705944
+0.000705944 4201.97
+4201.97 0.00163809
+0.00163809 1110.96
+1110.96 59.2822
+59.2822 5616.06
+5616.06 0.00706857
+0.00706857 10.6869
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Coefficient check
+c0_theoretical: 0.033371
+c0_in_use     : 0.033613
+End of coefficient check
+
+Brute-force calculation
+Best energy: -231.141
+Best spin  : 1 0 0 0 1 0 0 0 0 1 0 0 0 1 0 0 0 0 
+Cycle check passed!
+The solution is profitable!
+End of brute-force calculation
+
+Start SBM execution
+Final energy: -222.891
+Final spin  : 0 1 0 0 0 1 0 0 1 0 0 0 1 0 0 0 0 0 
+Cycle check passed!
+The solution is profitable!
+End of SBM execution
+
+ORDER_ENTRY_OPERATION: {0,0,1,1,10.6869,1}
+ORDER_ENTRY_OPERATION: {0,2,2,1,10.6869,1}
+ORDER_ENTRY_OPERATION: {0,4,3,1,141.471,0}
+ORDER_ENTRY_OPERATION: {0,6,4,1,141.471,0}
+--
+STATUS: PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x4 regERMInitConstr=0x1 regSBMExecStatus=0x2 countAncillaFlip=0x1 PE_STRATEGY_NA=0x1122 PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+
+Done!
+
+../tb_pricingEngine gen/data4.txt &>> test_pricingEngine_cur_arb_5_9_Log.txt
+PricingEngine Test
+------------------
+1.59999 0.0842273
+0.0842273 5625.42
+5625.42 0.000851751
+0.000851751 24.9927
+24.9927 15.5523
+15.5523 0.00122195
+0.00122195 34.1686
+34.1686 97.9165
+97.9165 0.158638
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Coefficient check
+c0_theoretical: 0.0333861
+c0_in_use     : 0.033613
+End of coefficient check
+
+Brute-force calculation
+Best energy: -232.552
+Best spin  : 0 0 1 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 
+Cycle check passed!
+The solution is profitable!
+End of brute-force calculation
+
+Start SBM execution
+Final energy: -224.921
+Final spin  : 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 
+Cycle check passed!
+The solution is profitable!
+End of SBM execution
+
+ORDER_ENTRY_OPERATION: {0,1,1,1,0.0102128,0}
+ORDER_ENTRY_OPERATION: {0,6,2,1,0.0102128,0}
+ORDER_ENTRY_OPERATION: {0,7,3,1,0.158638,1}
+--
+STATUS: PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x3 regERMInitConstr=0x1 regSBMExecStatus=0x2 countAncillaFlip=0x1 PE_STRATEGY_NA=0x09004 PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+
+Done!
+
+../tb_pricingEngine gen/data5.txt &>> test_pricingEngine_cur_arb_5_9_Log.txt
+PricingEngine Test
+------------------
+0.524392 0.00353469
+0.00353469 3667.55
+3667.55 1166.21
+1166.21 0.000111743
+0.000111743 74.5841
+74.5841 0.0786909
+0.0786909 587.623
+587.623 0.479451
+0.479451 0.00087525
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Coefficient check
+c0_theoretical: 0.0332214
+c0_in_use     : 0.033613
+End of coefficient check
+
+Brute-force calculation
+Best energy: -227.05
+Best spin  : 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Cycle check passed!
+The solution is profitable!
+End of brute-force calculation
+
+Start SBM execution
+Final energy: -221.405
+Final spin  : 0 1 1 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 
+Cycle check passed!
+The solution is profitable!
+End of SBM execution
+
+ORDER_ENTRY_OPERATION: {0,0,1,1,0.00087525,1}
+ORDER_ENTRY_OPERATION: {0,1,2,1,2.08572,0}
+ORDER_ENTRY_OPERATION: {0,1,3,1,0.00087525,1}
+ORDER_ENTRY_OPERATION: {0,2,4,1,0.00087525,1}
+ORDER_ENTRY_OPERATION: {0,3,5,1,2.08572,0}
+--
+STATUS: PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x5 regERMInitConstr=0x1 regSBMExecStatus=0x2 countAncillaFlip=0x1 PE_STRATEGY_NA=0x6e PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+
+Done!
+
+../tb_pricingEngine gen/data6.txt &>> test_pricingEngine_cur_arb_5_9_Log.txt
+PricingEngine Test
+------------------
+0.00812691 1.03981
+1.03981 27.2224
+27.2224 1.08156
+1.08156 0.00339287
+0.00339287 152.238
+152.238 3.27131
+3.27131 0.0647703
+0.0647703 254.682
+254.682 23.3462
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Coefficient check
+c0_theoretical: 0.0337951
+c0_in_use     : 0.033613
+End of coefficient check
+
+Brute-force calculation
+Best energy: -225.007
+Best spin  : 0 0 0 0 0 0 0 0 1 1 0 0 0 0 1 1 0 0 
+Cycle check passed!
+The solution is profitable!
+End of brute-force calculation
+
+Start SBM execution
+Final energy: -210.354
+Final spin  : 0 0 0 1 1 0 0 0 0 0 0 1 0 0 0 0 0 1 
+Cycle check passed!
+The solution is profitable!
+End of SBM execution
+
+ORDER_ENTRY_OPERATION: {0,1,1,1,23.3462,1}
+ORDER_ENTRY_OPERATION: {0,2,2,1,0.00392647,0}
+ORDER_ENTRY_OPERATION: {0,5,3,1,23.3462,1}
+ORDER_ENTRY_OPERATION: {0,8,4,1,23.3462,1}
+--
+STATUS: PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x4 regERMInitConstr=0x1 regSBMExecStatus=0x2 countAncillaFlip=0x1 PE_STRATEGY_NA=0x20818 PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+
+Done!
+
+../tb_pricingEngine gen/data7.txt &>> test_pricingEngine_cur_arb_5_9_Log.txt
+PricingEngine Test
+------------------
+0.0381597 131.387
+131.387 8515.34
+8515.34 0.945642
+0.945642 0.000197131
+0.000197131 0.00210704
+0.00210704 0.00449375
+0.00449375 4.79632
+4.79632 0.434723
+0.434723 0.025207
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Coefficient check
+c0_theoretical: 0.033252
+c0_in_use     : 0.033613
+End of coefficient check
+
+Brute-force calculation
+Best energy: -232.252
+Best spin  : 1 1 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+Cycle check passed!
+The solution is profitable!
+End of brute-force calculation
+
+Start SBM execution
+Final energy: -221.204
+Final spin  : 1 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 
+Cycle check passed!
+The solution is profitable!
+End of SBM execution
+
+ORDER_ENTRY_OPERATION: {0,0,1,1,2.30031,0}
+ORDER_ENTRY_OPERATION: {0,5,2,1,2.30031,0}
+ORDER_ENTRY_OPERATION: {0,6,3,1,0.025207,1}
+--
+STATUS: PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x3 regERMInitConstr=0x1 regSBMExecStatus=0x2 countAncillaFlip=0x1 PE_STRATEGY_NA=0x2401 PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+
+Done!
+
+../tb_pricingEngine gen/data8.txt &>> test_pricingEngine_cur_arb_5_9_Log.txt
+PricingEngine Test
+------------------
+7.92319 3072.27
+3072.27 0.397197
+0.397197 7086.81
+7086.81 391.284
+391.284 44.0581
+44.0581 1.05006
+1.05006 0.00939171
+0.00939171 165.641
+165.641 0.000186403
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Coefficient check
+c0_theoretical: 0.033004
+c0_in_use     : 0.033613
+End of coefficient check
+
+Brute-force calculation
+Best energy: -234.896
+Best spin  : 0 0 0 0 1 1 0 0 0 0 0 0 0 0 1 1 0 0 
+Cycle check passed!
+The solution is profitable!
+End of brute-force calculation
+
+Start SBM execution
+Final energy: -231.783
+Final spin  : 0 1 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 
+Cycle check passed!
+The solution is profitable!
+End of SBM execution
+
+ORDER_ENTRY_OPERATION: {0,0,1,1,0.000186403,1}
+ORDER_ENTRY_OPERATION: {0,2,2,1,0.000186403,1}
+ORDER_ENTRY_OPERATION: {0,7,3,1,0.00603714,0}
+ORDER_ENTRY_OPERATION: {0,8,4,1,0.00603714,0}
+--
+STATUS: PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x4 regERMInitConstr=0x1 regSBMExecStatus=0x2 countAncillaFlip=0x1 PE_STRATEGY_NA=0x14022 PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+
+Done!
+
+../tb_pricingEngine gen/data9.txt &>> test_pricingEngine_cur_arb_5_9_Log.txt
+PricingEngine Test
+------------------
+0.101024 195.096
+195.096 0.00481178
+0.00481178 5813.24
+5813.24 4858.8
+4858.8 29.345
+29.345 0.67644
+0.67644 20.5104
+20.5104 0.121127
+0.121127 0.690994
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Coefficient check
+c0_theoretical: 0.0334385
+c0_in_use     : 0.033613
+End of coefficient check
+
+Brute-force calculation
+Best energy: -226.455
+Best spin  : 0 0 0 0 1 1 0 0 0 0 0 0 1 1 0 0 0 0 
+Cycle check passed!
+The solution is profitable!
+End of brute-force calculation
+
+Start SBM execution
+Final energy: -220.208
+Final spin  : 0 1 1 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 
+Cycle check passed!
+The solution is profitable!
+End of SBM execution
+
+ORDER_ENTRY_OPERATION: {0,0,1,1,0.690994,1}
+ORDER_ENTRY_OPERATION: {0,1,2,1,8.25578,0}
+ORDER_ENTRY_OPERATION: {0,2,3,1,0.690994,1}
+ORDER_ENTRY_OPERATION: {0,6,4,1,8.25578,0}
+ORDER_ENTRY_OPERATION: {0,8,5,1,8.25578,0}
+--
+STATUS: PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x5 regERMInitConstr=0x1 regSBMExecStatus=0x2 countAncillaFlip=0x1 PE_STRATEGY_NA=0x11026 PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+
+Done!
+
+2022-03-14T11:09:07+08:00
+Experiment finishes

@@ -57,6 +57,39 @@ Vitis HLS usually infers the `fadd` operation instead of `facc` or `fmacc` in ou
 
 An example testbench file `src/hw/pricingEngine/test/ordBookResp.txt` prepares `orderBookResponse` data for test.  The comments in the file describes the file format.
 
+## Experimental results
+
+The following experiments were conducted to demonstrate the solution quality of the SBM-accelerated currency arbitrage machine (SBM-CAM).  We ran the executables built from the C++ source code.  The experiments can be reproduced without installing any FPGA card or the entire Vitis software.  However, some libraries of AAT(Q2) and Vitis HLS are required; for brevity, the file requirements are not listed here.  The compilation command may look like the following:
+
+```g++ -I./test/include -I./ test/include/aat_interfaces.cpp test/tb_pricingengine.cpp pricingengine.cpp pricingengine_top.cpp -o tb_pricingEngine```
+
+The following table shows that SBM-CAM can yield some profitable solutions in only 10 steps, and can solve almost all cases in 100 steps. The spin `1` denotes that the currency exchange order should be placed, and `0` otherwise.  An all-zero solution means that we place no order.  Execution time is not the main point of interest, so it is not recorded.
+
+|                                     | 10000 cases, 10 steps | 10000 cases, 100 steps | 11 cases, 10 steps | 11 cases, 100 steps |
+| ----------------------------------- | ------------------- | -------------------- | ---------------- | ----------------- |
+| Profitable                          | 1976                | 9104                 | 2                | 11                |
+| Is cycle, Not all zeros, Not profitable | 3132 – 2324 = 808    | 442 – 34 = 308        | 3 – 2 = 1         | 0                 |
+| Is cycle, All zeros, Not profitable     | 2324                | 34                   | 2                | 0                 |
+| Not cycle                           | 4892                | 454                  | 6                | 0                 |
+
+### Experimental setup
+- Machine: HP Pavilion x360 Convertible 14-dh1xxx (laptop)
+- Processor: Intel(R) Core(TM) i7-10510U CPU @ 1.80GHz
+- System: Ubuntu 18.04, Windows Subsystem for Linux (WSL) on Windows 10
+- Compiler: gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)
+- Testbench generation
+    - `pcap_gen.py` (executed with Python 3.8.5)
+    - 11 cases: `xilinx-acc-2021_submission/test_toolkit/arb_data_gen.sh`
+    - 10000 cases: `xilinx-acc-2021_submission/test_toolkit/arb_data_gen10000.sh`
+    - Please email koovakevy@gmail.com if you want the original testbench files
+    - The bash scripts are written by Chien-Kai Ma.  Please kindly inform him (email koovakevy@gmail.com) before using or modifying the scripts for uses outside of this project.
+- Test running scripts
+    - The scripts and experiment logs are located under `xilinx-acc-2021_submission/sbm/src/hw/pricingEngine/exp`
+    - `test_pricingEngine_arb.sh` runs the executable with 11 different cases.
+    - `test_pricingEngine_arb_10000.sh` runs the executable with 10000 different cases.
+    - Both scripts generate an experiment log named `test_pricingEngine_cur_arb_5_9_Log.txt`.
+    - The bash scripts are written by Chien-Kai Ma.  Please kindly inform him (email koovakevy@gmail.com) before using or modifying the scripts for uses outside of this project.
+
 ## Support
 
 
