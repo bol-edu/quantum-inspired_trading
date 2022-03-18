@@ -39,16 +39,4 @@ Xilinx's HLS compiler negates a single-precision floating-point number by xor-in
 1. H. Waidyasooriya and M. Hariyama, "Highly-Parallel FPGA Accelerator for Simulated Quantum Annealing," in IEEE Transactions on Emerging Topics in Computing, DOI: 10.1109/TETC.2019.2957177.
 2. Liu, CY., Waidyasooriya, H.M. & Hariyama, M. Design space exploration for an FPGA-based quantum annealing simulator with interaction-coefficient-generators. J Supercomput (2021).
 3. K. Tatsumura, R. Hidaka, M. Yamasaki, Y. Sakai and, H. Goto, "A Currency Arbitrage Machine Based on the Simulated Bifurcation Algorithm for Ultrafast Detection of Optimal Opportunity," 2020 IEEE International Symposium on Circuits and Systems (ISCAS), 2020, pp. 1-5, DOI: 10.1109/ISCAS45731.2020.9181114.
-4. M. Yamasaki et al., "Live Demonstration: Capturing Short-Lived Currency Arbitrage Opportunities with a Simulated Bifurcation Algorithm-Based Trading System," 2020 IEEE International Symposium on Circuits and Systems (ISCAS), 2020, pp. 1-1, DOI: 10.1109/ISCAS45731.2020.9180679.
-
-## Installation
-
-## Usage
-
-## Support
-
-## Roadmap
-
-## Contributing
-
-## License
+4. M. Yamasaki et al., "Live Demonstration: Capturing Short-Lived Currency Arbitrage Opportunities with a Simulated Bifurcation Algorithm-Based Trading System," 2020 IEEE International Symposium on Circuits and Systems (ISCAS), 2020, pp. 1-1, DOI: 10.1109/ISCAS45731.2020.9180679. 

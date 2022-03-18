@@ -1,7 +1,7 @@
 Accelerated Algorithmic Trading
 ===============================
 
-This is a package release for the Accelerated Algorithmic Trading (AAT) design package Q2, July 2 2021.
+This is a package release for the Accelerated Algorithmic Trading (AAT) design Q2, July 2 2021.
 
 Please consult the user guide for build instructions and a quick start overview:
 

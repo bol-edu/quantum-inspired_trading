@@ -89,8 +89,14 @@ void PricingEngine::pricingProcess(ap_uint<32> &regStrategyControl, ap_uint<32> 
 #pragma HLS ARRAY_PARTITION dim = 1 type = complete variable = h
 #pragma HLS ARRAY_PARTITION dim = 1 type = complete variable = spins
 
-    if (regControl.reserved04 == 0) regControl.reserved04 = 0xC0FEBABE;
-    if (regControl.reserved05 == 0) regControl.reserved05 = 0xBABEC0FE;
+    union {
+        unsigned int uint_data;
+        fp_t fp_data;
+    } default_gamma_start, default_T;
+    default_gamma_start.fp_data = 5.0f;
+    default_T.fp_data = 0.5f;
+    if (regControl.reserved04 == 0) regControl.reserved04 = 0x40a00000; // 5.0f
+    if (regControl.reserved05 == 0) regControl.reserved05 = 0x3f000000; // 0.5f
 
     // Start of original AAT code
     if (!responseStream.empty()) {
@@ -146,20 +152,21 @@ void PricingEngine::pricingProcess(ap_uint<32> &regStrategyControl, ap_uint<32> 
 
         // Write out Operations based on SQA result
         for (unsigned int i = 0; i < PHYSICAL_BITS; i++) {
-            operation.orderId     = ++orderId;
-            operation.timestamp   = response.timestamp;
-            operation.opCode      = ORDERENTRY_ADD;
-            // operation.quantity    = 1;  // change to 1
-            operation.quantity    = (spins[i]) ? 1 : 0;
-            operation.symbolIndex = i / 2;
-            if ((i & 1) == 1) {  // direction ask
-                operation.price     = response.askPrice.range(31, 0);
-                operation.direction = ORDER_ASK;
-            } else {  // direction bid
-                operation.price     = (response.bidPrice.range(31, 0));
-                operation.direction = ORDER_BID;
+            if (spins[i]) {
+                operation.orderId     = ++orderId;
+                operation.timestamp   = response.timestamp;
+                operation.opCode      = ORDERENTRY_ADD;
+                operation.quantity    = 1;  // change to 1
+                operation.symbolIndex = i / 2;
+                if ((i & 1) == 1) {  // direction ask
+                    operation.price     = response.askPrice.range(31, 0);
+                    operation.direction = ORDER_ASK;
+                } else {  // direction bid
+                    operation.price     = (response.bidPrice.range(31, 0));
+                    operation.direction = ORDER_BID;
+                }
+                operationStream.write(operation);
             }
-            operationStream.write(operation);
         }
 
         // if (orderExecute) {
@@ -413,8 +420,8 @@ void PricingEngine::runSQA(spin_t spins[NUM_SPIN], float J[NUM_SPIN][NUM_SPIN], 
         fp_t fp_data;
     } tmp_gamma_start, tmp_T;
 
-    tmp_gamma_start.uint_data = regControl.reserved04;
-    tmp_T.uint_data = regControl.reserved05;
+    tmp_gamma_start.uint_data = regControl.reserved04.to_uint();
+    tmp_T.uint_data = regControl.reserved05.to_uint();
     
     // Iteration Parameters
     const int  iter        = 10;     // default 500
