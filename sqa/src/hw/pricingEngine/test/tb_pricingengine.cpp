@@ -54,6 +54,7 @@ int main(int argc, char *argv[])
 
     // Read exchange rates
     std::string priceFilePath = "../../../../data/data0.txt";
+    if (argc >= 2) priceFilePath = std::string(argv[1]);
     std::ifstream ifs(priceFilePath.c_str());
     if (!ifs) {
         std::cerr << "Error: \"" << priceFilePath << "\" does not exist!!\n";
