@@ -89,3 +89,4 @@ The following table shows that SBM-CAM can yield some profitable solutions in on
     - `test_pricingEngine_arb_10000.sh` runs the executable with 10000 different cases.
     - Both scripts generate an experiment log named `test_pricingEngine_cur_arb_5_9_Log.txt`.
     - The bash scripts are written by Chien-Kai Ma.  Please kindly inform him (email koovakevy@gmail.com) before using or modifying the scripts for uses outside of this project.
+
