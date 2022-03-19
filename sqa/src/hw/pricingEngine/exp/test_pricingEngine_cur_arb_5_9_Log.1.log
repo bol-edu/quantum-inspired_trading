@@ -1,0 +1,354 @@
+2022-03-20T03:12:04+08:00
+Experiment starts
+
+[START][data/data0.txt]
+./csim_pricingEngine.exe data/data0.txt &>> test_pricingEngine_cur_arb_5_9_Log.1.txt
+PricingEngine Test
+------------------
+[0]        1.1 3.3
+[1]        3.3 29
+[2]         29 0.0027
+[3]     0.0027 23
+[4]         23 0.42
+[5]       0.42 9.7
+[6]        9.7 0.38
+[7]       0.38 0.00041
+[8]    0.00041 0.022
+[NotAllZero!][FindCycle!][Profitable!]
+
+ORDER_ENTRY_OPERATION: {0,3,1,1,0.022,1} {2,1}
+ORDER_ENTRY_OPERATION: {0,5,2,1,2.5e+03,0} {3,0}
+ORDER_ENTRY_OPERATION: {0,5,3,1,0.022,1} {0,3}
+ORDER_ENTRY_OPERATION: {0,7,4,1,2.5e+03,0} {1,4}
+ORDER_ENTRY_OPERATION: {0,8,5,1,2.5e+03,0} {4,2}
+--
+STATUS: 
+PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x5 
+PE_STRATEGY_NONE=0x0 PE_STRATEGY_PEG=0x0 PE_STRATEGY_LIMIT=0x0 PE_STRATEGY_NA=0x0 
+PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+PE_RESV0=0x0d54c80 PE_RESV1=0x14c80 PE_RESV2=0x14c80 
+PE_RESV3=0x14c80 PE_RESV4=0x1 PE_RESV5=0xdeadbeef 
+
+Done!
+[END][data/data0.txt]
+[START][data/data10.txt]
+./csim_pricingEngine.exe data/data10.txt &>> test_pricingEngine_cur_arb_5_9_Log.1.txt
+PricingEngine Test
+------------------
+[0]      0.096 2.3e+02
+[1]    2.3e+02 0.0011
+[2]     0.0011 7.7e+02
+[3]    7.7e+02 0.071
+[4]      0.071 3.5
+[5]        3.5 0.079
+[6]      0.079 0.0022
+[7]     0.0022 12
+[8]         12 0.0027
+[NotAllZero!][FindCycle!][Profitable!]
+
+ORDER_ENTRY_OPERATION: {0,6,1,1,0.081,0} {1,0}
+ORDER_ENTRY_OPERATION: {0,6,2,1,0.0027,1} {0,1}
+ORDER_ENTRY_OPERATION: {0,7,3,1,0.081,0} {1,4}
+ORDER_ENTRY_OPERATION: {0,7,4,1,0.0027,1} {4,1}
+--
+STATUS: 
+PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x4 
+PE_STRATEGY_NONE=0x0 PE_STRATEGY_PEG=0x0 PE_STRATEGY_LIMIT=0x0 PE_STRATEGY_NA=0x0 
+PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+PE_RESV0=0xddfcf000 PE_RESV1=0x0f000 PE_RESV2=0x0f000 
+PE_RESV3=0x0f000 PE_RESV4=0x1 PE_RESV5=0xdeadbeef 
+
+Done!
+[END][data/data10.txt]
+[START][data/data1.txt]
+./csim_pricingEngine.exe data/data1.txt &>> test_pricingEngine_cur_arb_5_9_Log.1.txt
+PricingEngine Test
+------------------
+[0]    4.1e+03 0.048
+[1]      0.048 0.00063
+[2]    0.00063 0.034
+[3]      0.034 9.6e+02
+[4]    9.6e+02 0.95
+[5]       0.95 0.00013
+[6]    0.00013 3e+02
+[7]      3e+02 0.022
+[8]      0.022 16
+[NotAllZero!][FindCycle!][Profitable!]
+
+ORDER_ENTRY_OPERATION: {0,6,1,1,45,0} {1,0}
+ORDER_ENTRY_OPERATION: {0,6,2,1,16,1} {0,1}
+ORDER_ENTRY_OPERATION: {0,8,3,1,45,0} {4,2}
+ORDER_ENTRY_OPERATION: {0,8,4,1,16,1} {2,4}
+--
+STATUS: 
+PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x4 
+PE_STRATEGY_NONE=0x0 PE_STRATEGY_PEG=0x0 PE_STRATEGY_LIMIT=0x0 PE_STRATEGY_NA=0x0 
+PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+PE_RESV0=0x1773000 PE_RESV1=0x33000 PE_RESV2=0x33000 
+PE_RESV3=0x33000 PE_RESV4=0x1 PE_RESV5=0xdeadbeef 
+
+Done!
+[END][data/data1.txt]
+[START][data/data2.txt]
+./csim_pricingEngine.exe data/data2.txt &>> test_pricingEngine_cur_arb_5_9_Log.1.txt
+PricingEngine Test
+------------------
+[0]    2.4e+02 2.5e+02
+[1]    2.5e+02 1.5
+[2]        1.5 3.4
+[3]        3.4 0.00051
+[4]    0.00051 17
+[5]         17 0.014
+[6]      0.014 0.22
+[7]       0.22 6e+02
+[8]      6e+02 1.3
+[NotAllZero!][FindCycle!][Profitable!]
+
+ORDER_ENTRY_OPERATION: {0,2,1,1,1.3,1} {2,3}
+ORDER_ENTRY_OPERATION: {0,4,2,1,0.0017,0} {0,2}
+ORDER_ENTRY_OPERATION: {0,5,3,1,0.0017,0} {3,0}
+ORDER_ENTRY_OPERATION: {0,7,4,1,0.0017,0} {1,4}
+ORDER_ENTRY_OPERATION: {0,7,5,1,1.3,1} {4,1}
+--
+STATUS: 
+PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x5 
+PE_STRATEGY_NONE=0x0 PE_STRATEGY_PEG=0x0 PE_STRATEGY_LIMIT=0x0 PE_STRATEGY_NA=0x0 
+PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+PE_RESV0=0x118c520 PE_RESV1=0x0c520 PE_RESV2=0x0c520 
+PE_RESV3=0x0c520 PE_RESV4=0x1 PE_RESV5=0xdeadbeef 
+
+Done!
+[END][data/data2.txt]
+[START][data/data3.txt]
+./csim_pricingEngine.exe data/data3.txt &>> test_pricingEngine_cur_arb_5_9_Log.1.txt
+PricingEngine Test
+------------------
+[0]    1.3e+03 10
+[1]         10 0.66
+[2]       0.66 4.7e+02
+[3]    4.7e+02 0.0053
+[4]     0.0053 0.12
+[5]       0.12 0.00022
+[6]    0.00022 73
+[7]         73 1e+04
+[8]      1e+04 0.00012
+[NotAllZero!][FindCycle!][Profitable!]
+
+ORDER_ENTRY_OPERATION: {0,6,1,1,0.0001,0} {1,0}
+ORDER_ENTRY_OPERATION: {0,6,2,1,0.00012,1} {0,1}
+--
+STATUS: 
+PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x2 
+PE_STRATEGY_NONE=0x0 PE_STRATEGY_PEG=0x0 PE_STRATEGY_LIMIT=0x0 PE_STRATEGY_NA=0x0 
+PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+PE_RESV0=0x2143000 PE_RESV1=0x3000 PE_RESV2=0x3000 
+PE_RESV3=0x3000 PE_RESV4=0x1 PE_RESV5=0xdeadbeef 
+
+Done!
+[END][data/data3.txt]
+[START][data/data4.txt]
+./csim_pricingEngine.exe data/data4.txt &>> test_pricingEngine_cur_arb_5_9_Log.1.txt
+PricingEngine Test
+------------------
+[0]    2.3e+03 0.048
+[1]      0.048 4.5e+03
+[2]    4.5e+03 0.00022
+[3]    0.00022 0.00042
+[4]    0.00042 0.36
+[5]       0.36 0.00012
+[6]    0.00012 1.7
+[7]        1.7 0.012
+[8]      0.012 0.00016
+[NotAllZero!][FindCycle!][NotProfitable!]
+
+ORDER_ENTRY_OPERATION: {0,2,1,1,0.00016,1} {2,3}
+ORDER_ENTRY_OPERATION: {0,5,2,1,81,0} {3,0}
+ORDER_ENTRY_OPERATION: {0,6,3,1,0.00016,1} {0,1}
+ORDER_ENTRY_OPERATION: {0,7,4,1,81,0} {1,4}
+ORDER_ENTRY_OPERATION: {0,8,5,1,81,0} {4,2}
+--
+STATUS: 
+PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x5 
+PE_STRATEGY_NONE=0x0 PE_STRATEGY_PEG=0x0 PE_STRATEGY_LIMIT=0x0 PE_STRATEGY_NA=0x0 
+PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+PE_RESV0=0xf4f96420 PE_RESV1=0x16420 PE_RESV2=0x16420 
+PE_RESV3=0x16420 PE_RESV4=0x1 PE_RESV5=0xdeadbeef 
+
+Done!
+[END][data/data4.txt]
+[START][data/data5.txt]
+./csim_pricingEngine.exe data/data5.txt &>> test_pricingEngine_cur_arb_5_9_Log.1.txt
+PricingEngine Test
+------------------
+[0]       0.84 5.2e+03
+[1]    5.2e+03 1.3e+03
+[2]    1.3e+03 0.032
+[3]      0.032 7.9e+02
+[4]    7.9e+02 8.2
+[5]        8.2 66
+[6]         66 0.083
+[7]      0.083 82
+[8]         82 4.2e+03
+[NotAllZero!][FindCycle!][Profitable!]
+
+ORDER_ENTRY_OPERATION: {0,5,1,1,0.012,0} {3,0}
+ORDER_ENTRY_OPERATION: {0,5,2,1,4.2e+03,1} {0,3}
+ORDER_ENTRY_OPERATION: {0,7,3,1,0.012,0} {1,4}
+ORDER_ENTRY_OPERATION: {0,7,4,1,4.2e+03,1} {4,1}
+--
+STATUS: 
+PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x4 
+PE_STRATEGY_NONE=0x0 PE_STRATEGY_PEG=0x0 PE_STRATEGY_LIMIT=0x0 PE_STRATEGY_NA=0x0 
+PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+PE_RESV0=0x09ccc00 PE_RESV1=0x0cc00 PE_RESV2=0x0cc00 
+PE_RESV3=0x0cc00 PE_RESV4=0x1 PE_RESV5=0xdeadbeef 
+
+Done!
+[END][data/data5.txt]
+[START][data/data6.txt]
+./csim_pricingEngine.exe data/data6.txt &>> test_pricingEngine_cur_arb_5_9_Log.1.txt
+PricingEngine Test
+------------------
+[0]     0.0018 0.05
+[1]       0.05 0.00026
+[2]    0.00026 3.3
+[3]        3.3 3.5e+02
+[4]    3.5e+02 0.0028
+[5]     0.0028 0.054
+[6]      0.054 2e+03
+[7]      2e+03 1.3
+[8]        1.3 0.00019
+[NotAllZero!][FindCycle!][Profitable!]
+
+ORDER_ENTRY_OPERATION: {0,6,1,1,0.79,0} {1,0}
+ORDER_ENTRY_OPERATION: {0,6,2,1,0.00019,1} {0,1}
+--
+STATUS: 
+PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x2 
+PE_STRATEGY_NONE=0x0 PE_STRATEGY_PEG=0x0 PE_STRATEGY_LIMIT=0x0 PE_STRATEGY_NA=0x0 
+PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+PE_RESV0=0x14c3000 PE_RESV1=0x3000 PE_RESV2=0x3000 
+PE_RESV3=0x3000 PE_RESV4=0x1 PE_RESV5=0xdeadbeef 
+
+Done!
+[END][data/data6.txt]
+[START][data/data7.txt]
+./csim_pricingEngine.exe data/data7.txt &>> test_pricingEngine_cur_arb_5_9_Log.1.txt
+PricingEngine Test
+------------------
+[0]     0.0027 31
+[1]         31 1.2
+[2]        1.2 0.011
+[3]      0.011 1.8
+[4]        1.8 0.00018
+[5]    0.00018 1.9e+02
+[6]    1.9e+02 1.5
+[7]        1.5 0.057
+[8]      0.057 0.00044
+[NotAllZero!][FindCycle!][Profitable!]
+
+ORDER_ENTRY_OPERATION: {0,3,1,1,0.00044,1} {2,1}
+ORDER_ENTRY_OPERATION: {0,5,2,1,18,0} {3,0}
+ORDER_ENTRY_OPERATION: {0,5,3,1,0.00044,1} {0,3}
+ORDER_ENTRY_OPERATION: {0,7,4,1,18,0} {1,4}
+ORDER_ENTRY_OPERATION: {0,8,5,1,18,0} {4,2}
+--
+STATUS: 
+PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x5 
+PE_STRATEGY_NONE=0x0 PE_STRATEGY_PEG=0x0 PE_STRATEGY_LIMIT=0x0 PE_STRATEGY_NA=0x0 
+PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+PE_RESV0=0x1954c80 PE_RESV1=0x14c80 PE_RESV2=0x14c80 
+PE_RESV3=0x14c80 PE_RESV4=0x1 PE_RESV5=0xdeadbeef 
+
+Done!
+[END][data/data7.txt]
+[START][data/data8.txt]
+./csim_pricingEngine.exe data/data8.txt &>> test_pricingEngine_cur_arb_5_9_Log.1.txt
+PricingEngine Test
+------------------
+[0]       0.45 0.01
+[1]       0.01 7.9e+02
+[2]    7.9e+02 0.00076
+[3]    0.00076 12
+[4]         12 0.00024
+[5]    0.00024 1.7
+[6]        1.7 0.00021
+[7]    0.00021 4.7e+03
+[8]    4.7e+03 1.7
+[NotAllZero!][FindCycle!][Profitable!]
+
+ORDER_ENTRY_OPERATION: {0,5,1,1,0.00021,0} {3,0}
+ORDER_ENTRY_OPERATION: {0,5,2,1,1.7,1} {0,3}
+ORDER_ENTRY_OPERATION: {0,7,3,1,0.00021,0} {1,4}
+ORDER_ENTRY_OPERATION: {0,7,4,1,1.7,1} {4,1}
+--
+STATUS: 
+PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x4 
+PE_STRATEGY_NONE=0x0 PE_STRATEGY_PEG=0x0 PE_STRATEGY_LIMIT=0x0 PE_STRATEGY_NA=0x0 
+PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+PE_RESV0=0x0ebccc00 PE_RESV1=0x0cc00 PE_RESV2=0x5cb8cc00 
+PE_RESV3=0x0cc00 PE_RESV4=0x1 PE_RESV5=0xdeadbeef 
+
+Done!
+[END][data/data8.txt]
+[START][data/data9.txt]
+./csim_pricingEngine.exe data/data9.txt &>> test_pricingEngine_cur_arb_5_9_Log.1.txt
+PricingEngine Test
+------------------
+[0]     0.0047 0.00017
+[1]    0.00017 0.97
+[2]       0.97 1e+03
+[3]      1e+03 6.1e+03
+[4]    6.1e+03 0.16
+[5]       0.16 0.00034
+[6]    0.00034 39
+[7]         39 4.3e+02
+[8]    4.3e+02 0.15
+[NotAllZero!][FindCycle!][Profitable!]
+
+ORDER_ENTRY_OPERATION: {0,2,1,1,0.15,1} {2,3}
+ORDER_ENTRY_OPERATION: {0,5,2,1,0.0023,0} {3,0}
+ORDER_ENTRY_OPERATION: {0,6,3,1,0.15,1} {0,1}
+ORDER_ENTRY_OPERATION: {0,7,4,1,0.0023,0} {1,4}
+ORDER_ENTRY_OPERATION: {0,8,5,1,0.0023,0} {4,2}
+--
+STATUS: 
+PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x5 
+PE_STRATEGY_NONE=0x0 PE_STRATEGY_PEG=0x0 PE_STRATEGY_LIMIT=0x0 PE_STRATEGY_NA=0x0 
+PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+PE_RESV0=0x1856420 PE_RESV1=0x16420 PE_RESV2=0x3000 
+PE_RESV3=0x16420 PE_RESV4=0x1 PE_RESV5=0xdeadbeef 
+
+Done!
+[END][data/data9.txt]
+[START][data/data.txt]
+./csim_pricingEngine.exe data/data.txt &>> test_pricingEngine_cur_arb_5_9_Log.1.txt
+PricingEngine Test
+------------------
+[0]       0.85 0.85
+[1]       0.94 0.94
+[2]    1.5e+02 1.5e+02
+[3]    1.3e+02 1.3e+02
+[4]    1.1e+02 1.1e+02
+[5]        1.4 1.4
+[6]        1.2 1.2
+[7]        1.1 1.1
+[8]    1.2e+02 1.2e+02
+[NotAllZero!][FindCycle!][NotProfitable!]
+
+ORDER_ENTRY_OPERATION: {0,5,1,1,0.0085,0} {3,0}
+ORDER_ENTRY_OPERATION: {0,5,2,1,1.2e+02,1} {0,3}
+ORDER_ENTRY_OPERATION: {0,8,3,1,0.0085,0} {4,2}
+ORDER_ENTRY_OPERATION: {0,8,4,1,1.2e+02,1} {2,4}
+--
+STATUS: 
+PE_STATUS=0x0 PE_RX_RESP=0x09 PE_PROC_RESP=0x09 PE_TX_OP=0x4 
+PE_STRATEGY_NONE=0x0 PE_STRATEGY_PEG=0x0 PE_STRATEGY_LIMIT=0x0 PE_STRATEGY_NA=0x0 
+PE_RX_EVENT=0x0 PE_DEBUG=0x0 
+PE_RESV0=0xd214cc00 PE_RESV1=0x30c00 PE_RESV2=0x30c00 
+PE_RESV3=0x30c00 PE_RESV4=0x1 PE_RESV5=0xdeadbeef 
+
+Done!
+[END][data/data.txt]
+2022-03-20T03:12:06+08:00
+Experiment finishes

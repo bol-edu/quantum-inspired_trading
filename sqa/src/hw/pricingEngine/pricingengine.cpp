@@ -21,18 +21,114 @@
 #include <iostream>
 
 /**
+ * Some Helper Functions
+ */
+
+void convertFloat2Byte(ap_uint<32> &dst, float src)
+{
+#pragma HLS INLINE
+    union {
+        unsigned int uint_data;
+        fp_t fp_data;
+    } tmp;
+    tmp.fp_data = src;
+    dst = tmp.uint_data;
+}
+
+void convertByte2Float(float &dst, ap_uint<32> src)
+{
+#pragma HLS INLINE
+    union {
+        unsigned int uint_data;
+        fp_t fp_data;
+    } tmp;
+    tmp.uint_data = src.to_uint();
+    dst = tmp.fp_data;
+}
+
+#if !__SYNTHESIS__
+bool PricingEngine::checkExchCycle(spin_t spin[NUM_SPIN])
+{
+    // Check for exchange rate cycle
+    int lhs[NUM_CURRENCIES] = {0};
+    int rhs[NUM_CURRENCIES] = {0};
+    for (int i = 0; i < PHYSICAL_BITS; i++) {
+        if (spin[i] == 1) {
+            lhs[exch_index2id[i][0]] += 1;
+            rhs[exch_index2id[i][1]] += 1;
+        }
+    }
+
+    bool hasCycle = 1;
+    for (int i = 0; i < NUM_CURRENCIES; i++) {
+        if (lhs[i] != rhs[i]) {
+            hasCycle = 0;
+            break;
+        }
+    }
+
+    return hasCycle;
+}
+
+bool PricingEngine::checkProfitable(spin_t spin[NUM_SPIN])
+{
+    float logged_rate = 0;
+    for (int i = 0; i < PHYSICAL_BITS; i++) {
+        if (spin[i] == 1) {
+            logged_rate += exch_logged_rates[i];
+        }
+    }
+    return (logged_rate > 0);
+}
+
+bool PricingEngine::checkIsAllZero(spin_t spin[NUM_SPIN])
+{
+    for (int i = 0; i < PHYSICAL_BITS; i++) {
+        if (spin[i] == 1) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void PricingEngine::checkSolution(spin_t spin[NUM_SPIN])
+{
+    if (checkIsAllZero(spin)) {
+        std::cout << "[AllZero!]";
+    } else {
+        std::cout << "[NotAllZero!]";
+    }
+
+    if (checkExchCycle(spin)) {
+        std::cout << "[FindCycle!]";
+    } else {
+        std::cout << "[NoCycle!]";
+    }
+
+    if (checkProfitable(spin)) {
+        std::cout << "[Profitable!]";
+    } else {
+        std::cout << "[NotProfitable!]";
+    }
+
+    std::cout << std::endl;
+    std::cout << std::endl;
+}
+#endif
+
+/**
  * PricingEngine Core
  */
 
-void PricingEngine::responsePull(ap_uint<32> &                  regRxResponse,
+void PricingEngine::responsePull(ap_uint<32> &regRxResponse,
                                  orderBookResponseStreamPack_t &responseStreamPack,
-                                 orderBookResponseStream_t &    responseStream)
+                                 orderBookResponseStream_t &responseStream)
 {
 #pragma HLS PIPELINE II = 1 style = flp
 
-    mmInterface             intf;
+    mmInterface intf;
     orderBookResponsePack_t responsePack;
-    orderBookResponse_t     response;
+    orderBookResponse_t response;
 
     static ap_uint<32> countRxResponse = 0;
 
@@ -57,53 +153,47 @@ void PricingEngine::pricingProcess(ap_uint<32> &regStrategyControl, ap_uint<32> 
                                    orderBookResponseStream_t &responseStream,
                                    orderEntryOperationStream_t &operationStream)
 {
-// #pragma HLS PIPELINE II = 1 style = flp
+    // #pragma HLS PIPELINE II = 1 style = flp
 
-    mmInterface           intf;
-    orderBookResponse_t   response;
+    mmInterface intf;
+    orderBookResponse_t response;
     orderEntryOperation_t operation;
-    ap_uint<8>            symbolIndex       = 0;
-    ap_uint<8>            strategySelect    = 0;
-    ap_uint<8>            thresholdEnable   = 0;
-    ap_uint<8>            thresholdPosition = 0;
-    bool                  orderExecute      = false;
+    ap_uint<8> symbolIndex = 0;
+    ap_uint<8> strategySelect = 0;
+    ap_uint<8> thresholdEnable = 0;
+    ap_uint<8> thresholdPosition = 0;
+    bool orderExecute = false;
 
-    static ap_uint<32> orderId              = 0;
+    static ap_uint<32> orderId = 0;
     static ap_uint<32> countProcessResponse = 0;
-    static ap_uint<32> countStrategyNone    = 0;
-    static ap_uint<32> countStrategyPeg     = 0;
-    static ap_uint<32> countStrategyLimit   = 0;
+    static ap_uint<32> countStrategyNone = 0;
+    static ap_uint<32> countStrategyPeg = 0;
+    static ap_uint<32> countStrategyLimit = 0;
     static ap_uint<32> countStrategyUnknown = 0;
 
     // Start of QUBO formulation parameters
-    const float M1 = 50;
-    const float M2 = 25;
+    const float M1 = 10;  // 50;
+    const float M2 = 10;  // 25;
 
     // For SQA ONLY
-    static fp_t   J[NUM_SPIN][NUM_SPIN] = {0};
-    static fp_t   h[NUM_SPIN]           = {0};
+    static fp_t J[NUM_SPIN][NUM_SPIN] = {0};
+    static fp_t h[NUM_SPIN] = {0};
     static spin_t spins[NUM_SPIN];
-
 #pragma HLS ARRAY_PARTITION dim = 1 type = cyclic factor = 4 variable = J
 #pragma HLS ARRAY_RESHAPE dim = 2 type = complete variable = J
 #pragma HLS ARRAY_PARTITION dim = 1 type = complete variable = h
 #pragma HLS ARRAY_PARTITION dim = 1 type = complete variable = spins
 
-    union {
-        unsigned int uint_data;
-        fp_t fp_data;
-    } default_gamma_start, default_T;
-    default_gamma_start.fp_data = 5.0f;
-    default_T.fp_data = 0.5f;
-    if (regControl.reserved04 == 0) regControl.reserved04 = 0x40a00000; // 5.0f
-    if (regControl.reserved05 == 0) regControl.reserved05 = 0x3f000000; // 0.5f
+    // Set Default Argument
+    if (regControl.reserved04 == 0) convertFloat2Byte(regControl.reserved04, 5.0f);   // Gamma
+    if (regControl.reserved05 == 0) convertFloat2Byte(regControl.reserved05, 0.05f);  // T
 
     // Start of original AAT code
     if (!responseStream.empty()) {
         response = responseStream.read();
         ++countProcessResponse;
 
-        symbolIndex     = response.symbolIndex;
+        symbolIndex = response.symbolIndex;
         thresholdEnable = regStrategies[symbolIndex].enable.range(7, 0);
 
         // global strategy select override (across all symbols) for debug
@@ -137,61 +227,66 @@ void PricingEngine::pricingProcess(ap_uint<32> &regStrategyControl, ap_uint<32> 
         // }
         // end of original aat code
 
-        // *2 => bid
-        // *2+1 => ask
-        int exch_id = ((int)response.symbolIndex) * 2;
-
         // NOTE: input data originally is uint and we static_cast it to float
         unsigned int bidprice = response.bidPrice.range(31, 0);
         unsigned int askprice = response.askPrice.range(31, 0);
+        int exch_id = ((int)response.symbolIndex) * 2;
         runERM(exch_id, log(reinterpret_cast<float &>(bidprice)), M1, M2, J, h);
         runERM(exch_id + 1, log(reinterpret_cast<float &>(askprice)), M1, M2, J, h);
 
-        // RUN SQA
-        runSQA(spins, J, h, regStatus, regControl);
+        // Make sure there is no empty price fields
+        if (this->exch_logged_rates[PHYSICAL_BITS - 1] != 0) {
+            // RUN SQA
+            runSQA(spins, J, h, regStatus, regControl);
 
-        // Write out Operations based on SQA result
-        for (unsigned int i = 0; i < PHYSICAL_BITS; i++) {
-            if (spins[i]) {
-                operation.orderId     = ++orderId;
-                operation.timestamp   = response.timestamp;
-                operation.opCode      = ORDERENTRY_ADD;
-                operation.quantity    = 1;  // change to 1
-                operation.symbolIndex = i / 2;
-                if ((i & 1) == 1) {  // direction ask
-                    operation.price     = response.askPrice.range(31, 0);
-                    operation.direction = ORDER_ASK;
-                } else {  // direction bid
-                    operation.price     = (response.bidPrice.range(31, 0));
-                    operation.direction = ORDER_BID;
+#if !__SYNTHESIS__ && CHECK_SOLUTION
+            // Check Profitable or Not
+            checkSolution(spins);
+#endif
+
+            // Write out Operations based on SQA result
+            for (unsigned int i = 0; i < PHYSICAL_BITS; i++) {
+                if (spins[i]) {
+                    operation.orderId = ++orderId;
+                    operation.timestamp = response.timestamp;
+                    operation.opCode = ORDERENTRY_ADD;
+                    operation.quantity = 1;  // change to 1
+                    operation.symbolIndex = i / 2;
+                    if ((i & 1) == 1) {  // direction ask
+                        operation.price = response.askPrice.range(31, 0);
+                        operation.direction = ORDER_ASK;
+                    } else {  // direction bid
+                        operation.price = (response.bidPrice.range(31, 0));
+                        operation.direction = ORDER_BID;
+                    }
+                    operationStream.write(operation);
                 }
-                operationStream.write(operation);
             }
-        }
 
-        // if (orderExecute) {
-        //     operation.orderId = ++orderId;
-        //     operationStream.write(operation);
-        // }
+            // if (orderExecute) {
+            //     operation.orderId = ++orderId;
+            //     operationStream.write(operation);
+            // }
+        }
     }
 
     regProcessResponse = countProcessResponse;
-    regStrategyNone    = countStrategyNone;
-    regStrategyPeg     = countStrategyPeg;
-    regStrategyLimit   = countStrategyLimit;
+    regStrategyNone = countStrategyNone;
+    regStrategyPeg = countStrategyPeg;
+    regStrategyLimit = countStrategyLimit;
     regStrategyUnknown = countStrategyUnknown;
 
     return;
 }
 
 bool PricingEngine::pricingStrategyPeg(ap_uint<8> thresholdEnable, ap_uint<32> thresholdPosition,
-                                       orderBookResponse_t &  response,
+                                       orderBookResponse_t &response,
                                        orderEntryOperation_t &operation)
 {
 #pragma HLS PIPELINE II = 1 style = flp
 
-    ap_uint<8> symbolIndex  = 0;
-    bool       executeOrder = false;
+    ap_uint<8> symbolIndex = 0;
+    bool executeOrder = false;
 
     symbolIndex = response.symbolIndex;
 
@@ -201,13 +296,13 @@ bool PricingEngine::pricingStrategyPeg(ap_uint<8> thresholdEnable, ap_uint<32> t
     {
         if (cache[symbolIndex].bidPrice != response.bidPrice.range(31, 0)) {
             // create an order, current best bid +100
-            operation.timestamp   = response.timestamp;
-            operation.opCode      = ORDERENTRY_ADD;
+            operation.timestamp = response.timestamp;
+            operation.opCode = ORDERENTRY_ADD;
             operation.symbolIndex = symbolIndex;
-            operation.quantity    = 800;
-            operation.price       = (response.bidPrice.range(31, 0) + 100);
-            operation.direction   = ORDER_BID;
-            executeOrder          = true;
+            operation.quantity = 800;
+            operation.price = (response.bidPrice.range(31, 0) + 100);
+            operation.direction = ORDER_BID;
+            executeOrder = true;
         }
     }
 
@@ -215,19 +310,19 @@ bool PricingEngine::pricingStrategyPeg(ap_uint<8> thresholdEnable, ap_uint<32> t
     // detected)
     cache[symbolIndex].bidPrice = response.bidPrice.range(31, 0);
     cache[symbolIndex].askPrice = response.askPrice.range(31, 0);
-    cache[symbolIndex].valid    = true;
+    cache[symbolIndex].valid = true;
 
     return executeOrder;
 }
 
 bool PricingEngine::pricingStrategyLimit(ap_uint<8> thresholdEnable, ap_uint<32> thresholdPosition,
-                                         orderBookResponse_t &  response,
+                                         orderBookResponse_t &response,
                                          orderEntryOperation_t &operation)
 {
 #pragma HLS PIPELINE II = 1 style = flp
 
-    ap_uint<8> symbolIndex  = 0;
-    bool       executeOrder = false;
+    ap_uint<8> symbolIndex = 0;
+    bool executeOrder = false;
 
     symbolIndex = response.symbolIndex;
 
@@ -237,13 +332,13 @@ bool PricingEngine::pricingStrategyLimit(ap_uint<8> thresholdEnable, ap_uint<32>
     {
         if (cache[symbolIndex].bidPrice != response.bidPrice.range(31, 0)) {
             // create an order, current best bid +50
-            operation.timestamp   = response.timestamp;
-            operation.opCode      = ORDERENTRY_ADD;
+            operation.timestamp = response.timestamp;
+            operation.opCode = ORDERENTRY_ADD;
             operation.symbolIndex = symbolIndex;
-            operation.quantity    = 800;
-            operation.price       = (response.bidPrice.range(31, 0) + 50);
-            operation.direction   = ORDER_BID;
-            executeOrder          = true;
+            operation.quantity = 800;
+            operation.price = (response.bidPrice.range(31, 0) + 50);
+            operation.direction = ORDER_BID;
+            executeOrder = true;
         }
     }
 
@@ -251,20 +346,20 @@ bool PricingEngine::pricingStrategyLimit(ap_uint<8> thresholdEnable, ap_uint<32>
     // detected)
     cache[symbolIndex].bidPrice = response.bidPrice.range(31, 0);
     cache[symbolIndex].askPrice = response.askPrice.range(31, 0);
-    cache[symbolIndex].valid    = true;
+    cache[symbolIndex].valid = true;
 
     return executeOrder;
 }
 
 void PricingEngine::operationPush(ap_uint<32> &regCaptureControl, ap_uint<32> &regTxOperation,
-                                  ap_uint<1024> &                  regCaptureBuffer,
-                                  orderEntryOperationStream_t &    operationStream,
+                                  ap_uint<1024> &regCaptureBuffer,
+                                  orderEntryOperationStream_t &operationStream,
                                   orderEntryOperationStreamPack_t &operationStreamPack)
 {
 #pragma HLS PIPELINE II = 1 style = flp
 
-    mmInterface               intf;
-    orderEntryOperation_t     operation;
+    mmInterface intf;
+    orderEntryOperation_t operation;
     orderEntryOperationPack_t operationPack;
 
     static ap_uint<32> countTxOperation = 0;
@@ -280,7 +375,9 @@ void PricingEngine::operationPush(ap_uint<32> &regCaptureControl, ap_uint<32> &r
 
         // check if host has capture freeze control enabled before updating
         // TODO: filter capture by user supplied symbol
-        if (0 == (0x80000000 & regCaptureControl)) { regCaptureBuffer = operationPack.data; }
+        if (0 == (0x80000000 & regCaptureControl)) {
+            regCaptureBuffer = operationPack.data;
+        }
     }
 
     regTxOperation = countTxOperation;
@@ -288,7 +385,7 @@ void PricingEngine::operationPush(ap_uint<32> &regCaptureControl, ap_uint<32> &r
     return;
 }
 
-void PricingEngine::eventHandler(ap_uint<32> &                    regRxEvent,
+void PricingEngine::eventHandler(ap_uint<32> &regRxEvent,
                                  clockTickGeneratorEventStream_t &eventStream)
 {
 #pragma HLS PIPELINE II = 1 style = flp
@@ -324,9 +421,6 @@ void PricingEngine::eventHandler(ap_uint<32> &                    regRxEvent,
 void PricingEngine::runERM(int index, float logged_price, float M1, float M2,
                            float J[NUM_SPIN][NUM_SPIN], float h[NUM_SPIN])
 {
-    static float exch_logged_rates[NUM_SPIN] = {0};
-    static bool  init_constraint             = false;
-
     if (!init_constraint) {
         for (int k = 0; k < NUM_CURRENCIES; k++) {
             // penalty 1 without diagnal part (+1 at j-for loop)
@@ -345,8 +439,8 @@ void PricingEngine::runERM(int index, float logged_price, float M1, float M2,
                     float v2j = (k == exch_index2id[j][0]);
                     // outer product
                     // also convert to ising model by divided by 4
-                    float pen1           = v1i * v1j * M1 / 4;
-                    float pen2           = v2i * v2j * M2 / 4;
+                    float pen1 = v1i * v1j * M1 / 4;
+                    float pen2 = v2i * v2j * M2 / 4;
                     float pen1_plus_pen2 = pen1 + pen2;
                     J[i][j] += pen1_plus_pen2;
                     J[j][i] += pen1_plus_pen2;
@@ -397,8 +491,9 @@ Y88b.Y8b88P 888   "   888 Y88b  d88P
  * Run Multiple Runs of QMC
  * Return spins of first trotter
  */
-void PricingEngine::runSQA(spin_t spins[NUM_SPIN], float J[NUM_SPIN][NUM_SPIN], float h[NUM_SPIN], 
-                           pricingEngineRegStatus_t &regStatus, pricingEngineRegControl_t &regControl)
+void PricingEngine::runSQA(spin_t spins[NUM_SPIN], float J[NUM_SPIN][NUM_SPIN], float h[NUM_SPIN],
+                           pricingEngineRegStatus_t &regStatus,
+                           pricingEngineRegControl_t &regControl)
 {
     // Internal Trotters
     static spin_t trotters[NUM_TROT][NUM_SPIN];
@@ -406,33 +501,23 @@ void PricingEngine::runSQA(spin_t spins[NUM_SPIN], float J[NUM_SPIN][NUM_SPIN], 
 #pragma HLS ARRAY_PARTITION dim = 1 type = complete variable = trotters
 #pragma HLS ARRAY_PARTITION dim = 2 type = complete variable = trotters
 
-#if !__SYNTHESIS__
-    for (int m = 0; m < NUM_TROT; m++){
+    // Reset to All 1
+    for (int m = 0; m < NUM_TROT; m++) {
         for (int s = 0; s < PHYSICAL_BITS; s++) {
+#pragma HLS UNROLL
             trotters[m][s] = 1;
         }
     }
-#endif
 
-    // Convert Parameter from Int to Float
-    union {
-        unsigned int uint_data;
-        fp_t fp_data;
-    } tmp_gamma_start, tmp_T;
-
-    tmp_gamma_start.uint_data = regControl.reserved04.to_uint();
-    tmp_T.uint_data = regControl.reserved05.to_uint();
-    
     // Iteration Parameters
-    const int  iter        = 10;     // default 500
-    
-    fp_t gamma_start = tmp_gamma_start.fp_data;  // default 3.0f
-    fp_t T           = tmp_T.fp_data;  // default 0.3f
-    if (T == 0.0f) T = 1.0f;
+    const int iter = 10;  // default 500
+    fp_t gamma_start, T, beta;
+    convertByte2Float(gamma_start, regControl.reserved04);
+    convertByte2Float(T, regControl.reserved05);
+    beta = 1.0f / T;
 
-    fp_t beta  = 1.0f / T;
-
-#if !__SYNTHESIS__
+#if !__SYNTHESIS__ && DEBUG
+    std::cout << std::endl;
     std::cout << "gamma_start   = " << gamma_start << std::endl;
     std::cout << "T             = " << T << std::endl;
     std::cout << "beta          = " << beta << std::endl;
@@ -440,36 +525,47 @@ void PricingEngine::runSQA(spin_t spins[NUM_SPIN], float J[NUM_SPIN][NUM_SPIN], 
 
     // Iteration
     for (int i = 0; i < iter; i++) {
-        // Force pipeline off
 #pragma HLS PIPELINE off
 
         // Get Jperp
-        fp_t gamma = gamma_start * (1.0f - ((fp_t)i / (fp_t)iter));
+        fp_t gamma = gamma_start;
         fp_t Jperp = -0.5 * T * log(tanh(gamma / (fp_t)NUM_TROT / T));
+        gamma_start *= 0.25;  // Use geometric instead of Arithmatic
 
         // Run QMC
         this->runQMC(trotters, J, h, Jperp, beta);
-
-        // Print messages about each iteration
-#if !__SYNTHESIS__
-        std::cout << "Iter" << i << ": " << std::endl;
-        for (int m = 0; m < NUM_TROT; m++) {
-            std::cout << "T" << m << ": ";
-            for (int s = 0; s < PHYSICAL_BITS; s++) { std::cout << trotters[m][s] << " "; }
-            std::cout << std::endl;
-        }
-#endif
     }
 
+#if !__SYNTHESIS__ && DEBUG
+    std::cout << "final gamma  = " << gamma_start << std::endl;
+    std::cout << std::endl;
+#endif
+
+#if !__SYNTHESIS__ && DEBUG
+    std::cout << "Final:" << std::endl;
+    for (int m = 0; m < NUM_TROT; m++) {
+        for (int s = 0; s < PHYSICAL_BITS; s++) {
+            std::cout << trotters[m][s];
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+#endif
+
     // Write back the first trotter
-    for (int i = 0; i < PHYSICAL_BITS; i++) { spins[i] = trotters[1][i]; }
+    for (int i = 0; i < PHYSICAL_BITS; i++) {
+        spins[i] = trotters[1][i];
+    }
 
     // Debug Info
-    for (int i = 0; i < PHYSICAL_BITS; i++) { regStatus.reserved10[i] = trotters[0][i]; }
-    for (int i = 0; i < PHYSICAL_BITS; i++) { regStatus.reserved11[i] = trotters[1][i]; }
-    for (int i = 0; i < PHYSICAL_BITS; i++) { regStatus.reserved12[i] = trotters[2][i]; }
-    for (int i = 0; i < PHYSICAL_BITS; i++) { regStatus.reserved13[i] = trotters[3][i]; }
+    for (int i = 0; i < PHYSICAL_BITS; i++) {
+        regStatus.reserved10[i] = trotters[0][i];
+        regStatus.reserved11[i] = trotters[1][i];
+        regStatus.reserved12[i] = trotters[2][i];
+        regStatus.reserved13[i] = trotters[3][i];
+    }
 
+    // More Debug Info
     run_count++;
     regStatus.reserved14 = run_count;
     regStatus.reserved15 = 0xdeadbeef;
@@ -484,14 +580,14 @@ inline float Negate(float input)
 {
 #pragma HLS INLINE
     union {
-        float    fp_data;
+        float fp_data;
         uint32_t int_data;
     } converter;
 
     converter.fp_data = input;
 
     ap_uint<32> tmp = converter.int_data;
-    tmp[31]         = (~tmp[31]);
+    tmp[31] = (~tmp[31]);
 
     converter.int_data = tmp;
 
@@ -572,12 +668,14 @@ void UpdateOfTrottersFinal(const u32_t stage, const info_t info, const state_t s
     bool inside = (stage >= info.m && stage < NUM_SPIN + info.m);
     if (inside) {
         // Cache
-        fp_t   de_tmp    = de;
+        fp_t de_tmp = de;
         spin_t this_spin = trotters_local[state.i_spin];
 
         // Add de_qefct
         bool same_dir = (state.up_spin == state.down_spin);
-        if (same_dir) { de_tmp += (state.up_spin) ? info.neg_de_qefct : info.de_qefct; }
+        if (same_dir) {
+            de_tmp += (state.up_spin) ? info.neg_de_qefct : info.de_qefct;
+        }
 
         // Times 2.0f then Add h_local
         de_tmp *= 2.0f;
@@ -588,7 +686,9 @@ void UpdateOfTrottersFinal(const u32_t stage, const info_t info, const state_t s
          * EqualTo:          spin(i) * deTmp > lrn / Beta / 2
          */
         // Times this_spin
-        if (!this_spin) { de_tmp = Negate(de_tmp); }
+        if (!this_spin) {
+            de_tmp = Negate(de_tmp);
+        }
 
         // Flip and Return
         if ((de_tmp) > state.log_rand_local / info.beta * 0.5f) {
@@ -609,8 +709,8 @@ void PricingEngine::runQMC(spin_t trotters[NUM_TROT][NUM_SPIN], fp_t jcoup[NUM_S
 
     // input state and de and fix info of trotter units
     state_t state[NUM_TROT];
-    fp_t    de[NUM_TROT];
-    info_t  info[NUM_TROT];
+    fp_t de[NUM_TROT];
+    info_t info[NUM_TROT];
 #pragma HLS ARRAY_PARTITION dim = 1 type = complete variable = state
 #pragma HLS ARRAY_PARTITION dim = 1 type = complete variable = de
 #pragma HLS ARRAY_PARTITION dim = 1 type = complete variable = info
@@ -621,18 +721,18 @@ void PricingEngine::runQMC(spin_t trotters[NUM_TROT][NUM_SPIN], fp_t jcoup[NUM_S
 #pragma HLS ARRAY_RESHAPE dim = 2 type = complete variable = jcoup_local
 
     // qefct-Related Energy
-    const fp_t de_qefct     = jperp * ((fp_t)NUM_TROT);
+    const fp_t de_qefct = jperp * ((fp_t)NUM_TROT);
     const fp_t neg_de_qefct = Negate(de_qefct);
 
     // Initialize infos
 INIT_INFO:
     for (u32_t m = 0; m < NUM_TROT; m++) {
 #pragma HLS UNROLL
-        info[m].m            = m;
-        info[m].beta         = beta;
-        info[m].de_qefct     = de_qefct;
+        info[m].m = m;
+        info[m].beta = beta;
+        info[m].de_qefct = de_qefct;
         info[m].neg_de_qefct = neg_de_qefct;
-        info[m].seed         = m + 1;
+        info[m].seed = m + 1;
     }
 
     // Prefetch jcoup, h, and log_rand
@@ -651,7 +751,7 @@ PREFETCH_JCOUP:
     }
 
     // Prefetch h and lr
-    h_prefetch[0]        = h[0];
+    h_prefetch[0] = h[0];
     log_rand_prefetch[0] = this->generateRandomNumber(info[0].seed);
 
     // Loop of stage
@@ -665,13 +765,13 @@ LOOP_STAGE:
         for (u32_t m = 0; m < NUM_TROT; m++) {
 #pragma HLS UNROLL
             u32_t ofst = ((stage + NUM_SPIN - m) & (NUM_SPIN - 1));
-            u32_t up   = (m == 0) ? (NUM_TROT - 1) : (m - 1);
+            u32_t up = (m == 0) ? (NUM_TROT - 1) : (m - 1);
             u32_t down = (m == NUM_TROT - 1) ? (0) : (m + 1);
 
-            state[m].i_spin         = (ofst & (NUM_SPIN - 1));
-            state[m].up_spin        = trotters[up][state[m].i_spin];
-            state[m].down_spin      = trotters[down][state[m].i_spin];
-            state[m].h_local        = h_prefetch[m];
+            state[m].i_spin = (ofst & (NUM_SPIN - 1));
+            state[m].up_spin = trotters[up][state[m].i_spin];
+            state[m].down_spin = trotters[down][state[m].i_spin];
+            state[m].h_local = h_prefetch[m];
             state[m].log_rand_local = log_rand_prefetch[m];
         }
 
@@ -679,10 +779,10 @@ LOOP_STAGE:
     READ_H:
         for (u32_t m = 0; m < NUM_TROT; m++) {
 #pragma HLS UNROLL
-            u32_t ofst           = (((stage + 1) + NUM_SPIN - m) & (NUM_SPIN - 1));
-            h_prefetch[m]        = h[ofst];
+            u32_t ofst = (((stage + 1) + NUM_SPIN - m) & (NUM_SPIN - 1));
+            h_prefetch[m] = h[ofst];
         }
-    
+
     GEN_RAND:
         for (u32_t m = 0; m < NUM_TROT; m++) {
 #pragma HLS UNROLL
@@ -729,17 +829,19 @@ LOOP_STAGE:
  */
 float PricingEngine::generateRandomNumber(int &seed)
 {
-#pragma HLS INLINE off
+#pragma HLS INLINE
 
     // Seed can't be zero
     const int i4_huge = 2147483647;
-    int       k;
-    float     r;
+    int k;
+    float r;
 
-    k    = seed / 127773;
+    k = seed / 127773;
     seed = 16807 * (seed - k * 127773) - k * 2836;
 
-    if (seed < 0) { seed = seed + i4_huge; }
+    if (seed < 0) {
+        seed = seed + i4_huge;
+    }
 
     r = (float)(seed)*4.656612875E-10;
 
