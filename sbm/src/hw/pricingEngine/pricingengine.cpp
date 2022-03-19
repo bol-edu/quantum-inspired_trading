@@ -217,8 +217,9 @@ void PricingEngine::pricingProcess(
         ERM(exch_id, log(reinterpret_cast<float &>(bidprice)), M1, M2, J, exch_logged_rates, regERMInitConstr);
         ERM(exch_id + 1, log(reinterpret_cast<float &>(askprice)), M1, M2, J, exch_logged_rates, regERMInitConstr);
 
+        // Run SBM if there are no empty price fields
         if (exch_logged_rates[physical_bits - 2]) {
-#ifdef __SYNTHESIS__
+#ifndef __SYNTHESIS__
             // Coefficient check
             checkSBMCoeff<float>(J, c0);
 
@@ -272,46 +273,44 @@ void PricingEngine::pricingProcess(
             }
             std::cout << "End of brute-force calculation\n\n";
 #endif
-        // RUN SBM
+            // RUN SBM
 #ifndef __SYNTHESIS__
-        std::cout << "Start SBM execution\n";
+            std::cout << "Start SBM execution\n";
 #endif
-        SBM(J, spin_y, spin_x, steps, dt, c0, best_energy, best_step, best_spin, regSBMExecStatus);
+            SBM(J, spin_y, spin_x, steps, dt, c0, best_energy, best_step, best_spin, regSBMExecStatus);
 
 #ifndef __SYNTHESIS__
         calc_energy(best_spin, J, best_energy);
 #endif
 
-        // In this problem, if the SBM ancilla spin is -1,
-        // we flip all the other spins
-        if (best_spin[physical_bits - 1] == 0) {
-            ++countAncillaFlip;
-            for (unsigned int i = 0; i < physical_bits - 1; i++) {
-                best_spin[i] = 1 - best_spin[i];
+            // In this problem, if the SBM ancilla spin is -1,
+            // we flip all the other spins
+            if (best_spin[physical_bits - 1] == 0) {
+                ++countAncillaFlip;
+                for (unsigned int i = 0; i < physical_bits - 1; i++) {
+                    best_spin[i] = 1 - best_spin[i];
+                }
             }
-        }
 
-        regStrategyUnknown = 0;
-        // Should assert(physical_bits <= 32);
-        // but HLS can't assert
-        for (unsigned int i = 0; i < physical_bits; i++) {
-            if (best_spin[i]) {
-                regStrategyUnknown.invert(i);
+            regStrategyUnknown = 0;
+            // Should assert(physical_bits <= 32);
+            // but HLS can't assert
+            for (unsigned int i = 0; i < physical_bits; i++) {
+                if (best_spin[i]) {
+                    regStrategyUnknown.invert(i);
+                }
             }
-        }
 
 #ifndef __SYNTHESIS__
-        std::cout << "Final energy: " << best_energy << "\n";
-        std::cout << "Final spin  : ";
-        print_vec<bool, physical_bits>(best_spin, physical_bits-1, std::cout);
+            std::cout << "Final energy: " << best_energy << "\n";
+            std::cout << "Final spin  : ";
+            print_vec<bool, physical_bits>(best_spin, physical_bits-1, std::cout);
 
-        checkSBMSolution(best_spin, exch_logged_rates);
-        std::cout << "End of SBM execution\n\n";
+            checkSBMSolution(best_spin, exch_logged_rates);
+            std::cout << "End of SBM execution\n\n";
 #endif
-        }
 
         // Write orderResponse if there are no empty price fields
-        if (exch_logged_rates[physical_bits - 2]) {
             for (unsigned int i = 0; i < physical_bits - 1; i++) {
                 if (best_spin[i] > 0) {
                     operation.orderId = ++orderId;
