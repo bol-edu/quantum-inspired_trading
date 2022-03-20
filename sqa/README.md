@@ -66,7 +66,7 @@ The following experiments were conducted to demonstrate the solution quality of 
 
 ```g++ -I./test/include -I./ test/include/aat_interfaces.cpp test/tb_pricingengine.cpp pricingengine.cpp pricingengine_top.cpp -o tb_pricingEngine```
 
-If you have installed the entire Vitis software, you can `Build pricingEngine only` and get the executable from `test/prj/sol/csim/build/csim.exe`.
+If you have installed the entire Vitis software, you can `Build pricingEngine only` and get the executable `test/prj/sol/csim/build/csim.exe`.
 
 The following table shows the SQA-CAM can yield about 75% profitable solutions in only 10 iterations. The spin `1` denotes that the currency exchange order should be placed, and `0` otherwise. Execution time is not the main point of interest, so it is not recorded.
 
@@ -76,3 +76,20 @@ The following table shows the SQA-CAM can yield about 75% profitable solutions i
 | Has cycle, Not profitable           | 1181                       | 1182                       |
 | No  cycle                           | 1376                       | 1376                       |
 
+### Experimental Setup
+
+* Processor: Intel(R) Core(TM) i7-11700 @ 2.50GHz
+* Operating System: Ubuntu 20.04
+* Compiler: gcc version 9.4.0
+* Test data generation:
+  * `pcap_gen.py` (executed with Python 3.8.5)
+  * 11 cases: `xilinx-acc-2021_submission/test_toolkit/arb_data_gen.sh`
+  * 10000 cases: `xilinx-acc-2021_submission/test_toolkit/arb_data_gen10000.sh`
+* Running test scripts:
+  * The scripts and experiment logs are located under `xilinx-acc-2021_submission/sqa/src/hw/pricingEngine/exp`.
+  * `test_pricingEngine_arb_10000_10.sh` runs the executable with 10000 different cases.
+    * Run SQA with 10 iterations.
+    * It will generate an experiment log named `test_pricingEngine_cur_arb_5_9_Log.10000.10.log`
+  * `test_pricingEngine_arb_10000_25.sh` runs the executable with 10000 different cases.
+    * Run SQA with 25 iterations.
+    * It will generate an experiment log named `test_pricingEngine_cur_arb_5_9_Log.10000.25.log`

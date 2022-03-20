@@ -1,10 +1,10 @@
 #!/bin/bash
 experiment_name="test_pricingEngine"
-program_name="./csim_pricingEngine.exe"
+program_name="./csim_pricingEngine_10.exe"
 benchmark_folder="data"
 # Benchmark set examples: "inst_4x4_5_*" or "*_5_0"
 benchmark_set_name="cur_arb_5_9"
-log_file="${experiment_name}_${benchmark_set_name}_Log.1.txt"
+log_file="${experiment_name}_${benchmark_set_name}_Log.1.log"
 
 date -Iseconds >> ${log_file}
 echo "Experiment starts" >> ${log_file}
