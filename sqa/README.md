@@ -75,3 +75,4 @@ The following table shows the SQA-CAM can yield about 75% profitable solutions i
 | Profitable                          | 7443                       | 7442                       |
 | Has cycle, Not profitable           | 1181                       | 1182                       |
 | No  cycle                           | 1376                       | 1376                       |
+
