@@ -1,0 +1,20 @@
+# OrderBookResponse
+# The only differences between responses
+# are `bidPrice` and `askPrice`.
+# `symbolIndex` should be different, but
+# in our testbench they are set to dummy numbers.
+# Make sure '#' at the beginning of each line
+# of the comment is followed by at least one space.
+# Remember to add new line at the end of the file
+# and make sure no empty lines in the middle of the file.
+# `responseCount` is the integer in first line.
+9
+0.002686724028070247 30.985063331156724
+30.985063331156724 1.176021598214878
+1.176021598214878 0.01092860063402742
+0.01092860063402742 1.7876407241428618
+1.7876407241428618 0.00017516258306135945
+0.00017516258306135945 185.81924879116178
+185.81924879116178 1.4861273203240521
+1.4861273203240521 0.05691754921957771
+0.05691754921957771 0.00043523809085631684

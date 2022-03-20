@@ -66,7 +66,7 @@ The following experiments were conducted to demonstrate the solution quality of 
 
 ```g++ -I./test/include -I./ test/include/aat_interfaces.cpp test/tb_pricingengine.cpp pricingengine.cpp pricingengine_top.cpp -o tb_pricingEngine```
 
-If you have installed the entire Vitis software, you can `Build pricingEngine only` and get the executable from `test/prj/sol/csim/build/csim.exe`.
+If you have installed the entire Vitis software, you can `Build pricingEngine only` and get the executable `test/prj/sol/csim/build/csim.exe`.
 
 The following table shows the SQA-CAM can yield about 75% profitable solutions in only 10 iterations. The spin `1` denotes that the currency exchange order should be placed, and `0` otherwise. Execution time is not the main point of interest, so it is not recorded.
 
