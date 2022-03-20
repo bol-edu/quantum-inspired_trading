@@ -22,7 +22,7 @@ There are two factors to support parallel reduction. One is to place multiple fl
 
 #### Cache Mechanism
 
-Since the required memory space of coefficients is too large, it's not reasonable to put all the data into the tiny on-chip SRAM. Thus, we need a cache to store these data. The original algorithm requires scanning all the coefficients multiple times, which produces a lot of cache miss.
+Since the required memory space of coefficients is too large, it's not reasonable to put all the data into the tiny on-chip SRAM. Thus, we need a cache to store these data. The original algorithm requires scanning all the coefficients multiple times, which produces a lot of cache misses.
 
 Hopefully, the new processing schedule makes the reuse of one coefficient available. All the coefficients only need to be fetched once. Our cache memory is composed of multiple separated rows. Each row is connected to one processing engine only. A new-coming element will first be stored at the first row(row[0]) and sent to the first PE(PE[0]). Then it will be shifted to the next row(row[1]) and consumed by PE[1]. Following this rule, it ends up will be evicted after the processing of the last PE. The free cache slot will serve for the next incoming coefficient.
 
@@ -40,3 +40,38 @@ Xilinx's HLS compiler negates a single-precision floating-point number by xor-in
 2. Liu, CY., Waidyasooriya, H.M. & Hariyama, M. Design space exploration for an FPGA-based quantum annealing simulator with interaction-coefficient-generators. J Supercomput (2021).
 3. K. Tatsumura, R. Hidaka, M. Yamasaki, Y. Sakai and, H. Goto, "A Currency Arbitrage Machine Based on the Simulated Bifurcation Algorithm for Ultrafast Detection of Optimal Opportunity," 2020 IEEE International Symposium on Circuits and Systems (ISCAS), 2020, pp. 1-5, DOI: 10.1109/ISCAS45731.2020.9181114.
 4. M. Yamasaki et al., "Live Demonstration: Capturing Short-Lived Currency Arbitrage Opportunities with a Simulated Bifurcation Algorithm-Based Trading System," 2020 IEEE International Symposium on Circuits and Systems (ISCAS), 2020, pp. 1-1, DOI: 10.1109/ISCAS45731.2020.9180679. 
+
+## Installation
+
+### Build full project
+
+1. Replace the files in Accelerated_Algorithmic_Trading/hw/pricingEngine with the files in src/hw/pricingEngine.
+2. Follow the AAT original build flow and test flow (mentioned in https://github.com/bol-edu/xilinx-acc-2021_submission)
+
+### Build pricingEngine only
+
+1. Execute `make` command in the `src/hw/pricingEngine/test` folder.
+2. ```vitis_hls -p prj``` opens the pricingEngine project.
+3. Vitis HLS development flow (C simulation, synthesis, and co-sim) can be applied.
+
+## Usage
+
+### Testbench for pricingEngine
+
+Example data files `src/hw/pricingEngine/test/data/data[0-10].txt` prepare multiple sets of `orderBookResponse` data for test. The comment in the file describes the file format.
+
+## Experimental Results
+
+The following experiments were conducted to demonstrate the solution quality of the SQA-accelerated currency arbitrage machine (SQA-CAM).  We ran the executables built from the C++ source code.  The experiments can be reproduced without installing any FPGA card or the entire Vitis software.  However, some libraries of AAT(Q2) and Vitis HLS are required; for brevity, the file requirements are not listed here.  The compilation command may look like the following:
+
+```g++ -I./test/include -I./ test/include/aat_interfaces.cpp test/tb_pricingengine.cpp pricingengine.cpp pricingengine_top.cpp -o tb_pricingEngine```
+
+If you have installed the entire Vitis software, you can `Build pricingEngine only` and get the executable from `test/prj/sol/csim/build/csim.exe`.
+
+The following table shows the SQA-CAM can yield about 75% profitable solutions in only 10 iterations. The spin `1` denotes that the currency exchange order should be placed, and `0` otherwise. Execution time is not the main point of interest, so it is not recorded.
+
+|                                     | 10000 cases, 10 iterations | 10000 cases, 25 iterations |
+| ----------------------------------- | -------------------------- | -------------------------- |
+| Profitable                          | 7443                       | 7442                       |
+| Has cycle, Not profitable           | 1181                       | 1182                       |
+| No  cycle                           | 1376                       | 1376                       |

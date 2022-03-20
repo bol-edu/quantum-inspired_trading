@@ -25,6 +25,10 @@
 
 #define PE_CAPTURE_FREEZE (1 << 31)
 
+/* Macro for Debugging */
+#define DEBUG 0
+#define CHECK_SOLUTION 1
+
 /* SQA - realted macro */
 #define PRAGMA_SUB(PRAG) _Pragma(#PRAG)
 #define CTX_PRAGMA(PRAG) PRAGMA_SUB(PRAG)
@@ -34,26 +38,26 @@
 #define NUM_FADD 64
 
 typedef unsigned int u32_t;
-typedef int          i32_t;
-typedef float        fp_t;
-typedef ap_uint<1>   spin_t;
+typedef int i32_t;
+typedef float fp_t;
+typedef ap_uint<1> spin_t;
 
 /* General Inpput State for Run Final */
 struct state_t {
-    u32_t  i_spin;          // spin index of current spin
-    spin_t up_spin;         // spin from up trotter
-    spin_t down_spin;       // spin from down trotter
-    fp_t   h_local;         // cache h
-    fp_t   log_rand_local;  // cache log rand
+    u32_t i_spin;         // spin index of current spin
+    spin_t up_spin;       // spin from up trotter
+    spin_t down_spin;     // spin from down trotter
+    fp_t h_local;         // cache h
+    fp_t log_rand_local;  // cache log rand
 };
 
 /* Fix Info for Run Final */
 struct info_t {
-    u32_t m;             // Number of this trotter
-    fp_t  beta;          // beta
-    fp_t  de_qefct;      // + qefct energy
-    fp_t  neg_de_qefct;  // - qefct energy
-    int   seed;
+    u32_t m;            // Number of this trotter
+    fp_t beta;          // beta
+    fp_t de_qefct;      // + qefct energy
+    fp_t neg_de_qefct;  // - qefct energy
+    int seed;
 };
 
 /* SQA - realted macro END */
@@ -129,8 +133,7 @@ class PricingEngine
     void pricingProcess(ap_uint<32> &regStrategyControl, ap_uint<32> &regProcessResponse,
                         ap_uint<32> &regStrategyNone, ap_uint<32> &regStrategyPeg,
                         ap_uint<32> &regStrategyLimit, ap_uint<32> &regStrategyUnknown,
-                        pricingEngineRegStatus_t &regStatus,
-                        pricingEngineRegControl_t &regControl,
+                        pricingEngineRegStatus_t &regStatus, pricingEngineRegControl_t &regControl,
                         pricingEngineRegStrategy_t *regStrategies,
                         orderBookResponseStream_t &responseStream,
                         orderEntryOperationStream_t &operationStream);
@@ -151,11 +154,7 @@ class PricingEngine
    private:
     pricingEngineCacheEntry_t cache[NUM_SYMBOL];
 
-    /* SQA - realted operations */
-
-    void runERM(int index, float logged_price, float M1, float M2, float J[NUM_SPIN][NUM_SPIN],
-                float h[NUM_SPIN]);
-
+    /* SQA - related operations */
     void runSQA(spin_t spins[NUM_SPIN], float J[NUM_SPIN][NUM_SPIN], float h[NUM_SPIN],
                 pricingEngineRegStatus_t &regStatus, pricingEngineRegControl_t &regControl);
 
@@ -164,7 +163,20 @@ class PricingEngine
 
     float generateRandomNumber(int &seed);
 
-    /* SQA - realted operations END */
+    /* ERM - related operations */
+    float exch_logged_rates[NUM_SPIN] = {0};
+    bool init_constraint = false;
+
+    void runERM(int index, float logged_price, float M1, float M2, float J[NUM_SPIN][NUM_SPIN],
+                float h[NUM_SPIN]);
+
+/* DEBUG - Check Profitable or Not */
+#if !__SYNTHESIS__
+    bool checkExchCycle(spin_t spin[NUM_SPIN]);
+    bool checkProfitable(spin_t spin[NUM_SPIN]);
+    bool checkIsAllZero(spin_t spin[NUM_SPIN]);
+    void checkSolution(spin_t spin[NUM_SPIN]);
+#endif
 };
 
 #endif
