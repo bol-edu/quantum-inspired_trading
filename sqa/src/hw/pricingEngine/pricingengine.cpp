@@ -511,6 +511,7 @@ void PricingEngine::runSQA(spin_t spins[NUM_SPIN], float J[NUM_SPIN][NUM_SPIN], 
 
     // Iteration Parameters
     const int iter = 10;  // default 500
+    // const int iter = 25;  // default 500
     fp_t gamma_start, T, beta;
     convertByte2Float(gamma_start, regControl.reserved04);
     convertByte2Float(T, regControl.reserved05);
@@ -531,6 +532,7 @@ void PricingEngine::runSQA(spin_t spins[NUM_SPIN], float J[NUM_SPIN][NUM_SPIN], 
         fp_t gamma = gamma_start;
         fp_t Jperp = -0.5 * T * log(tanh(gamma / (fp_t)NUM_TROT / T));
         gamma_start *= 0.25;  // Use geometric instead of Arithmatic
+        // gamma_start *= 0.57435;  // Use geometric instead of Arithmatic
 
         // Run QMC
         this->runQMC(trotters, J, h, Jperp, beta);
