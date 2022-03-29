@@ -21,7 +21,8 @@ Build flow of AAT Q2 and SBM/SQA design sources:
 
 <img src="https://user-images.githubusercontent.com/11850122/157410864-081a295e-f9a1-45fb-a2c7-c7d8faa9d1ca.png" width=60%>
 
-Replace the origional AAT Q2 files in `/Accelerated_Algorithmic_Trading/hw/pricingEngine` with the files in submitted sbm/sqa directory 
+Replace the origional AAT Q2 files in `/Accelerated_Algorithmic_Trading/hw/pricingEngine` with the files in submitted sbm/sqa directory.
+You also can use prebuild SBM/SQA xclbin files in submitted prebuild_xclbin directory and skip the following build steps.
 
 Merge AAT & SBM sources:
 
@@ -163,10 +164,8 @@ AAT Shell Enhancement for Hardware Debugging:
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/aat_shell_enhancement
 
 ## 3-2 Project Contributions
-We will need a section to brief on the test data and results. Please describe
-* Test data configuration, # of currency, and # of exchange pairs
-* execution result, do we get the optimal result?
-* What is the run time?
+https://github.com/bol-edu/xilinx-acc-2021_submission/edit/main/sbm### Experimental setup
+https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sqa### Experimental Setup
 
 Contributors:
 * [Justin Chen](https://github.com/jchen8tw)
