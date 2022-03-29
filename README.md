@@ -165,11 +165,11 @@ AAT Shell Enhancement for Hardware Debugging:
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/aat_shell_enhancement
 
 ## 3-2 Project Contributions
-SBM Experimental Results:
+SBM experimental results:
 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sbm#experimental-results
 
-SQA Experimental Results:
+SQA experimental results:
 
 https://github.com/bol-edu/xilinx-acc-2021_submission/tree/main/sqa#experimental-results
 
