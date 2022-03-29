@@ -22,7 +22,6 @@ Build flow of AAT Q2 and SBM/SQA design sources:
 <img src="https://user-images.githubusercontent.com/11850122/157410864-081a295e-f9a1-45fb-a2c7-c7d8faa9d1ca.png" width=60%>
 
 Replace the origional AAT Q2 files in `/Accelerated_Algorithmic_Trading/hw/pricingEngine` with the files in submitted sbm/sqa directory.
-You also can use prebuild SBM/SQA xclbin files in submitted prebuild_xclbin directory and skip the following build steps.
 
 Merge AAT & SBM sources:
 
@@ -56,6 +55,8 @@ Build Software:
 
     $ cd ../Accelerated_Algorithmic_Trading/sw/applications/aat/aat_shell_exe
     $ make all
+    
+You also can use prebuild SBM/SQA xclbin files in submitted prebuild_xclbin directory and skip the above build steps.    
     
 ## 1-4 Test Flow
 Preparation:
