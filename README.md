@@ -56,7 +56,7 @@ Build Software:
     $ cd ../Accelerated_Algorithmic_Trading/sw/applications/aat/aat_shell_exe
     $ make all
     
-You also can use prebuild SBM/SQA xclbin files in submitted prebuild_xclbin directory and skip the above build steps.    
+You also can use prebuild SBM/SQA xclbin files in submitted prebuild_xclbin directory and skip above build steps.    
     
 ## 1-4 Test Flow
 Preparation:
