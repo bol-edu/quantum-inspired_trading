@@ -56,7 +56,7 @@ Build Software:
     $ cd ../Accelerated_Algorithmic_Trading/sw/applications/aat/aat_shell_exe
     $ make all
     
-You also can use prebuild SBM/SQA xclbin files in submitted prebuild_xclbin directory and skip above build steps.    
+You also can use prebuild SBM/SQA xclbin files in submitted prebuild_xclbin directory and skip "Build Hardware & Software" step. But you still need to run "Build Software" to generate `aat_shell_exe` from source.
     
 ## 1-4 Test Flow
 Preparation:
@@ -65,8 +65,9 @@ Preparation:
 * A QSFPx1-to-SFPx4 connection cable.
 * An AAT Q2 `demo_setup.cfg` and SFP network setting files in submitted configuration directory.
 * The SBM/SQA test toolkit in submitted test_tookit directory.
-  1. Generate SBM/SQA PCAP test files by `pcap_gen.py`.
-  2. Decode OrderEntry results by `decode_order.py` which prints all found currency arbitrage.
+  1. Generate SBM/SQA PCAP test files by `pcap_gen.py` which is tested under Python 3.8.5.
+  2. The dependencies of `pcap_gen.py` is installed whith command `pip3 scapy pandas`. 
+  3. Decode OrderEntry results by `decode_order.py` which prints all found currency arbitrage.
 
 We refer the network configuration used by the Xilinx verification team.
 
@@ -82,7 +83,7 @@ Supplementary of test instructions:
 * The AAT Q2 used prebuilt xcblin `/Accelerated_Algorithmic_Trading/build/sample/aat.u50_xdma.xclbin` should be replaced to the new built xcblin from AAT & SBM or AAT & SQA mapped to `/Accelerated_Algorithmic_Trading/build/aat.xclbin`.
 * The AAT Q2 default configuration `/Accelerated_Algorithmic_Trading/build/support/demo_setup.cfg` should be replaced with submitted `configuration/demo_setup.cfg`.
 * Our own SPF port names are `enp3s0f0` and `enp3s0f1`. You should replace `enp3s0f0` and `enp3s0f1` with your own SPF port names within `settingNetwork_sf0.sh` and `settingNetwork_sf1.sh`.
-* The `> orderentries.bin` (write to orderentries.bin) added to Linux Netcat command terminal#1 saves OrderEntry results of SBM/SQA. The saved `orderentries.bin` is used for decoding OrderEntry results.  
+* The `> orderentries.bin` (write to `./orderentries.bin`) added to Linux Netcat command terminal#1 saves OrderEntry results of SBM/SQA. The `./orderentries.bin` is written completely while TCPreplay command finishs to send PCAP test files. The saved `./orderentries.bin` is used for decoding OrderEntry results.  
 * The port name `enp3s0f1` used in Linux TCPreplay command terminal#2 should be replaced with your own SPF port name, which is corresponded to the port to send PCAP test files.
 * The AAT Q2 PCAP test sample `/Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap` used in Linux TCPreplay command terminal#2 should be replaced to SBM/SQA PCAP test files.
 
