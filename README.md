@@ -64,10 +64,10 @@ Preparation:
 * A remote host installed with a Broadcom BCM957711A 10Gb x 2 SFP port card and PCAP test files.
 * A QSFPx1-to-SFPx4 connection cable.
 * An AAT Q2 `demo_setup.cfg` and SFP network setting files in submitted configuration directory.
-* The SBM/SQA test toolkit tested under Python 3.8.5 in submitted test_tookit directory.
+* The SBM/SQA test toolkit (`pcap_gen.py` and `decode_order.py`) tested under Python 3.8.5 are submitted in test_tookit directory.
   1. Generate SBM/SQA PCAP test files by `pcap_gen.py`.
   2. Decode OrderEntry results by `decode_order.py` which prints all found currency arbitrage.
-  3. The dependencies of `pcap_gen.py` and `decode_order.py` is installed whith command `pip3 install scapy pandas`.  
+  3. The dependencies of `pcap_gen.py` and `decode_order.py` are installed whith command `pip3 install scapy pandas`.  
 
 We refer the network configuration used by the Xilinx verification team.
 
