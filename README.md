@@ -66,7 +66,7 @@ Preparation:
 * An AAT Q2 `demo_setup.cfg` and SFP network setting files in submitted configuration directory.
 * The SBM/SQA test toolkit in submitted test_tookit directory.
   1. Generate SBM/SQA PCAP test files by `pcap_gen.py` which is tested under Python 3.8.5.
-  2. The dependencies of `pcap_gen.py` is installed whith command `pip3 scapy pandas`. 
+  2. The dependencies of `pcap_gen.py` is installed whith command `pip3 install scapy pandas`. 
   3. Decode OrderEntry results by `decode_order.py` which prints all found currency arbitrage.
 
 We refer the network configuration used by the Xilinx verification team.
