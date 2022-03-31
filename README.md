@@ -49,7 +49,7 @@ Build settings in `~/.bashrc`:
 
     $ cd ../Accelerated_Algorithmic_Trading/build
     $ make clean
-    $ ./buildall.sh
+    $ sh ./buildall.sh
 
 Build Software:
 
@@ -101,9 +101,9 @@ Run AAT shell terminal#0 on U50 local host.
 Run Linux Netcat command terminal#1 on remote host and get OrderEntry results from local host.
 
     $ cd ../network_setting/
-    $ sudo ./settingNetwork_sf0.sh
-    $ sudo ./execFrom_sf0.sh ping -w 5 192.168.20.200 (optional test)
-    $ sudo ./execFrom_sf0.sh nc -n -l 192.168.20.100 12345 -v > orderentries.bin
+    $ sudo sh ./settingNetwork_sf0.sh
+    $ sudo sh ./execFrom_sf0.sh ping -w 5 192.168.20.200 (optional test)
+    $ sudo sh ./execFrom_sf0.sh nc -n -l 192.168.20.100 12345 -v > orderentries.bin
     
 If Linux Netcat command terminal#1 has not shown connected IP & Port message from local host, run OrderEntry reconnection and get its status on U50 local host terminal#0.
 
@@ -117,9 +117,9 @@ On U50 local host terminal#0, connection established should be shown "true" and 
 Run Linux TCPreplay command terminal#2 to send PCAP test files from reomte host.
 
     $ cd ../network_setting/
-    $ sudo ./settingNetwork_sf1.sh
-    $ sudo ./execFrom_sf1.sh ping -w 5 192.168.50.101 (optional test)
-    $ sudo ./execFrom_sf1.sh tcpreplay --intf1=enp3s0f1 --pps=2 --stats=1 ../Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap
+    $ sudo sh ./settingNetwork_sf1.sh
+    $ sudo sh ./execFrom_sf1.sh ping -w 5 192.168.50.101 (optional test)
+    $ sudo sh ./execFrom_sf1.sh tcpreplay --intf1=enp3s0f1 --pps=2 --stats=1 ../Accelerated_Algorithmic_Trading/build/sample/cme_input_arb.pcap
 
 ## 2-1 Currency Arbitrage QUBO Formulation
 Before we can apply SBM/SQA to find optimal arbitrage opportunities, we need to transform the problem into a quadratic unconstrained binary optimization (QUBO) form. The methodology is introduced in
