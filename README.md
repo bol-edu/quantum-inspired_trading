@@ -1,4 +1,5 @@
 # Accelerated Quantum-Inspired Algorithm on Accelerated Algorithmic Trading (AAT) Framework
+* [An Introduction of Quantium-Inspired Background and BoLedu's Work](https://github.com/bol-edu/quantum-inspired_trading/blob/main/Introduction_quantum-inspired_trading.pdf)
 
 ## 1-1 Project Abstraction
 Quantum-Inspired Algorithm has been used to optimize combinatorial problems in place of Universal Quantum Computation. We design and implemented two Quantum-Inspired  Trading Strategies for currency arbitrage, Simulated Bifurcation Machine (SBM), and Simulated Quantum Annealing (SQA). Both are implemented with High-Level Synthesis (HLS) and validated on Xilinx Accelerated Algorithmic Trading (AAT) framework. This is a fully-featured open-source reference design for trading applications.
