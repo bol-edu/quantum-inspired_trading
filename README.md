@@ -1,8 +1,7 @@
-# Xilinx ACC 2021 Submission
-EXTREME TRADING SOLUTION: Accelerated Quantum-Inspired Algorithm on Accelerated Algorithmic Trading (AAT) Framework
+# Accelerated Quantum-Inspired Algorithm on Accelerated Algorithmic Trading (AAT) Framework
 
 ## 1-1 Project Abstraction
-Quantum-Inspired Algorithm has been used to optimize combinatorial problems in place of Universal Quantum Computation. We design and implemented two Quantum-Inspired  Trading Strategies for currency arbitrage, Simulated Bifurcation Machine (SBM), and Simulated Quantum Annealing (SQA). Both are implemented with High-Level Synthesis (HLS) and validated on Xilinx Algorithmic Trading (AAT) framework. This is a fully-featured open-source reference design for trading applications.
+Quantum-Inspired Algorithm has been used to optimize combinatorial problems in place of Universal Quantum Computation. We design and implemented two Quantum-Inspired  Trading Strategies for currency arbitrage, Simulated Bifurcation Machine (SBM), and Simulated Quantum Annealing (SQA). Both are implemented with High-Level Synthesis (HLS) and validated on Xilinx Accelerated Algorithmic Trading (AAT) framework. This is a fully-featured open-source reference design for trading applications.
 
 ## 1-2 Data Generation and Decoding
 The test toolkit provides SBM/SQA data generation and decoding, which can be used to generate PCAP test files and decode OrderEntry results.
